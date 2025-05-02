@@ -13,7 +13,7 @@ class WebController extends Controller{
     public function index()
     {
         $this->viewData['sliders'] = Slider::get();
-        $this->viewData['testimonials'] = Testimonial::orderBy('id', 'ASC')->get();
+        $this->viewData['testimonials'] = Testimonial::orderBy('id', 'DESC')->paginate('3');
         $this->viewData['statistics'] = Statistic::orderBy('order')->get();
 
 

@@ -3,10 +3,7 @@
 namespace App\Services;
 
 
-use App\Filters\Id;
 use App\Filters\MessageRead;
-use App\Filters\Name;
-use App\Filters\Status;
 use App\Repositories\Message\MessageRepository;
 use Illuminate\Pipeline\Pipeline;
 use Illuminate\Support\Facades\DB;
@@ -31,6 +28,7 @@ class MessageService extends BaseService
             __('Name'),
             __('Email'),
             __('Telephone'),
+            __('Whatsapp Number'),
             __('Message'),
             __('Read'),
         ]);
@@ -40,6 +38,7 @@ class MessageService extends BaseService
             'name' => '',
             'email' => '',
             'telephone' => '',
+            'whatsapp_number' => '',
             'message' => '',
             'is_read' => '',
         ]);
@@ -62,6 +61,7 @@ class MessageService extends BaseService
             ->addColumn('name', '{{$name}}')
             ->addColumn('email', '{{$email}}')
             ->addColumn('message', '{{$message}}')
+            ->addColumn('whatsapp_number', '{{$whatsapp_number}}')
             ->addColumn('is_read', function($data) {
                 if (in_array($data->is_read,[message_read(('Not_Read'))])) {
                     $this->actionButtons(datatable_menu_button(route('system.message.update-status'), 'system.message.update-status', 'fa-check', message_read('Read'), $data->id));
@@ -84,6 +84,7 @@ class MessageService extends BaseService
                 'name' => $request->name,
                 'email' => $request->email,
                 'telephone' => $request->telephone,
+                'whatsapp_number' => $request->whatsapp_number,
                 'message' => $request->message,
                 'is_read' => 'no',
             ];

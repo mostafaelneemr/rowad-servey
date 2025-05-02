@@ -8,6 +8,6 @@ class Message extends GlobalModel
     public $timestamps = false;
     public $primaryKey = 'id';
 
-    public $fillable = ['id', 'name','telephone','email','message','is_read'];
+    public $fillable = ['id', 'name','telephone','email','message','is_read','whatsapp_number'];
 
 }

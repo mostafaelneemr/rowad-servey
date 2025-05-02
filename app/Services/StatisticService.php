@@ -8,7 +8,6 @@ use App\Repositories\Language\LanguageRepository;
 use App\Repositories\Statistic\StatisticRepository;
 use Datatables;
 use Illuminate\Support\Facades\DB;
-use Intervention\Image\Facades\Image;
 
 
 class StatisticService extends BaseService
@@ -81,8 +80,8 @@ class StatisticService extends BaseService
             DB::beginTransaction();
 
             $data = [
-                'title_en' => $request['input']['lang'][2]['title'] ?? '',
-                'title_ar' => $request['input']['lang'][1]['title'] ?? '',
+                'title_en' => $request['input']['lang'][1]['title'] ?? '',
+                'title_ar' => $request['input']['lang'][2]['title'] ?? '',
                 'number' => $request->number ?? '',
                 'sort' => $request->order ?? '',
                 'status' => $request->status,
@@ -121,8 +120,8 @@ class StatisticService extends BaseService
             }
 
             $data = [
-                'title_en' => $request['input']['lang'][2]['title'] ?? '',
-                'title_ar' => $request['input']['lang'][1]['title'] ?? '',
+                'title_en' => $request['input']['lang'][1]['title'] ?? '',
+                'title_ar' => $request['input']['lang'][2]['title'] ?? '',
                 'number' => $request->number ?? '',
                 'sort' => $request->order ?? '',
                 'status' => $request->status,

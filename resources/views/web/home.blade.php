@@ -53,71 +53,6 @@
 @section('style')
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 
-    {{-- style slider --}}
-    <style>
-        .firstdiv {
-            margin: 0px auto;
-            background: transparent;
-            padding: 0px;
-            margin-top: 0px;
-            margin-bottom: 0px;
-        }
-
-        .secondiv {
-            display: none;
-        }
-
-        .divtitle {
-            z-index: 6;
-            min-width: 1180px;
-            max-width: 1180px;
-            white-space: normal;
-            font-size: 80px;
-            line-height: 90px;
-            font-weight: 700;
-            color: #ffffff;
-            letter-spacing: 0px;
-        }
-
-        .btnslider {
-            visibility: hidden !important;
-        }
-    </style>
-
-
-    <style>
-        .activeinner {
-            height: 300px;
-        }
-
-        .activeserv {
-            color: #4d5e75;
-            font-size: 40px;
-        }
-    </style>
-
-    <style>
-        .portfoliobg {
-            background-image: url('{{asset('sbg.jpg')}}');
-        }
-    </style>
-
-    <style>
-        .blogbg {
-            background-color: #F0F4F9;
-        }
-
-        .blogflex {
-            /* display: flex; */
-            min-height: 220px;
-        }
-
-        .post-read-more {
-            background-color: #222933 !important
-        }
-
-    </style>
-
     <style>
         .icon-box .inner:hover {
             background-color: #222933;
@@ -517,13 +452,12 @@
     <div class="counterup-area py-20 bg_color--5 py-5">
         <div class="container">
             <div class="text-center mb-10">
-                <h2 class="text-3xl font-bold">Statistics Reflecting Our Excellence</h2>
+                <h2 class="text-3xl font-bold">{{__('Statistics Reflecting Our Excellence')}}</h2>
             </div>
             <div class="row text-center">
                 @foreach($statistics as $sta)
                     <div class="col-lg-4 col-md-4 col-sm-12 mb-5">
-                        <div
-                            class="counter-item border rounded-lg transition-all duration-300 hover:shadow-lg hover:border-black">
+                        <div class="counter-item border rounded-lg transition-all duration-300 hover:shadow-lg hover:border-black">
                             <h2 class="text-5xl font-extrabold text-black mb-3">{{$sta->number}}</h2>
                             <p class="text-gray-600 text-lg">{{ lang() == 'ar' ? $sta->title_ar : $sta->title_en }}</p>
                         </div>
@@ -760,8 +694,8 @@
     <div class="brook-testimonial-area ptb--150 ptb-md--80 ptb-sm--60 bg_color--6 slick-arrow-hover">
         <div class="text-center">
 
-            <h5>customer reviews</h5>
-            <h3>What do our clients say about us?</h3>
+            <h5>{{__('customer reviews')}}</h5>
+            <h3>{{__('What do our clients say about us?')}}</h3>
         </div>
         <div class="container">
             <div class="row">
@@ -847,33 +781,47 @@
                 <!-- Start COntact Form -->
                 <div class="col-xl-8 offset-xl-1 col-lg-9 col-12 mt_md--40 mt_sm--40">
                     <div class="contact-form">
-                        <form class="form-style--1 wow move-up" action="#">
+                        <div id="form-alert-message"></div>
+                        @if(session()->has('notify'))
+                            <div class="alert alert-{{ session('notify')['type'] }}" >
+                                {{ session('notify')['message'] }}
+                            </div>
+                        @endif
+                        <form name="contact-form" action="{{route('sendmail')}}" method="POST">
+                            @csrf
                             <div class="row">
 
                                 <div class="col-lg-6">
                                     <div class="input-box">
                                         <span class="form-icon far fa-user"></span>
-                                        <input type="text" placeholder="Name *">
+                                        <input type="text" name="name" placeholder="{{__('Name *')}}">
                                     </div>
                                 </div>
 
                                 <div class="col-lg-6">
                                     <div class="input-box">
                                         <span class="form-icon far fa-envelope"></span>
-                                        <input type="text" placeholder="Email *">
+                                        <input type="email" name="email" placeholder="{{__('Email *')}}">
                                     </div>
                                 </div>
 
                                 <div class="col-lg-12">
                                     <div class="input-box">
                                         <span class="form-icon fas fa-mobile-alt"></span>
-                                        <input type="text" placeholder="Phone number">
+                                        <input type="text" name="telephone" placeholder="{{__('Phone number')}}">
                                     </div>
                                 </div>
 
                                 <div class="col-lg-12">
                                     <div class="input-box">
-                                        <textarea placeholder="Your message"></textarea>
+                                        <span class="form-icon fas fa-mobile-alt"></span>
+                                        <input type="text" name="whatsapp_number" placeholder="{{__('whats\'app number')}}">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12">
+                                    <div class="input-box">
+                                        <textarea placeholder="{{__('Your message')}}" name="message"></textarea>
                                     </div>
                                 </div>
 
@@ -884,7 +832,7 @@
                                             excited to hear from you about new projects
                                         </div>
                                         <div class="form-submit">
-                                            <input type="submit" value="Send message">
+                                            <input type="submit" value="{{__('Send message')}}">
                                         </div>
                                     </div>
                                 </div>

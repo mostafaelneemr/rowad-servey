@@ -20,8 +20,7 @@
     <base href="{{asset('')}}">
     <link rel="shortcut icon" href="assets/web/img/icons/logo.ico"/>
     <!--begin::Vendor Stylesheets(used for this page only)-->
-    <link href="assets/plugins/custom/datatables/datatables.bundle{{direction()}}.css" rel="stylesheet"
-          type="text/css"/>
+    <link href="assets/plugins/custom/datatables/datatables.bundle{{direction()}}.css" rel="stylesheet" type="text/css"/>
     <!--end::Vendor Stylesheets-->
     <!--begin::Global Stylesheets Bundle(mandatory for all pages)-->
     <link href="assets/plugins/global/plugins.bundle{{direction()}}.css?v=1.0" rel="stylesheet" type="text/css"/>

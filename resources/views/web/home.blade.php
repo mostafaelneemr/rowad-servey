@@ -323,9 +323,6 @@
 
     </style>
 
-    <style>
-
-    </style>
 @endsection
 
 {{--@section('slider')--}}
@@ -552,7 +549,7 @@
                 <div class="col-lg-12">
                     <div class="messonry-button text-center mb--70">
                         <button data-filter="*" class="is-checked">
-                            <span class="filter-text text-black">All</span>
+                            <span class="filter-text text-black">{{__('All')}}</span>
                         </button>
                         @foreach ($categories as $category)
                             <button data-filter=".cat--{{ $category->id  }}">
@@ -910,100 +907,7 @@
 {{--        <div id="map" style="height: 400px;width: 100%"></div>--}}
 {{--    </div>--}}
 
-    <!-- Footer -->
-    <footer class="page-footer bg_color--5 pl--150 pr--150 pl_lg--30 pr_lg--30 pl_md--30 pr_md--30 pl_sm--5 pr_sm--5">
-        <!-- Start Footer Top Area -->
-        <div class="bk-footer-inner pt--150 pb--30 pt_sm--100">
-            <div class="container">
-                <div class="row">
 
-                    <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-                        <div class="footer-widget text-var--2">
-                            <div class="logo">
-                                <a href="index.html">
-
-                                    <h4>Rowad Surveying Co</h4>
-                                </a>
-                            </div>
-                            <div class="footer-inner">
-                                <div class="social-share social--transparent text-white">
-                                    <a class="text-black" href="#"><i class="fab fa-facebook"
-                                                                      style="font-size: xx-large"></i></a>
-                                    <a class="text-black" href="#"><i class="fab fa-linkedin"
-                                                                      style="font-size: xx-large"></i></a>
-                                    <a class="text-black" href="#"><i class="fab fa-youtube"
-                                                                      style="font-size: xx-large"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-2 col-md-6 col-sm-6 col-12 mt_mobile--40">
-                        <div class="footer-widget text-var--2 menu--about">
-                            <h2 class="widgettitle text-black">Home</h2>
-                            <div class="footer-menu">
-                                <ul class="ft-menu-list bk-hover">
-                                    <li><a class="text-black" href="about-us-01.html">About</a></li>
-                                    <li><a class="text-black" href="contact.html">Contact</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="col-lg-2 col-md-6 col-sm-6 col-12 mt_mobile--40">
-                        <div class="footer-widget text-var--2 menu--about">
-                            <h2 class="widgettitle text-black">Our Product</h2>
-                            <div class="footer-menu">
-                                <ul class="ft-menu-list bk-hover">
-                                    <li><a class="text-black" href="about-us-01.html">About Us</a></li>
-                                    <li><a class="text-black" href="team.html">Team</a></li>
-                                    <li><a class="text-black" href="career.html">Career</a></li>
-                                    <li><a class="text-black" href="services-classic.html">Services</a></li>
-                                    <li><a class="text-black" href="contact.html">Contact</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt_md--40 mt_sm--40">
-                        <div class="footer-widget text-var--2 menu--contact">
-                            <h2 class="widgettitle text-black">Contact</h2>
-                            <div class="footer-address">
-                                <div class="bk-hover">
-                                    <p class="text-black">2005 Stokes Isle Apt. 896, <br> Vacaville 10010, USA</p>
-                                    <p><a class="text-black" href="#">info@yourdomain.com</a></p>
-                                    <p><a class="text-black" href="#">(+68) 120034509</a></p>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-
-
-                </div>
-            </div>
-        </div>
-        <!-- Start Footer Top Area -->
-
-        <!-- Start Copyright Area -->
-        <div class="copyright ptb--50 text-var-2">
-            <div class="container">
-                <div class="row align-items-center">
-
-                    <div class="col-lg-6 col-md-6 col-sm-12 col-12">
-                        <div class="copyright-right text-md-end text-center">
-                            <p class="text-black">© 2019 Brook. <a href="https://hasthemes.com/">All Rights
-                                    Reserved.</a></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End Copyright Area -->
-    </footer>
-    <!--// Footer -->
 @endsection
 
 

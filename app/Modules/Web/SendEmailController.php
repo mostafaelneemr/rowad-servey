@@ -4,7 +4,6 @@ namespace App\Modules\Web;
 
 
 use App\Modules\System\SystemController;
-use App\Services\BaseService;
 use App\Services\MessageService;
 use Illuminate\Http\Request;
 
@@ -30,6 +29,7 @@ class SendEmailController extends SystemController
 
     public function store(Request $request)
     {
+
         $store = $this->messageService->store($request);
         if ($store) {
             notify('success', 'Your message has been sent successfully!');

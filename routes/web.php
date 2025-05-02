@@ -2,11 +2,10 @@
 
 use App\Models\admin\Blog;
 use App\Models\admin\Project;
-use App\Modules\System\SendEmailController;
+use App\Modules\Web\SendEmailController;
 use App\Modules\Web\WebController;
 use Spatie\Sitemap\Sitemap;
 use Spatie\Sitemap\Tags\url;
-
 
 
 /*
@@ -56,26 +55,28 @@ Route::get('/sitemap.xml', function () {
 });
 
 
+Route::controller(WebController::class)->group(function () {
+    Route::get('/', 'index')->name('home');
+    Route::get('/about', 'about')->name('about');
+    Route::get('/service', 'service')->name('service');
+    Route::get('/portfolio', 'service')->name('portfolio');
 
-Route::get('/', [WebController::class, 'index'])->name('home');
-Route::get('/about', [WebController::class, 'about'])->name('about');
-Route::get('/service', [WebController::class, 'service'])->name('service');
-Route::get('/portfolio', [WebController::class, 'service'])->name('portfolio');
+    Route::get('/blogs', 'blogs')->name('blogs');
+    Route::get('/blog/{slug}', 'blogSlug')->name('blog.slug');
 
-Route::get('/blogs', [WebController::class, 'blogs'])->name('blogs');
-Route::get('/blog/{slug}', [WebController::class, 'blogSlug'])->name('blog.slug');
+    Route::get('/category/{slug}', 'categorySlug')->name('category.slug');
+    Route::get('/projects', 'project')->name('projects');
 
-Route::get('/category/{slug}', [WebController::class, 'categorySlug'])->name('category.slug');
-Route::get('/projects', [WebController::class, 'project'])->name('projects');
+    Route::get('/careers', 'career')->name('career');
 
-Route::get('/careers', [WebController::class, 'career'])->name('career');
+    Route::get('/contact', 'contact')->name('contact');
 
-Route::get('/contact', [WebController::class, 'contact'])->name('contact');
-
-Route::post('send-email', [SendEmailController::class, 'index'])->name('sendmail');
+    Route::get('category/{slug}', 'getCategory')->name('web.category.show');
+});
+Route::post('send-email', [SendEmailController::class, 'store'])->name('sendmail');
 
 
-Route::get('change-language/{lang}', function($lang){
+Route::get('change-language/{lang}', function ($lang) {
     if (in_array($lang, ['en', 'ar'])) {
         session(['locale' => $lang]);
     }

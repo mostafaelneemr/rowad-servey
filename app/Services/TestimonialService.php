@@ -5,10 +5,9 @@ namespace App\Services;
 
 use App\Enums\StatusEnum;
 use App\Repositories\Language\LanguageRepository;
-use App\Repositories\Testimonial\ProductRepository;
+use App\Repositories\Testimonial\TestimonialRepository;
 use Illuminate\Support\Facades\DB;
-use Intervention\Image\Facades\Image;
-use App\Enums\SliderTypeEnum;
+
 use Datatables;
 
 
@@ -16,7 +15,7 @@ class TestimonialService extends BaseService
 {
     protected $testimonialRepository,$languageRepository;
 
-    public function __construct(ProductRepository $testimonialRepository, LanguageRepository $languageRepository)
+    public function __construct(TestimonialRepository $testimonialRepository, LanguageRepository $languageRepository)
     {
         parent::__construct();
         $this->testimonialRepository = $testimonialRepository;
@@ -25,7 +24,7 @@ class TestimonialService extends BaseService
 
     public function loadViewData(): array
     {
-        $this->pageTitle(__('Sliders'));
+        $this->pageTitle(__('Testimonials'));
         $this->tableColumns([
             __('ID'),
 //            __('Image'),

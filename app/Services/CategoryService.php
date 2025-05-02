@@ -25,7 +25,7 @@ class CategoryService extends BaseService
 
     public function loadViewData(): array
     {
-        $this->pageTitle(__('Category'));
+        $this->pageTitle(__('Categories'));
         $this->tableColumns([
             __('ID'),
             __('Title'),

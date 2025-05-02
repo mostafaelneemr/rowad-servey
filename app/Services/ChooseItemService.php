@@ -25,7 +25,7 @@ class ChooseItemService extends BaseService
 
     public function loadViewData(): array
     {
-        $this->pageTitle(__('Slider'));
+        $this->pageTitle(__('Items'));
         $this->tableColumns([
             __('ID'),
             __('Image'),

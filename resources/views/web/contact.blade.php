@@ -137,30 +137,25 @@
                             <div class="address-inner">
                                 <div class="address wow move-up">
                                     <h3 class="heading">Visit our studio at</h3>
-                                    <p>2005 Stokes Isle Apt. 896, Shop Plaza 10010, USA</p>
+                                    <p>{{setting('email')->value ?? ''}}</p>
                                 </div>
 
                                 <div class="address mt--60 mb--60 wow move-up">
                                     <h3 class="heading">Message us</h3>
-                                    <p><a href="#">info@yourdomain.com</a></p>
-                                    <p><a href="#">(+68) 120034509</a></p>
+                                    <p><a href="#">{{setting('email')->value ?? ''}}</a></p>
+                                    <p><a href="#">{{setting('mobile')->value ?? ''}}</a></p>
                                 </div>
 
                                 <ul class="social-icon icon-size-medium text-dark text-start tooltip-layout move-up wow">
-                                    <li class="facebook"><a href="#" class="link hint--bounce hint--top hint--theme"
-                                                            aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                                    <li class="facebook"><a href="{{setting('facebook')->value ?? ''}}" class="link hint--bounce hint--top hint--theme" aria-label="Facebook">
+                                            <i class="fab fa-facebook"></i></a>
                                     </li>
-                                    <li class="twitter"><a href="#" class="link hint--bounce hint--top hint--theme"
-                                                           aria-label="Twitter"><i class="fab fa-twitter"></i></a></li>
-                                    <li class="instagram"><a href="#" class="link hint--bounce hint--top hint--theme"
-                                                             aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                                    <li class="linkedin"><a href="{{setting('linkedin')->value ?? ''}}" class="link hint--bounce hint--top hint--theme" aria-label="Linkedin">
+                                            <i class="fab fa-linkedin"></i></a></li>
+                                    <li class="youtube"><a href="{{setting('youtube')->value ?? ''}}" class="link hint--bounce hint--top hint--theme" aria-label="Youtube">
+                                            <i class="fab fa-youtube"></i></a>
                                     </li>
-                                    <li class="dribbble"><a href="#" class="link hint--bounce hint--top hint--theme"
-                                                            aria-label="Dribbble"><i class="fab fa-dribbble"></i></a>
-                                    </li>
-                                    <li class="pinterest"><a href="#" class="link hint--bounce hint--top hint--theme"
-                                                             aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
-                                    </li>
+
                                 </ul>
 
                             </div>
@@ -168,40 +163,47 @@
                         <!-- Start COntact Form -->
                         <div class="col-xl-8 offset-xl-1 col-lg-9 col-12 mt_md--40 mt_sm--40">
                             <div class="contact-form">
-                                <form class="form-style--1 wow move-up" action="#">
+                                <div id="form-alert-message"></div>
+                                @if(session()->has('notify'))
+                                    <div class="alert alert-{{ session('notify')['type'] }}" >
+                                        {{ session('notify')['message'] }}
+                                    </div>
+                                @endif
+                                <form name="contact-form" action="{{route('sendmail')}}" method="POST">
+                                    @csrf
                                     <div class="row">
 
                                         <div class="col-lg-6">
                                             <div class="input-box">
                                                 <span class="form-icon far fa-user"></span>
-                                                <input type="text" placeholder="{{__('Name *')}}">
+                                                <input type="text" name="name" placeholder="{{__('Name *')}}">
                                             </div>
                                         </div>
 
                                         <div class="col-lg-6">
                                             <div class="input-box">
                                                 <span class="form-icon far fa-envelope"></span>
-                                                <input type="text" placeholder="{{__('Email *')}}">
+                                                <input type="email" name="email" placeholder="{{__('Email *')}}">
                                             </div>
                                         </div>
 
                                         <div class="col-lg-12">
                                             <div class="input-box">
                                                 <span class="form-icon fas fa-mobile-alt"></span>
-                                                <input type="text" placeholder="{{__('Phone number')}}">
+                                                <input type="text" name="telephone" placeholder="{{__('Phone number')}}">
                                             </div>
                                         </div>
 
                                         <div class="col-lg-12">
                                             <div class="input-box">
                                                 <span class="form-icon fas fa-mobile-alt"></span>
-                                                <input type="text" placeholder="{{__('whats\'app number')}}">
+                                                <input type="text" name="whatsapp_number" placeholder="{{__('whats\'app number')}}">
                                             </div>
                                         </div>
 
                                         <div class="col-lg-12">
                                             <div class="input-box">
-                                                <textarea placeholder="{{__('Your message')}}"></textarea>
+                                                <textarea placeholder="{{__('Your message')}}" name="message"></textarea>
                                             </div>
                                         </div>
 
@@ -227,101 +229,43 @@
             <!-- End Contact Area -->
 
         </div><!-- Footer -->
-        <footer
-            class="page-footer bg_color--5 pl--150 pr--150 pl_lg--30 pr_lg--30 pl_md--30 pr_md--30 pl_sm--5 pr_sm--5">
-            <!-- Start Footer Top Area -->
-            <div class="bk-footer-inner pt--150 pb--30 pt_sm--100">
-                <div class="container">
-                    <div class="row">
-
-                        <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-                            <div class="footer-widget text-var--2">
-                                <div class="logo">
-                                    <a href="index.html">
-
-                                        <h4>Rowad Surveying Co</h4>
-                                    </a>
-                                </div>
-                                <div class="footer-inner">
-                                    <div class="social-share social--transparent text-white">
-                                        <a class="text-black" href="#"><i class="fab fa-facebook"
-                                                                          style="font-size: xx-large"></i></a>
-                                        <a class="text-black" href="#"><i class="fab fa-linkedin"
-                                                                          style="font-size: xx-large"></i></a>
-                                        <a class="text-black" href="#"><i class="fab fa-youtube"
-                                                                          style="font-size: xx-large"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-2 col-md-6 col-sm-6 col-12 mt_mobile--40">
-                            <div class="footer-widget text-var--2 menu--about">
-                                <h2 class="widgettitle text-black">Home</h2>
-                                <div class="footer-menu">
-                                    <ul class="ft-menu-list bk-hover">
-                                        <li><a class="text-black" href="about-us-01.html">About</a></li>
-                                        <li><a class="text-black" href="contact.html">Contact</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="col-lg-2 col-md-6 col-sm-6 col-12 mt_mobile--40">
-                            <div class="footer-widget text-var--2 menu--about">
-                                <h2 class="widgettitle text-black">Our Product</h2>
-                                <div class="footer-menu">
-                                    <ul class="ft-menu-list bk-hover">
-                                        <li><a class="text-black" href="about-us-01.html">About Us</a></li>
-                                        <li><a class="text-black" href="team.html">Team</a></li>
-                                        <li><a class="text-black" href="career.html">Career</a></li>
-                                        <li><a class="text-black" href="services-classic.html">Services</a></li>
-                                        <li><a class="text-black" href="contact.html">Contact</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt_md--40 mt_sm--40">
-                            <div class="footer-widget text-var--2 menu--contact">
-                                <h2 class="widgettitle text-black">Contact</h2>
-                                <div class="footer-address">
-                                    <div class="bk-hover">
-                                        <p class="text-black">2005 Stokes Isle Apt. 896, <br> Vacaville 10010, USA</p>
-                                        <p><a class="text-black" href="#">info@yourdomain.com</a></p>
-                                        <p><a class="text-black" href="#">(+68) 120034509</a></p>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-            <!-- Start Footer Top Area -->
-
-            <!-- Start Copyright Area -->
-            <div class="copyright ptb--50 text-var-2">
-                <div class="container">
-                    <div class="row align-items-center">
-
-                        <div class="col-lg-6 col-md-6 col-sm-12 col-12">
-                            <div class="copyright-right text-md-end text-center">
-                                <p class="text-black">© 2019 Brook. <a href="https://hasthemes.com/">All Rights
-                                        Reserved.</a></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- End Copyright Area -->
-        </footer>
     </div>
 @endsection
 
 @section('script')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    <script>
+        toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "newestOnTop": true,
+            "progressBar": true,
+            "positionClass": "toast-top-right",
+            "preventDuplicates": true,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        };
+    </script>
+
+    <script>
+        @if(session()->has('notify'))
+        let type = "{{ session('notify')['type'] }}";
+        let message = "{{ session('notify')['message'] }}";
+
+        if (type === 'success') {
+            toastr.success(message);
+        } else if (type === 'error') {
+            toastr.error(message);
+        }
+        @endif
+    </script>
+
 @endsection

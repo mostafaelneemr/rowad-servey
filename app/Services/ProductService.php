@@ -82,8 +82,7 @@ class ProductService extends BaseService
         $this->breadcrumb('Products', 'system.product.index');
         $this->otherData([
             'languages' => $this->languageRepository->getWhere(['status' => StatusEnum::Enable->value]),
-//            'category' => array_column($this->categoryRepository->getDataTableQuery(),'name_'.lang(),'id'),
-        'categories' => $this->categoryRepository->getDataTableQuery()
+            'categories' => $this->categoryRepository->getDataTableQuery()
         ]);
         return $this->retunData;
     }

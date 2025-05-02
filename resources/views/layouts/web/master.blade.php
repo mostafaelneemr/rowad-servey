@@ -21,7 +21,7 @@
         <div class="page-load-inner">
             <div class="preloader-wrap">
                 <div class="wrap-2">
-                    <div class=""> <img src="{{asset('website/assets/img/icons/brook-preloader.gif')}}" alt="Brook Preloader"></div>
+                    <div class=""><img src="{{asset('website/assets/img/icons/preloader.gif')}}" alt="survey preloader"></div>
                 </div>
             </div>
         </div>
@@ -41,7 +41,7 @@
                             <div class="header-left">
                                 <div class="logo">
                                     <a href="{{ route('home') }}">
-                                        <img src="{{asset('img/logo.e75e3506.svg')}}" id="logowid" alt="Brook Images">
+                                        <img src="{{setting('logo')->value ?? ''}}" id="logowid" alt="Brook Images">
                                     </a>
                                 </div>
                             </div>
@@ -50,15 +50,16 @@
                                 <nav class="page_nav">
                                     <ul class="mainmenu">
                                         <li class="lavel-1"><a href="{{ route('home') }}"><span>{{__('Home')}}</span></a></li>
-                                        {{-- <li class="lavel-1"><a href="{{ route('about') }}"><span>{{__('About Us')}}</span></a></li> --}}
-
+                                         <li class="lavel-1"><a href="{{ route('about') }}"><span>{{__('About Us')}}</span></a></li>
                                         @php
-                                        $categories = \App\Models\Category::get();
+                                            $categories = \App\Models\Category::get();
                                         @endphp
                                         <li class="lavel-1 with--drop slide-dropdown"><a href="#"><span>{{__('Our Products')}}</span></a>
                                             <ul class="dropdown__menu">
                                                 @foreach($categories as $category)
-                                                    <li><a href="{{ route('category.slug', $category->slug) }}"><span>{{ lang() == 'ar' ? $category->title_ar : $category->title_en }}</span></a></li>
+                                                    <li>
+                                                        <a href="{{ route('web.category.show', $category->slug) }}"><span>{{ lang() == 'ar' ? $category->title_ar : $category->title_en }}</span></a>
+                                                    </li>
                                                 @endforeach
                                             </ul>
                                             <!-- End Dropdown Menu -->
@@ -108,7 +109,7 @@
                 <div class="mobileheader">
                     <div class="logo">
                         <a href="{{ route('home') }}">
-                            <img src="{{ setting('site_logo') }}" alt="Multipurpose">
+                            <img src="{{ setting('logo')->value ?? '' }}" alt="Multipurpose">
                         </a>
                     </div>
                     <a class="mobile-close" href="#"></a>
@@ -116,12 +117,25 @@
                 <div class="menu-content">
                     <ul class="menulist object-custom-menu">
                         <li><a href="{{ route('home') }}"><span>{{__('Home')}}</span></a></li>
-                        <li><a href="{{ route('about') }}"><span>{{__('About Us')}}</span></a></li>
-{{--                        @if (\App\Models\admin\Active_section::where('name', 'blog_page')->first()->value == 1)--}}
-{{--                        <li><a href="{{ route('blogs') }}"><span>Blogs</span></a></li>--}}
-{{--                        @endif--}}
+                        <li class="lavel-1"><a href="{{ route('about') }}"><span>{{__('About Us')}}</span></a></li>
+                        @php
+                            $categories = \App\Models\Category::get();
+                        @endphp
+                        <li class="lavel-1 with--drop slide-dropdown"><a href="#"><span>{{__('Our Products')}}</span></a>
+                            <ul class="dropdown__menu">
+                                @foreach($categories as $category)
+                                    <li>
+                                        <a href="{{ route('web.category.show', $category->slug) }}"><span>{{ lang() == 'ar' ? $category->title_ar : $category->title_en }}</span></a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                            <!-- End Dropdown Menu -->
+                        </li>
+                        {{-- @if (\App\Models\admin\Active_section::where('name', 'blog_page')->first()->value == 1) --}}
+                        {{-- <li class="lavel-1"><a href="{{ route('blogs') }}"><span>{{__('Blogs')}}</span></a></li> --}}
+                        {{-- @endif --}}
 
-                        <li><a href="{{ route('contact') }}"><span>{{__('Contact Us')}}</span></a></li>
+                        <li class="lavel-1"><a href="{{ route('contact') }}"><span>{{__('Contact Us')}}</span></a></li>
                     </ul>
                 </div>
             </div>
@@ -167,7 +181,7 @@
 
 
     {{-- footer --}}
-{{--    @include('layouts.web.footer')--}}
+    @include('layouts.web.footer')
 
     <!--// Wrapper -->
     <!-- Js Files -->

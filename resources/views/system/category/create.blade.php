@@ -54,41 +54,6 @@
                                                  id="input[lang][{{$language['id']}}][title]-form-error"></div>
                                         </div>
                                     </div>
-
-
-{{--                                    <div class="col-lg-6">--}}
-{{--                                        {{ label( __('name'),'required') }}--}}
-{{--                                        <div class="mb-5">--}}
-{{--                                            {{ Form::input(--}}
-{{--                                                'text',--}}
-{{--                                                'input[lang]['.$language['id'].'][name]',--}}
-{{--                                                isset($result) ? $result->{$language['id'] == 2 ? 'name_ar' : 'name_en'} : '',                                                [--}}
-{{--                                                    'id' => 'input[lang]['.$language['id'].'][name]',--}}
-{{--                                                    'class' => 'form-control form-control-solid',--}}
-{{--                                                ]--}}
-{{--                                            ) }}--}}
-{{--                                            <div class="invalid-feedback"--}}
-{{--                                                 id="input[lang][{{$language['id']}}][name]-form-error"></div>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-
-{{--                                    <div class="col-lg-6">--}}
-{{--                                        {{ label( __('Text')) }}--}}
-{{--                                        <div class="mb-5">--}}
-{{--                                            {{ Form::input(--}}
-{{--                                                'text',--}}
-{{--                                                'input[lang]['.$language['id'].'][text]',--}}
-{{--                                                isset($result) ? $result->{$language['id'] == 2 ? 'text_ar' : 'text_en'} : '',--}}
-{{--                                                [--}}
-{{--                                                    'id' => 'input[lang]['.$language['id'].'][text]',--}}
-{{--                                                    'class' => 'form-control form-control-solid',--}}
-{{--                                                ]--}}
-{{--                                            ) }}--}}
-{{--                                            <div class="invalid-feedback"--}}
-{{--                                                id="input[lang][{{$language['id']}}][text]-form-error">--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
                                 </div>
                             </div>
                         @endforeach
@@ -100,7 +65,7 @@
                         <div class="col-lg-6 ">
                             {{ label(__('Status')) }}
                             <div class="mb-5">
-                                {!! Form::select('input[status]',['' => '']+default_status(false,true),isset($result->status) ? $result->status:old('input[status]'),
+                                {!! Form::select('status',['' => '']+default_status(false,true),isset($result->status) ? $result->status:old('input[status]'),
                                     ['class'=>'form-select form-select-solid ','id'=>'input[status]',' data-placeholder'=>__('Select an Status')]) !!}
                                 <div class="invalid-feedback" id="input[status]-form-error"></div>
                             </div>

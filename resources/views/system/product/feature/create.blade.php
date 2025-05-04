@@ -110,19 +110,6 @@
                                 <div class="invalid-feedback" id="gallery_images-form-error"></div>
                             </div>
                         </div>
-                        @if(isset($result))
-                            <div class="row mb-5" id="existing-gallery">
-                                @foreach(DB::table('product_images')->where('product_id', $result->id)->get() as $img)
-                                    <div class="col-md-3 mb-3 position-relative" id="gallery-img-{{ $img->id }}">
-                                        <img src="{{ asset($img->image) }}" class="img-thumbnail" style="height: 150px; object-fit: cover;">
-                                        <button type="button" class="btn btn-sm btn-danger position-absolute top-0 end-0 m-1 delete-gallery-image"
-                                                data-id="{{ $img->id }}" data-url="{{ route('system.product.gallery.delete', $img->id) }}">
-                                            &times;
-                                        </button>
-                                    </div>
-                                @endforeach
-                            </div>
-                        @endif
 
                         <div class="col-lg-6">
                             {{ label(__('Category'), 'required') }}
@@ -197,34 +184,4 @@
 
     {!! Form::close() !!}
 
-@endsection
-
-@section('footer')
-    <script>
-        $(document).on('click', '.delete-gallery-image', function () {
-            if (!confirm('Are you sure you want to delete this image?')) return;
-
-            let btn = $(this);
-            let id = btn.data('id');
-            let url = btn.data('url');
-
-            $.ajax({
-                url: url,
-                type: 'DELETE',
-                data: {
-                    _token: '{{ csrf_token() }}'
-                },
-                success: function (res) {
-                    if (res.status) {
-                        $('#gallery-img-' + id).remove();
-                    } else {
-                        alert(res.message || 'Failed to delete image.');
-                    }
-                },
-                error: function () {
-                    alert('Error occurred while deleting.');
-                }
-            });
-        });
-    </script>
 @endsection

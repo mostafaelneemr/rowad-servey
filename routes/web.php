@@ -64,14 +64,15 @@ Route::controller(WebController::class)->group(function () {
     Route::get('/blogs', 'blogs')->name('blogs');
     Route::get('/blog/{slug}', 'blogSlug')->name('blog.slug');
 
-    Route::get('/category/{slug}', 'categorySlug')->name('category.slug');
     Route::get('/projects', 'project')->name('projects');
 
     Route::get('/careers', 'career')->name('career');
 
     Route::get('/contact', 'contact')->name('contact');
 
-    Route::get('category/{slug}', 'getCategory')->name('web.category.show');
+    Route::get('/category/{slug}', 'categorySlug')->name('category.slug');
+    Route::get('/product/{slug}', 'productSlug')->name('product.slug');
+
 });
 Route::post('send-email', [SendEmailController::class, 'store'])->name('sendmail');
 

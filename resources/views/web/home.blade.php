@@ -448,7 +448,38 @@
     {{--    </div>--}}
     {{--    <!-- End Counterup Area -->--}}
 
-    <!-- Start Counterup Area -->
+    <div class="brook-video-area videobg bg_color--1 pb--30 pt--30 pb_md--80 pb_sm--60 mt-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7">
+                    <div class="video-with-thumb text-center move-up wow">
+                        <div class="thumb">
+                            <img src="{{ setting('video_image')->value ?? '' }}" alt="video images">
+                        </div>
+                        <!-- Start Single Popup -->
+                        <div class="video-btn position--center">
+                            <a class="play__btn" href="{{ setting('video_link')->value ?? '' }}">
+                                <div class="video-icon second-icon post-read-more"></div>
+                            </a>
+                        </div>
+                        <!-- End Single Popup -->
+                    </div>
+                </div>
+                <div class="col-lg-5 mt_sm--30 mt_md--30">
+                    <div class="video-content move-up wow">
+                        <h3 class="heading heading-h3">{{ setting('title_video')->value ?? '' }}</h3>
+                        <div class="bkseparator--25"></div>
+                        <p class="bk_pra">{{ setting('desc_video')->value ?? '' }}</p>
+                        <div class="bkseparator--40"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
     <div class="counterup-area py-20 bg_color--5 py-5">
         <div class="container">
             <div class="text-center mb-10">
@@ -487,7 +518,7 @@
                         </button>
                         @foreach ($categories as $category)
                             <button data-filter=".cat--{{ $category->id  }}">
-                                <span class="filter-text text-black">{{ $category->title_en }}</span>
+                                <span class="filter-text text-black">{{ lang() == 'ar' ? $category->title_ar : $category->title_en }}</span>
                             </button>
                         @endforeach
                     </div>
@@ -498,15 +529,15 @@
                     <div class="col-lg-4 col-md-6 col-sm-6 col-12 portfolio-33-33 cat--{{$product->category_id}}">
                         <div class="portfolio with-caption" style="overflow: hidden; height: 100%;">
                             <div class="thumb video-with-thumb">
-                                <a href="{{url('project/' . $product->slug)}}">
+                                <a href="{{url('product/' . $product->slug)}}">
                                     <img src="{{asset($product->image)}}"
-                                         style="width: 100%; height: 250px; object-fit: cover;" alt="portfolio images">
+                                         style="width: 100%; height: 250px; object-fit: cover;" alt="product images">
                                 </a>
                             </div>
                             <div class="caption-bottom text-start">
                                 <div class="info">
                                     <h5 class="heading heading-h5"><a
-                                            href="{{url('project/' . $product->slug)}}">{{$product->title_en}}</a></h5>
+                                            href="{{url('product/' . $product->slug)}}">{{$product->title_en}}</a></h5>
                                     <p class="bk_pra">{{ $product->image_desc_en }}</p>
                                 </div>
                             </div>
@@ -520,62 +551,6 @@
     </div>
 
 
-
-    <!-- Start Product Area -->
-{{--    <div class="brook-product-area ptb--150 ptb-md--80 ptb-sm--60 bg_color--1">--}}
-{{--        <div class="container">--}}
-{{--            <div class="row">--}}
-{{--                <div class="col-lg-12">--}}
-{{--                    <div class="brook-section-title text-center">--}}
-{{--                        <h3 class="heading heading-h3">{{__('Our Products')}}</h3>--}}
-{{--                    </div>--}}
-
-
-
-{{--                    <!-- Tab Navigation -->--}}
-{{--                    <ul class="nav product-tab justify-content-center">--}}
-{{--                        <li><a class="active" data-toggle="tab" href="#all">{{__('All')}}</a></li>--}}
-
-{{--                        <!-- Category Tabs -->--}}
-{{--                        @foreach($categories as $category)--}}
-{{--                            <li><a class="no-border" data-toggle="tab" href="#category-{{ $category->id }}">{{ lang() == 'ar' ? $category->title_ar : $category->title_en }}</a></li>--}}
-{{--                        @endforeach--}}
-{{--                    </ul>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-
-{{--            <!-- Tab Content -->--}}
-{{--            <div class="tab-content">--}}
-{{--                <div class="tab-pane fade show active" id="all">--}}
-{{--                    <div class="row mt--30 portfolio-grid-metro6 mesonry-list">--}}
-{{--                        @foreach($products as $product)--}}
-{{--                            <div class="col-lg-4 col-md-6 col-sm-6 col-12 portfolio-33-33 cat--{{ $product->category_id }}">--}}
-{{--                                <div class="product mt--30">--}}
-{{--                                    <div class="product-thumbnail">--}}
-{{--                                        <div class="thumbnail">--}}
-{{--                                            <div class="product-main-image">--}}
-{{--                                                <img src="{{ asset($product->image) }}" alt="Multipurpose">--}}
-{{--                                            </div>--}}
-{{--                                            <div class="product-hover-image">--}}
-{{--                                                <img src="{{ asset($product->image) }}" alt="Multipurpose">--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="product-info">--}}
-{{--                                        <h5 class="heading heading-h5"><a href="#">{{ $product->title_en }}</a></h5>--}}
-{{--                                        <div class="price"><span>${{ $product->price }}</span> <span class="new-price">${{ $product->new_price }}</span></div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        @endforeach--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </div>--}}
-
-
-    <!-- Start Icon Boxes -->
     <div class="brook-icon-boxes-area basic-thine-line pb--200 pb_md--80 pb_sm--80">
         <div class="container">
             <div class="row">
@@ -728,7 +703,6 @@
                                     <div class="testimonial-info">
                                         <div class="clint-info">
                                             <h6>{{lang() == 'ar' ? $testimonial->name_ar : $testimonial->name_en}}</h6>
-                                            {{--                                        <span>Product Manager</span>--}}
                                         </div>
                                     </div>
                                     <div class="testimonial-quote">
@@ -764,16 +738,15 @@
                         </div>
 
                         <ul class="social-icon icon-size-medium text-dark text-start tooltip-layout move-up wow">
-                            <li class="facebook"><a href="#" class="link hint--bounce hint--top hint--theme"
-                                                    aria-label="Facebook"><i class="fab fa-facebook"></i></a></li>
-                            <li class="twitter"><a href="#" class="link hint--bounce hint--top hint--theme"
-                                                   aria-label="Twitter"><i class="fab fa-twitter"></i></a></li>
-                            <li class="instagram"><a href="#" class="link hint--bounce hint--top hint--theme"
-                                                     aria-label="Instagram"><i class="fab fa-instagram"></i></a></li>
-                            <li class="dribbble"><a href="#" class="link hint--bounce hint--top hint--theme"
-                                                    aria-label="Dribbble"><i class="fab fa-dribbble"></i></a></li>
-                            <li class="pinterest"><a href="#" class="link hint--bounce hint--top hint--theme"
-                                                     aria-label="Pinterest"><i class="fab fa-pinterest"></i></a></li>
+                            <li class="facebook">
+                                <a href="{{setting('facebook')->value ?? ''}}" class="link hint--bounce hint--top hint--theme" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                            </li>
+                            <li class="linkedin">
+                                <a href="{{setting('linkedin')->value ?? ''}}" class="link hint--bounce hint--top hint--theme" aria-label="Linkedin"><i class="fab fa-linkedin"></i></a>
+                            </li>
+                            <li class="youtube">
+                                <a href="{{setting('youtube')->value ?? ''}}" class="link hint--bounce hint--top hint--theme" aria-label="Youtube"><i class="fab fa-youtube"></i></a>
+                            </li>
                         </ul>
 
                     </div>
@@ -827,10 +800,7 @@
 
                                 <div class="col-lg-12">
                                     <div class="form-action">
-                                        <div class="form-description">
-                                            I’m available for commissions and collaborations, and i’m <br>
-                                            excited to hear from you about new projects
-                                        </div>
+
                                         <div class="form-submit">
                                             <input type="submit" value="{{__('Send message')}}">
                                         </div>
@@ -846,25 +816,10 @@
     </div>
     <!-- End Contact Area -->
 
-
-{{--    <div class="col-md-12">--}}
-{{--        <label for="" class="text-primary">{{__('Please Click on map to add marker')}}</label>--}}
-{{--        <input id="pac-input" class="controls form-control form-control-solid"--}}
-{{--               style="width: 50%;" type="text"--}}
-{{--               placeholder="{{__('Search in')}}" />--}}
-{{--        <div id="map" style="height: 400px;width: 100%"></div>--}}
-{{--    </div>--}}
-
-
 @endsection
 
 
 @push('js')
-    <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGSjrZDr0T6byve9vBAS1eDmU_I9wvTOY&callback=initMap&libraries=places&v=weekly&channel=2"
-        async>
-    </script>
-
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
     <script>
@@ -902,134 +857,6 @@
             });
         });
     </script>
-
-
-    <script>
-        let markersArray = [];
-        let infoWindow;
-        var marker;
-
-        function initMap() {
-            @if(isset($location) & !empty($location->lat))
-                map = new google.maps.Map(document.getElementById('map'), {
-                center: {lat: @php echo $location->lat; @endphp, lng: @php echo $location->lng; @endphp },
-                zoom: 15
-            });
-            placeMarker({lat: @php echo $location->lat; @endphp, lng: @php echo $location->lng; @endphp });
-            @else
-                map = new google.maps.Map(document.getElementById('map'), {
-                center: {lat: 24.774265, lng: 46.738586},
-                zoom: 13
-            });
-            @endif
-            map.addListener('click', function (e) {
-                $('#lat-form-input').val(e.latLng.lat())
-                $('#lng-form-input').val(e.latLng.lng())
-                placeMarker(e.latLng);
-            });
-            // Create the search box and link it to the UI element.
-            const input = document.getElementById("pac-input");
-            google.maps.event.addDomListener(input, 'keydown', function (e) {
-                if (e.keyCode == 13) {
-                    e.preventDefault();
-                }
-            });
-            const searchBox = new google.maps.places.SearchBox(input);
-            map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-            // Bias the SearchBox results towards current map's viewport.
-            map.addListener("bounds_changed", () => {
-                searchBox.setBounds(map.getBounds());
-            });
-            let markers = [];
-            // Listen for the event fired when the user selects a prediction and retrieve
-            // more details for that place.
-            searchBox.addListener("places_changed", () => {
-                const places = searchBox.getPlaces();
-
-                if (places.length == 0) {
-                    return;
-                }
-                // Clear out the old markers.
-                markers.forEach((marker) => {
-                    marker.setMap(null);
-                });
-                markers = [];
-                // For each place, get the icon, name and location.
-                const bounds = new google.maps.LatLngBounds();
-                places.forEach((place) => {
-                    if (!place.geometry) {
-                        console.log("Returned place contains no geometry");
-                        return;
-                    }
-                    const icon = {
-                        url: place.icon,
-                        size: new google.maps.Size(71, 71),
-                        origin: new google.maps.Point(0, 0),
-                        anchor: new google.maps.Point(17, 34),
-                        scaledSize: new google.maps.Size(25, 25),
-                    };
-                    // Create a marker for each place.
-                    markers.push(
-                        new google.maps.Marker({
-                            map,
-                            icon,
-                            title: place.name,
-                            position: place.geometry.location,
-                        })
-                    );
-
-                    if (place.geometry.viewport) {
-                        // Only geocodes have viewport.
-                        bounds.union(place.geometry.viewport);
-                    } else {
-                        bounds.extend(place.geometry.location);
-                    }
-                });
-                map.fitBounds(bounds);
-            });
-
-
-        }
-
-        function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-            infoWindow.setPosition(pos);
-            infoWindow.setContent(
-                browserHasGeolocation
-                    ? "Error: The Geolocation service failed."
-                    : "Error: Your browser doesn't support geolocation."
-            );
-            infoWindow.open(map);
-        }
-
-        function initAutocomplete() {
-            const map = new google.maps.Map(document.getElementById("map"), {
-                center: {lat: -33.8688, lng: 151.2195},
-                zoom: 13,
-                mapTypeId: "roadmap",
-            });
-
-            map.addListener('click', function (e) {
-                $('#lat-form-input').val(e.latLng.lat())
-                $('#lng-form-input').val(e.latLng.lng())
-                placeMarker(e.latLng);
-            });
-        }
-
-
-        function placeMarker(location) {
-            if (marker) {
-                marker.setPosition(location);
-            } else {
-                marker = new google.maps.Marker({
-                    position: location,
-                    map: map
-                });
-            }
-        }
-
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/counterup2@2.0.2/dist/index.min.js"></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {

@@ -9,7 +9,7 @@
                     <div class="footer-widget text-var--2" style="margin-top: -60px">
                         <div class="logo">
                             <a href="{{route('home')}}">
-                                <img src="{{setting('logo')->value ?? ''}}" alt="{{__('Rowad Survey Co')}}">
+                                <img src="{{asset(setting('logo')->value ?? '')}}" alt="{{__('Rowad Survey Co')}}">
                             </a>
                         </div>
                         <div class="footer-inner">
@@ -42,7 +42,7 @@
                             <ul class="ft-menu-list bk-hover">
                                 @foreach($categories as $category)
                                     <li><a class="text-black"
-                                           href="{{route('web.category.show',$category->id)}}">{{lang() == 'ar' ? $category->title_ar : $category->title_en}}</a>
+                                           href="{{route('category.slug',$category->id)}}">{{lang() == 'ar' ? $category->title_ar : $category->title_en}}</a>
                                     </li>
                                 @endforeach
                             </ul>

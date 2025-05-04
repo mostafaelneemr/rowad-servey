@@ -51,16 +51,7 @@ class SettingService extends BaseService
                         $validator = \Validator::make($request->all(), [
                             $value->name => 'nullable|image',
                         ]);
-//                    if (!$validator->fails() && $request->file($value->name)) {
-//                        $path = $request->file($value->name)->store(setting('system_path').'/setting/'.date('Y/m/d'),'first_public');
-//                        if($path){
-//                            Setting::where(['name'=>$value->name])->where('is_visible','yes')->update(['value'=>$path]);
-//                        }
-//                    }
-//                    break;
-
                         if (!$validator->fails() && $request->file($value->name)) {
-                            // $path = $request->file($value->name)->store(setting('system_path').'/setting/'.date('Y/m/d'),'first_public');
 
                             if ($request->file('site_logo')) {
                                 $path = $request->file('site_logo');
@@ -86,6 +77,24 @@ class SettingService extends BaseService
                                 if ($path) {
                                     Setting::where(['name' => $value->name])->where('is_visible', 'yes')->update(['value' => $save_url]);
                                 }
+                            }
+                        }
+                        break;
+
+                    case 'file':
+                        $validator = \Validator::make($request->all(), [
+                            $value->name => 'nullable|mimes:pdf|max:5120', // Max 5MB
+                        ]);
+
+                        if (!$validator->fails()) {
+                            if ($request->hasFile('file_pdf')) {
+                                $file = $request->file('file_pdf');
+                                $filename = time() . '_' . $file->getClientOriginalName();
+                                $path = $file->storeAs('uploads/pdfs', $filename, 'public'); // store in storage/app/public/uploads/pdfs
+
+                                Setting::where(['name' => $value->name])
+                                    ->where('is_visible', 'yes')
+                                    ->update(['value' => $path]);
                             }
                         }
                         break;

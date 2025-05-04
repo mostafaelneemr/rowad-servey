@@ -1,6 +1,8 @@
 <?php
 
 
+use App\Modules\System\ProductController;
+
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout'); //
 Route::post('/reset-password','Auth\LoginController@updatePassword')->name('system.reset-password');
 
@@ -48,8 +50,10 @@ Route::controller('SettingController')->group(function () {
 
 Route::resource('category', 'CategoryController', ['as' => 'system']);
 Route::resource('/product', 'ProductController', ['as' => 'system']); //
+Route::resource('/feature', 'FeatureController', ['as' => 'system']); //
 
-
+Route::delete('product/gallery-image/{id}', [ProductController::class, 'deleteGalleryImage'])
+    ->name('system.product.gallery.delete');
 
 
 

@@ -58,12 +58,12 @@ class WebController extends Controller{
         return $this->view('blogs', $this->viewData);
     }
 
-    public function blogSlug($slug)
+    public function productSlug($slug)
     {
-        $this->viewData['sliders'] = Slider::where('slider_type', 'home')->get();
-        $this->viewData['blog'] = Blog::where('slug', $slug)->first();
+//        $this->viewData['sliders'] = Slider::where('slider_type', 'home')->get();
+        $this->viewData['product'] = Product::where('slug', $slug)->first();
         // return $this->viewData['blogs'];
-        return $this->view('blog_slug', $this->viewData);
+        return view('web.product_slug', $this->viewData);
     }
 
     public function project()
@@ -77,24 +77,14 @@ class WebController extends Controller{
         return $this->view('projects', $this->viewData);
     }
 
-    public function career()
-    {
-        if (Active_section::where('name' , 'career_page')->first()->value == 0 ) {
-            abort(404);
-        }
-        $this->viewData['careers'] = Career::get();
-        return $this->view('career', $this->viewData);
-    }
-
     public function categorySlug($slug)
     {
         $this->viewData['category'] = Category::where('slug', $slug)->first();
-        return $this->view('category_slug', $this->viewData);
+        return view('web.category_slug', $this->viewData);
     }
 
     public function contact()
     {
-//        $this->viewData['sliders'] = Slider::where('slider_type', 'home')->get();
         return view('web.contact');
     }
 

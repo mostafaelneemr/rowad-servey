@@ -45,7 +45,7 @@
                 </div>
 
                 <div class="card-body">
-                    {!! Form::open(['route' => 'system.setting.update', 'method' => 'PATCH', 'files' => true]) !!}
+                    {!! Form::open(['route' => 'system.setting.update', 'method' => 'PATCH', 'files' => true,'enctype' => 'multipart/form-data']) !!}
 
                     <div class="tab-content mt-5" id="myTabContent">
                         @foreach($settingGroups as $key => $value)
@@ -76,13 +76,12 @@
                                     @elseif($sValue->input_type == 'image')
                                         <div class="form-group row">
                                             {!! Form::label($sValue->name, $sValue->{'shown_name_'.\App::getLocale()}, ['class' => 'col-3 col-form-label']) !!}
-                                            <div @if($sValue->value) class="col-7" @else class="col-9" @endif>
+                                            <div @if($sValue->value) class="col-6" @else class="col-9" @endif>
                                                 {!! Form::file($sValue->name, ['class' => 'form-control']) !!}
                                             </div>
                                             @if($sValue->name == 'logo')
                                                 <span class="text-center">{{__('Image dimensions :')}} 218 × 28</span>
-                                            @elseif($sValue->name == 'testimonial_image')
-                                                <span class="text-center">{{__('Image dimensions :')}} 1920 × 500</span>
+
                                             @endif
                                             @if($sValue->value)
                                                 <div class="col-2">
@@ -102,6 +101,13 @@
                                                     }
                                                 @endphp
                                                 {!! Form::select($sValue->name, $listSelect, $sValue->value, ['class' => 'form-control']) !!}
+                                            </div>
+                                        </div>
+                                    @elseif($sValue->input_type == 'file')
+                                        <div class="form-group row">
+                                            {!! Form::label($sValue->name, $sValue->{'shown_name_'.\App::getLocale()}, ['class' => 'col-3 col-form-label']) !!}
+                                            <div class="col-9">
+                                                {!! Form::file($sValue->name, ['class' => 'form-control','accept' => 'application/pdf']) !!}
                                             </div>
                                         </div>
                                     @endif

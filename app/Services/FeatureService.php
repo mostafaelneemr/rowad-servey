@@ -4,8 +4,8 @@ namespace App\Services;
 
 
 use App\Enums\StatusEnum;
-use App\Repositories\Category\CategoryRepository;
 use App\Repositories\Language\LanguageRepository;
+use App\Repositories\Product\FeatureRepository;
 use App\Repositories\Product\ProductRepository;
 use Illuminate\Support\Facades\DB;
 use Intervention\Image\Facades\Image;
@@ -13,21 +13,21 @@ use Datatables;
 use Illuminate\Support\Str;
 
 
-class ProductService extends BaseService
+class FeatureService extends BaseService
 {
-    protected $productRepository,$languageRepository,$categoryRepository;
+    protected $productRepository,$languageRepository,$featureRepository;
 
-    public function __construct(ProductRepository $productRepository, LanguageRepository $languageRepository,CategoryRepository $categoryRepository)
+    public function __construct(ProductRepository $productRepository, LanguageRepository $languageRepository,FeatureRepository $featureRepository)
     {
         parent::__construct();
         $this->productRepository = $productRepository;
         $this->languageRepository = $languageRepository;
-        $this->categoryRepository = $categoryRepository;
+        $this->featureRepository = $featureRepository;
     }
 
     public function loadViewData(): array
     {
-        $this->pageTitle(__('Products'));
+        $this->pageTitle(__('Features Product'));
         $this->tableColumns([
             __('ID'),
             __('Image'),
@@ -47,7 +47,7 @@ class ProductService extends BaseService
         ]);
 
         $this->filterIgnoreColumns(['action']);
-        $this->addButton('system.product.create','Add Product');
+        $this->addButton('system.feature.create','Add Feature');
         return $this->retunData;
     }
 
@@ -69,7 +69,7 @@ class ProductService extends BaseService
                 return status_icon($data->status);
             })
             ->addColumn('action', function($data) {
-                $this->actionButtons(datatable_menu_edit(route('system.product.edit', $data->id), 'system.product.edit'));
+                $this->actionButtons(datatable_menu_edit(route('system.feature.edit', $data->id), 'system.feature.edit'));
                 return $this->actionButtonsRender($this->productRepository->modelPath(), $data->id);
             })
             ->escapeColumns([])
@@ -78,12 +78,12 @@ class ProductService extends BaseService
 
     public function create(): array
     {
-        $this->pageTitle('Create Product');
-        $this->breadcrumb('Home');
-        $this->breadcrumb('Products', 'system.product.index');
+        $this->pageTitle('Create Feature');
+        $this->breadcrumb('Products');
+        $this->breadcrumb('feature', 'system.feature.index');
         $this->otherData([
             'languages' => $this->languageRepository->getWhere(['status' => StatusEnum::Enable->value]),
-            'categories' => $this->categoryRepository->getDataTableQuery()
+            'products' => $this->productRepository->getDataTableQuery()
         ]);
         return $this->retunData;
     }
@@ -105,13 +105,6 @@ class ProductService extends BaseService
                 $save_image = 'upload/home/' . $name_gen;
             }
 
-            if ($request->has('slider_image')) {
-                $slider_image = $this->uploadedImage($request->file('slider_image'), 'slider_image');
-            }
-
-            if ($request->hasFile('pdf_file')) {
-                $file = $this->uploadFile($request->file('pdf_file'), 'files');
-            }
 
             if ($request->hasFile('gallery_images')) {
                 foreach ($request->file('gallery_images') as $galleryImage) {
@@ -157,32 +150,17 @@ class ProductService extends BaseService
         }
     }
 
-    private function uploadedImage($image, $folder)
-    {
-        $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
-        $image->move(public_path("upload/home/{$folder}/"), $name_gen);
-        return 'upload/home/' . $folder . '/' . $name_gen;
-    }
-
-    private function uploadFile($file, $folder)
-    {
-        $file_name_gen = hexdec(uniqid()) . '.' . $file->getClientOriginalExtension();
-        $file->move(public_path("upload/home/{$folder}/"), $file_name_gen);
-        return 'upload/home/' . $folder . '/' . $file_name_gen;
-    }
-
 
     public function edit($id): array
     {
-        $this->pageTitle('Update Product');
-        $this->breadcrumb('Products', 'system.product.index');
+        $this->pageTitle('Update Feature');
+        $this->breadcrumb('features', 'system.feature.index');
 
         $this->otherData([
-            'result' => $this->productRepository->find($id),
-            'languages' => $this->languageRepository->getWhere(['status' => StatusEnum::Enable->value]),
-            'categories' => $this->categoryRepository->getDataTableQuery()
-
-        ]);
+                'result' => $this->featureRepository->find($id),
+                'languages' => $this->languageRepository->getWhere(['status' => StatusEnum::Enable->value]),
+                'products' => $this->productRepository->find($id),
+            ]);
         return $this->retunData;
     }
 

@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 
 class ProductController extends SystemController
 {
-
     protected $productService;
 
     public function __construct(ProductService $productService)
@@ -60,4 +59,20 @@ class ProductController extends SystemController
 
     }
 
+    public function deleteGalleryImage($id)
+    {
+        $image = DB::table('product_images')->where('id', $id)->first();
+
+        if ($image) {
+            if (file_exists(public_path($image->image))) {
+                @unlink(public_path($image->image));
+            }
+
+            DB::table('product_images')->where('id', $id)->delete();
+
+            return response()->json(['status' => true, 'message' => 'Image deleted']);
+        }
+
+        return response()->json(['status' => false, 'message' => 'Image not found'], 404);
+    }
 }

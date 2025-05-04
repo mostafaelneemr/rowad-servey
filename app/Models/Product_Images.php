@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Product_Images extends Model
 {
     use HasFactory;
-    public $table = 'categories';
+    public $table = 'product_images';
     public $primaryKey = 'id';
 
     public $fillable = ['product_id','sort','image'];

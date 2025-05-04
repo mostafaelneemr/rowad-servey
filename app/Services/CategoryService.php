@@ -7,6 +7,7 @@ use App\Enums\StatusEnum;
 use App\Repositories\Category\CategoryRepository;
 use App\Repositories\Language\LanguageRepository;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 use App\Enums\SliderTypeEnum;
 use Datatables;
@@ -78,11 +79,11 @@ class CategoryService extends BaseService
     {
         try {
             DB::beginTransaction();
-
             $data = [
                 'title_ar'      => $request['input']['lang'][2]['title'] ?? '',
                 'title_en'      => $request['input']['lang'][1]['title'] ?? '',
                 'status'        => $request['status'] ?? 'active',
+                'slug'        => str::slug($request['input']['lang'][1]['title']),
             ];
             $store = $this->categoryRepository->store($data);
             DB::commit();

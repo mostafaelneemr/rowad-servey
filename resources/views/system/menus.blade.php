@@ -87,6 +87,14 @@
                 'icon' => '<i class="fa-solid fa-comment"></i>',
             ],
 
+            [
+                'permission' => ['system.feature.index','system.feature.create','system.feature.edit'],
+                'url' => route('system.feature.index'),
+                'text' => __('Features'),
+                'icon' => '<i class="fa-solid fa-comment"></i>',
+            ],
+
+
         ],
     ];
 

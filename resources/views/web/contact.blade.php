@@ -136,7 +136,7 @@
 
             <div class="bk-contact-area section-pb-xl bg_color--1" style="margin-top: 100px">
                 <div class="container">
-                    <h1 class=" text-center mb-5">{{__('Contact US')}}</h1>
+                    <h1 class=" text-center mb-5">{{__('Contact Us')}}</h1>
                     <div class="row">
                         <!-- Start Address -->
                         <div class="col-xl-3 col-lg-3 col-12">

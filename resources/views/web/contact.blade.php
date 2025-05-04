@@ -25,6 +25,11 @@
                 padding-top: 60px;
             }
         }
+
+        .address .studio-entry {
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
     </style>
 @endsection
 
@@ -129,31 +134,44 @@
             <!-- End Contact Area -->
 
 
-            <div class="bk-contact-area section-pb-xl bg_color--1 mt-5">
+            <div class="bk-contact-area section-pb-xl bg_color--1" style="margin-top: 100px">
                 <div class="container">
+                    <h1 class=" text-center mb-5">{{__('Contact US')}}</h1>
                     <div class="row">
                         <!-- Start Address -->
                         <div class="col-xl-3 col-lg-3 col-12">
                             <div class="address-inner">
                                 <div class="address wow move-up">
-                                    <h3 class="heading">Visit our studio at</h3>
-                                    <p>{{setting('email')->value ?? ''}}</p>
+                                    <h3 class="heading">{{ __('Visit our studio at') }}</h3>
+
+                                    @for ($i = 1; $i <= 4; $i++)
+                                        @php
+                                            $address = setting('address_' . $i)->value ?? null;
+                                            $phone = setting('phone_' . $i)->value ?? null;
+                                        @endphp
+
+                                        @if ($address || $phone)
+                                            <div class="studio-entry">
+                                                <span>{{ $address }}</span> - <span>{{ $phone }}</span>
+                                            </div>
+                                        @endif
+                                    @endfor
                                 </div>
 
                                 <div class="address mt--60 mb--60 wow move-up">
-                                    <h3 class="heading">Message us</h3>
+                                    <h3 class="heading">{{__('Message us')}}</h3>
                                     <p><a href="#">{{setting('email')->value ?? ''}}</a></p>
-                                    <p><a href="#">{{setting('mobile')->value ?? ''}}</a></p>
                                 </div>
 
                                 <ul class="social-icon icon-size-medium text-dark text-start tooltip-layout move-up wow">
-                                    <li class="facebook"><a href="{{setting('facebook')->value ?? ''}}" class="link hint--bounce hint--top hint--theme" aria-label="Facebook">
-                                            <i class="fab fa-facebook"></i></a>
+                                    <li class="facebook">
+                                        <a href="{{setting('facebook')->value ?? ''}}" class="link hint--bounce hint--top hint--theme" aria-label="Facebook">
+                                            <i class="fab fa-facebook" style="font-size: xx-large"></i></a>
                                     </li>
                                     <li class="linkedin"><a href="{{setting('linkedin')->value ?? ''}}" class="link hint--bounce hint--top hint--theme" aria-label="Linkedin">
-                                            <i class="fab fa-linkedin"></i></a></li>
+                                            <i class="fab fa-linkedin" style="font-size: xx-large"></i></a></li>
                                     <li class="youtube"><a href="{{setting('youtube')->value ?? ''}}" class="link hint--bounce hint--top hint--theme" aria-label="Youtube">
-                                            <i class="fab fa-youtube"></i></a>
+                                            <i class="fab fa-youtube" style="font-size: xx-large"></i></a>
                                     </li>
 
                                 </ul>
@@ -209,10 +227,6 @@
 
                                         <div class="col-lg-12">
                                             <div class="form-action">
-                                                <div class="form-description">
-                                                    I’m available for commissions and collaborations, and i’m <br>
-                                                    excited to hear from you about new projects
-                                                </div>
                                                 <div class="form-submit">
                                                     <input type="submit" value="{{__('Send message')}}">
                                                 </div>

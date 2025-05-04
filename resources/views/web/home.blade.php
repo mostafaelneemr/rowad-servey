@@ -256,7 +256,13 @@
             overflow: hidden;
         }
 
+        .address .studio-entry {
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
     </style>
+
+
 
 @endsection
 
@@ -454,7 +460,7 @@
                 <div class="col-lg-7">
                     <div class="video-with-thumb text-center move-up wow">
                         <div class="thumb">
-                            <img src="{{ setting('video_image')->value ?? '' }}" alt="video images">
+                            <img src="{{ asset(setting('video_image')->value ?? '') }}" alt="video images">
                         </div>
                         <!-- Start Single Popup -->
                         <div class="video-btn position--center">
@@ -467,18 +473,15 @@
                 </div>
                 <div class="col-lg-5 mt_sm--30 mt_md--30">
                     <div class="video-content move-up wow">
-                        <h3 class="heading heading-h3">{{ setting('title_video')->value ?? '' }}</h3>
+                        <h3 class="heading heading-h3">{{ lang() == 'ar' ? (setting('title_video_ar')->value ?? '') : (setting('title_video_en')->value ?? '') }}</h3>
                         <div class="bkseparator--25"></div>
-                        <p class="bk_pra">{{ setting('desc_video')->value ?? '' }}</p>
+                        <p class="bk_pra">{{ lang() == 'ar' ? (setting('desc_video_ar')->value ?? '') : (setting('desc_video_en')->value ?? '') }}</p>
                         <div class="bkseparator--40"></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-
-
 
     <div class="counterup-area py-20 bg_color--5 py-5">
         <div class="container">
@@ -607,57 +610,6 @@
                         </div>
                         <!-- End Single Icon Boxes -->
 
-                        <!-- Start Single Icon Boxes -->
-                        <div class="col-lg-4 col-md-6 col-sm-6 col-12 mt--70 wow move-up">
-                            <div class="icon-box text-center no-border">
-                                <div class="inner">
-                                    <div class="icon">
-                                        <i class="ion-ios-bell-outline"></i>
-                                    </div>
-                                    <div class="content">
-                                        <h5 class="heading heading-h5">Resource use</h5>
-                                        <p class="bk_pra">We participate in knowledge and technology transfers
-                                            in resource use.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Single Icon Boxes -->
-
-                        <!-- Start Single Icon Boxes -->
-                        <div class="col-lg-4 col-md-6 col-sm-6 col-12 mt--70 wow move-up">
-                            <div class="icon-box text-center no-border">
-                                <div class="inner">
-                                    <div class="icon">
-                                        <i class="ion-ios-infinite-outline"></i>
-                                    </div>
-                                    <div class="content">
-                                        <h5 class="heading heading-h5">Multi-purpose Use</h5>
-                                        <p class="bk_pra">We participate in knowledge and technology transfers
-                                            in resource use.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Single Icon Boxes -->
-
-                        <!-- Start Single Icon Boxes -->
-                        <div class="col-lg-4 col-md-6 col-sm-6 col-12 mt--70 wow move-up">
-                            <div class="icon-box text-center no-border">
-                                <div class="inner">
-                                    <div class="icon">
-                                        <i class="ion-ios-cloudy-outline"></i>
-                                    </div>
-                                    <div class="content">
-                                        <h5 class="heading heading-h5">Responsive Layouts</h5>
-                                        <p class="bk_pra">Brook is highly responsive thanks to built-in
-                                            WP Bakery Page Builder & Slider Revolution.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Single Icon Boxes -->
-
                     </div>
                 </div>
             </div>
@@ -719,6 +671,9 @@
     </div>
     <!-- End Testimonial Area -->
 
+
+    @include('web.call')
+
     <!-- Start Contact Area -->
     <div class="bk-contact-area section-pb-xl bg_color--1 mt-5">
         <div class="container">
@@ -727,14 +682,25 @@
                 <div class="col-xl-3 col-lg-3 col-12">
                     <div class="address-inner">
                         <div class="address wow move-up">
-                            <h3 class="heading">Visit our studio at</h3>
-                            <p>2005 Stokes Isle Apt. 896, Shop Plaza 10010, USA</p>
+                            <h3 class="heading">{{ __('Visit our studio at') }}</h3>
+
+                            @for ($i = 1; $i <= 4; $i++)
+                                @php
+                                    $address = setting('address_' . $i)->value ?? null;
+                                    $phone = setting('phone_' . $i)->value ?? null;
+                                @endphp
+
+                                @if ($address || $phone)
+                                    <div class="studio-entry">
+                                        <span>{{ $address }}</span> - <span>{{ $phone }}</span>
+                                    </div>
+                                @endif
+                            @endfor
                         </div>
 
                         <div class="address mt--60 mb--60 wow move-up">
-                            <h3 class="heading">Message us</h3>
-                            <p><a href="#">info@yourdomain.com</a></p>
-                            <p><a href="#">(+68) 120034509</a></p>
+                            <h3 class="heading">{{__('Message us')}}</h3>
+                            <p><a href="mailto:{{setting('email')->value ?? '#'}}">{{setting('email')->value ?? ''}}</a></p>
                         </div>
 
                         <ul class="social-icon icon-size-medium text-dark text-start tooltip-layout move-up wow">

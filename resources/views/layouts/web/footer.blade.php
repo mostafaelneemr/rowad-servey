@@ -56,9 +56,10 @@
                         <h2 class="widgettitle text-black">{{__('Contact Us')}}</h2>
                         <div class="footer-address">
                             <div class="bk-hover">
-                                <p class="text-black">{{__('Address:')}} {{setting('address')->value ?? ''}}</p>
+                                <p class="text-black">{{__('Address:')}} {{setting('address_1')->value ?? ''}}</p>
                                 <p><a class="text-black" href="mailto:{{ setting('email')->value }}">{{__('Email:')}} {{setting('email')->value ?? ''}}</a></p>
-                                <p><a class="text-black" href="">{{__('Mobile Number')}} {{setting('mobile')->value ?? ''}}</a></p>
+                                <p><a class="text-black" href="https://wa.me/{{ setting('whatsapp_phone')->value }}" >
+                                        {{__('WhatsApp')}} : {{setting('whatsapp_phone')->value ?? ''}}</a></p>
                             </div>
 
                         </div>
@@ -71,20 +72,5 @@
     </div>
     <!-- Start Footer Top Area -->
 
-    <!-- Start Copyright Area -->
-    <div class="copyright text-var-2">
-        <div class="container">
-            <div class="row align-items-center">
-
-                <div class="col-lg-6 col-md-6 col-sm-12 col-12">
-                    <div class="copyright-right text-md-end text-center">
-                        <p class="text-black">© 2025 All Rights Reserved
-                            <u><strong><a class="text-dark" href="https://elnemr.info/">Mostafa Elnemr </a></strong></u></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Copyright Area -->
 </footer>
 <!--// Footer -->

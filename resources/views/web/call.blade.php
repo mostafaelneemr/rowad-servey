@@ -1,16 +1,24 @@
 <!-- Start Call To Action -->
 <div class="brook-call-to-action ptb--70" style="background-color: #222933">
     <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-7 col-sm-7 col-12">
-                <div class="call-content text-center text-sm-start">
-                    <h3 class="heading heading-h3 text-white">{{ setting('call_text') }}</h3>
+        <div class="row justify-content-center">
+            <div class="col-12 text-center">
+                <div class="d-inline-flex gap-2 flex-wrap justify-content-center">
+                    <a class="brook-btn bk-btn-white text-theme btn-sd-size btn-rounded"
+                       style="background-color: rgba(12,128,41,1); color: whitesmoke"
+                       href="https://wa.me/{{ setting('whatsapp_phone')->value }}" target="_blank">
+                        {{ __('WhatsApp') }}
+                        <i class="fab fa-whatsapp" style="padding-left: 5px;"></i>
+                    </a>
+
+                    <a class="brook-btn bk-btn-white text-theme btn-sd-size btn-rounded"
+                       style="background-color: rgba(255,171,0,1); color: whitesmoke"
+                       href="mailto:{{ setting('email')->value }}" target="_blank">
+                        {{ __('Email') }}
+                        <i class="fa fa-envelope" style="padding-left: 5px;"></i>
+                    </a>
                 </div>
-            </div>
-            <div class="col-lg-5 col-sm-5 col-12">
-                <div class="call-btn text-center text-sm-end mt_mobile--20">
-                    <a class="brook-btn bk-btn-white text-theme btn-sd-size btn-rounded" href="{{ setting('call_link') }}">{{ setting('call_button') }}</a>
-                </div>
+
             </div>
         </div>
     </div>

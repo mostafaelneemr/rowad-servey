@@ -15,7 +15,7 @@
 
 
 /* ============================
-    Header Default Area 
+    Header Default Area
 ================================*/
 
 
@@ -319,11 +319,11 @@ header.br_header.header-default.vertical-slide-portfolio {
                         width: 170px;
                         height: auto;
                         max-width: 100%;
-                        
+
                         @media #{$lg-layout} {
                             width: 140px !important;
                         }
-                        
+
                         @media #{$sm-layout} {
                             width: 110px !important;
                         }
@@ -598,7 +598,7 @@ header.br_header.header-default.vertical-slide-portfolio {
 
 
 /* ==========================
-    Header left Align 
+    Header left Align
 ===========================*/
 
 .header-left--align.header-default .header__wrapper .header-left .logo a img {
@@ -651,7 +651,7 @@ header.br_header.header-default.vertical-slide-portfolio {
 
 
 /* ============================
-    Sticky Header Css 
+    Sticky Header Css
 ================================*/
 
 .black-logo--version {
@@ -719,7 +719,7 @@ header.br_header.header-default.vertical-slide-portfolio {
 
 
 /* =================================
-    Header One Page 
+    Header One Page
 ==================================*/
 
 .one-page-header {
@@ -844,7 +844,7 @@ header.br_header.header-default.vertical-slide-portfolio {
 
 
 /*==========================
-Hambergar Style Two 
+Hambergar Style Two
 ============================*/
 
 .manu-hamber-2 {
@@ -938,7 +938,7 @@ Hambergar Style Two
 }
 
 /*=================================
-    Header Fixed 
+    Header Fixed
 =====================================*/
 header.br_header.header-default.header-fixed {
     position: fixed;
@@ -955,7 +955,7 @@ header.br_header.header-default.header-fixed {
 
 
 /* =====================
-    Mobile Menu 
+    Mobile Menu
 ========================*/
 
 @media #{$md-layout} {

@@ -25,27 +25,18 @@ class WebController extends Controller{
 
     public function about()
     {
-        if (Active_section::where('name' , 'about_page')->first()->value == 0 ) {
-            abort(404);
-        }
-        $this->viewData['sliders'] = Slider::where('slider_type', 'home')->get();
-        $this->viewData['testimonials'] = Testimonial::get();
-        $this->viewData['teams'] = Team::get();
-        $this->viewData['clients'] = Client::get();
+//        if (Active_section::where('name' , 'about_page')->first()->value == 0 ) {
+//            abort(404);
+//        }
+//        $this->viewData['sliders'] = Slider::where('slider_type', 'home')->get();
+//        $this->viewData['testimonials'] = Testimonial::get();
+//        $this->viewData['teams'] = Team::get();
+//        $this->viewData['clients'] = Client::get();
 
-        return $this->view('about', $this->viewData);
+        return view('web.about');
     }
 
-    public function service()
-    {
-        if (Active_section::where('name' , 'service_page')->first()->value == 0 ) {
-            abort(404);
-        }
-        $this->viewData['items'] = Project::orderBy('id', 'ASC')->get();
-        $this->viewData['activities'] = OurActive::with('fontawsome')->orderBy('id', 'ASC')->get();
 
-        return $this->view('service',$this->viewData);
-    }
 
     public function blogs()
     {
@@ -60,7 +51,6 @@ class WebController extends Controller{
 
     public function productSlug($slug)
     {
-//        $this->viewData['sliders'] = Slider::where('slider_type', 'home')->get();
         $this->viewData['product'] = Product::where('slug', $slug)->first();
         // return $this->viewData['blogs'];
         return view('web.product_slug', $this->viewData);

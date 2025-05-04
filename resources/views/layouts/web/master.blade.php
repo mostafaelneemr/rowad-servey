@@ -30,8 +30,7 @@
 <div id="wrapper" class="wrapper">
 
     <!-- Header -->
-    <header
-        class="br_header header-default position-from--top header-transparent light-logo--version haeder-fixed-width headroom--sticky header-mega-menu clearfix"
+    <header class="br_header header-default position-from--top header-transparent light-logo--version haeder-fixed-width headroom--sticky header-mega-menu clearfix"
         style="padding-top: 0">
         <div class="container-fluid">
             <div class="row">
@@ -68,10 +67,15 @@
                                             @endforeach
                                         </ul>
                                     </li>
-                                    <li class="lavel-1"><a
-                                            href="{{ route('contact') }}"><span>{{__('Contact Us')}}</span></a></li>
+                                    <li class="lavel-1"><a href="{{ route('contact') }}"><span>{{__('Contact Us')}}</span></a></li>
                                 </ul>
                             </nav>
+                        </div>
+
+                        <div class="social-share social--transparent text-white">
+                            <a class="text-black" href="{{setting('facebook')->value ?? ''}}"><i class="fab fa-facebook" style="font-size: xx-large"></i></a>
+                            <a class="text-black" href="{{setting('linkedin')->value ?? ''}}"><i class="fab fa-linkedin" style="font-size: xx-large"></i></a>
+                            <a class="text-black" href="{{setting('youtube')->value ?? ''}}"><i class="fab fa-youtube" style="font-size: xx-large"></i></a>
                         </div>
                         <!-- Header Right -->
                         <div class="header-right">

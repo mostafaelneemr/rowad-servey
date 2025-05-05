@@ -534,7 +534,7 @@
                             <div class="thumb video-with-thumb">
                                 <a href="{{url('product/' . $product->slug)}}">
                                     <img src="{{asset($product->image)}}"
-                                         style="width: 100%; height: 250px; object-fit: cover;" alt="product images">
+                                         style="width: 100%; height: 250px;" alt="product images">
                                 </a>
                             </div>
                             <div class="caption-bottom text-start">

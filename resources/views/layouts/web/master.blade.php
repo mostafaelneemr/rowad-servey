@@ -26,9 +26,10 @@
           box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
         }
 
-        .header-default.light-logo--version .mainmenu-wrapper .page_nav ul.mainmenu li a{
-          color: "#000" !important
+        .headroom--unpinned a{
+          color: "red" !important
         }
+
 
  
 

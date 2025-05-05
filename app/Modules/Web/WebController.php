@@ -4,9 +4,9 @@ namespace App\Modules\Web;
 
 use App\Enums\DefaultStatus;
 use App\Http\Controllers\Controller;
-use App\Models\admin\{Active_section, Slider, Testimonial, Blog, Career, Client, Project, Team};
+use App\Models\admin\{Active_section, Slider, Testimonial, Blog, Project};
 
-use App\Models\{Category, OurActive, Product, Statistic};
+use App\Models\{Category, Product, Statistic};
 
 class WebController extends Controller{
 
@@ -16,9 +16,8 @@ class WebController extends Controller{
         $this->viewData['testimonials'] = Testimonial::orderBy('id', 'DESC')->paginate('3');
         $this->viewData['statistics'] = Statistic::orderBy('order')->get();
 
-
         $this->viewData['categories'] = Category::where('status',DefaultStatus::Active->value)->paginate('3');
-        $this->viewData['products'] = Product::paginate('6');
+        $this->viewData['products'] = Product::where('status',DefaultStatus::Active->value)->paginate('6');
 
         return view('web.home', $this->viewData);
     }

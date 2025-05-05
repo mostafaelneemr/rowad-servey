@@ -9,6 +9,19 @@
         #logowid {
             width: 100%;
         }
+
+        .header-default .header__wrapper .header-left .logo a img{
+          padding: 0 !important
+        }
+
+        /* .new-header{
+          position:  relative !important;
+        } */
+
+        .header-default.light-logo--version .mainmenu-wrapper .page_nav ul.mainmenu li a{
+          color: "black" !important
+        }
+
     </style>
 </head>
 
@@ -30,7 +43,7 @@
 <div id="wrapper" class="wrapper">
 
     <!-- Header -->
-    <header class="br_header header-default position-from--top header-transparent light-logo--version haeder-fixed-width headroom--sticky header-mega-menu clearfix"
+    <header class="new-header br_header header-default position-from--top header-transparent light-logo--version haeder-fixed-width headroom--sticky header-mega-menu clearfix"
         style="padding-top: 0">
         <div class="container-fluid">
             <div class="row">
@@ -72,7 +85,7 @@
                             </nav>
                         </div>
 
-                        <div class="social-share social--transparent text-white">
+                        <div class="social-share d-none d-lg-block  social--transparent text-white">
                             <a class="text-black" href="{{setting('facebook')->value ?? ''}}"><i class="fab fa-facebook" style="font-size: xx-large"></i></a>
                             <a class="text-black" href="{{setting('linkedin')->value ?? ''}}"><i class="fab fa-linkedin" style="font-size: xx-large"></i></a>
                             <a class="text-black" href="{{setting('youtube')->value ?? ''}}"><i class="fab fa-youtube" style="font-size: xx-large"></i></a>
@@ -81,7 +94,7 @@
                         <div class="header-right">
                             <!-- Start Popup Search Wrap -->
                             <a href="{{ setting('file_pdf') && setting('file_pdf')->value ? asset('storage/' . setting('file_pdf')->value) : '#' }}"
-                               target="_blank" class="btn btn-sm btn-primary">
+                              target="_blank" class="show-catalog btn btn-md btn-primary d-none d-lg-block" >
                                 {{ __('Show Catalog') }}
                             </a>
 
@@ -141,6 +154,19 @@
                     <li class="lavel-1"><a href="{{ route('contact') }}"><span>{{__('Contact Us')}}</span></a></li>
                 </ul>
             </div>
+
+            <a href="{{ setting('file_pdf') && setting('file_pdf')->value ? asset('storage/' . setting('file_pdf')->value) : '#' }}"
+                target="_blank" class="show-catalog btn btn-sm btn-primary" >
+                  {{ __('Show Catalog') }}
+              </a>
+
+              <!-- In drawer -->
+            <div class="social-share d-flex d-lg-none social--transparent text-white">
+              <a class="text-black" href="{{setting('facebook')->value ?? ''}}"><i class="fab fa-facebook" style="font-size: xx-large"></i></a>
+              <a class="text-black" href="{{setting('linkedin')->value ?? ''}}"><i class="fab fa-linkedin" style="font-size: xx-large"></i></a>
+              <a class="text-black" href="{{setting('youtube')->value ?? ''}}"><i class="fab fa-youtube" style="font-size: xx-large"></i></a>
+            </div>
+
         </div>
     </div>
     <!-- End Popup Menu -->

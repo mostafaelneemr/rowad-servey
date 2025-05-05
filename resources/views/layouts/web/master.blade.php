@@ -24,14 +24,29 @@
           width: 100%;
           z-index: 999; 
           box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
+        },
+
+        .mainmenu-wrapper .page_nav ul.mainmenu li.lavel-1>a ,.mainmenu-wrapper .page_nav ul.mainmenu li.lavel-1>a span{
+          color: #f1ac5b !important
+        }
+  
+        .headroom--pinned .mainmenu .lavel-1 a ,.headroom--pinned .mainmenu .lavel-1 a span{
+          color: #f1ac5b !important
+        }
+        .headroom--unpinned .mainmenu .lavel-1 a ,.headroom--unpinned .mainmenu .lavel-1 a span{
+          color: #f1ac5b !important
         }
 
-        .headroom--unpinned a{
-          color: "red" !important
+        .facebook-icon{
+          color: #3b5998 !important
         }
-
-
- 
+        .linked-icon{
+          color: #0077b5 !important 
+        }
+        .youtube-icon{
+          color: #ff0000 !important
+        }
+    
 
 
   
@@ -66,7 +81,7 @@
 <div id="wrapper" class="wrapper">
 
     <!-- Header -->
-    <header class="new-header br_header header-default position-from--top header-transparent light-logo--version haeder-fixed-width headroom--sticky header-mega-menu clearfix"
+    <header class="new-header br_header header-default position-from--top header-transparent  haeder-fixed-width headroom--sticky header-mega-menu clearfix"
         style="padding-top: 0">
         <div class="container-fluid">
             <div class="row">
@@ -109,9 +124,9 @@
                         </div>
 
                         <div class="social-share d-none d-lg-block  social--transparent text-white">
-                            <a class="text-black" href="{{setting('facebook')->value ?? ''}}"><i class="fab fa-facebook" style="font-size: xx-large"></i></a>
-                            <a class="text-black" href="{{setting('linkedin')->value ?? ''}}"><i class="fab fa-linkedin" style="font-size: xx-large"></i></a>
-                            <a class="text-black" href="{{setting('youtube')->value ?? ''}}"><i class="fab fa-youtube" style="font-size: xx-large"></i></a>
+                            <a  class="facebook-icon" href="{{setting('facebook')->value ?? ''}}"><i class="fab fa-facebook" style="font-size: xx-large"></i></a>
+                            <a class="linked-icon" href="{{setting('linkedin')->value ?? ''}}"><i class="fab fa-linkedin" style="font-size: xx-large"></i></a>
+                            <a class="youtube-icon" href="{{setting('youtube')->value ?? ''}}"><i class="fab fa-youtube" style="font-size: xx-large"></i></a>
                         </div>
                         <!-- Header Right -->
                         <div class="header-right">

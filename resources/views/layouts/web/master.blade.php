@@ -10,17 +10,39 @@
             width: 100%;
         }
 
+        /* Ahmed Edits */
+
         .header-default .header__wrapper .header-left .logo a img{
           padding: 0 !important
         }
 
-        /* .new-header{
-          position:  relative !important;
-        } */
+        /* Make header relative (not absolute) by default */
+        .br_header {
+          position: relative;
+          background: white; 
+          transition: all 0.3s ease; 
+          width: 100%;
+          z-index: 999; 
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
+        }
 
         .header-default.light-logo--version .mainmenu-wrapper .page_nav ul.mainmenu li a{
-          color: "black" !important
+          color: "#000" !important
         }
+
+ 
+
+
+  
+
+  
+        
+
+
+
+
+
+    
 
     </style>
 </head>
@@ -48,7 +70,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    <div class="header__wrapper mr--0">
+                    <div class="header__wrapper mr--0 gap-3">
                         <!-- Header Left -->
                         <div class="header-left">
                             <div class="logo">

@@ -12,7 +12,7 @@
 
         /* Ahmed Edits */
         header{
-          background: white !important; 
+          background: white !important;
         }
 
         .header-default .header__wrapper .header-left .logo a img{
@@ -22,11 +22,11 @@
         /* Make header relative (not absolute) by default */
         .br_header {
           position: relative;
-          background: white !important; 
-          transition: all 0.3s ease; 
+          background: white !important;
+          transition: all 0.3s ease;
           width: 100%;
-          z-index: 999; 
-          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
+          z-index: 999;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
         .mainmenu-wrapper .page_nav ul.mainmenu li.lavel-1>a {
@@ -38,7 +38,7 @@
           color: #3b5998 !important
         }
         .linked-icon{
-          color: #0077b5 !important 
+          color: #0077b5 !important
         }
         .youtube-icon{
           color: #ff0000 !important
@@ -59,25 +59,25 @@
         cursor: pointer;
         transition: all 0.2s ease;
         box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-        
+
         /* Dropdown Arrow */
         background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
         background-repeat: no-repeat;
         background-position: right 10px center;
         background-size: 16px;
-        
+
         /* Focus/Hover States */
         &:hover {
           border-color: #94a3b8;
           box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
         }
-        
+
         &:focus {
           outline: none;
           border-color: #6366f1;
           box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
         }
-        
+
         /* Right-to-Left Support for Arabic */
         option[value="ar"] {
           direction: rtl;
@@ -162,23 +162,20 @@
                         <div class="header-right">
                             <!-- Start Popup Search Wrap -->
                             <a href="{{ setting('file_pdf') && setting('file_pdf')->value ? asset('storage/' . setting('file_pdf')->value) : '#' }}"
-                              target="_blank" class="show-catalog btn btn-md btn-primary d-none d-lg-block" >
+                              target="_blank" class="show-catalog btn btn-md btn-secondary d-none d-lg-block" style="color: #0a0a0a;font-weight: 500">
                                 {{ __('Show Catalog') }}
                             </a>
 
-                            <div
-                                class="manu-hamber popup-mobile-click d-block d-lg-none light-version d-block d-xl-none pl_md--10 pl_sm--10">
+                            <div class="manu-hamber popup-mobile-click d-block d-lg-none light-version d-block d-xl-none pl_md--10 pl_sm--10">
                                 <div>
                                     <i></i>
                                 </div>
                             </div>
 
                             <div class="language-switcher">
-                                <select id="languageSwitcher" onchange="changeLanguage(this.value)">
-                                    <option value="en" {{ app()->getLocale() == 'en' ? 'selected' : '' }}>English
-                                    </option>
-                                    <option value="ar" {{ app()->getLocale() == 'ar' ? 'selected' : '' }}>العربية
-                                    </option>
+                                <select id="languageSwitcher" onchange="changeLanguage(this.value)" style="font-weight: bold">
+                                    <option value="en" style="font-weight: bold" {{ app()->getLocale() == 'en' ? 'selected' : '' }}>English</option>
+                                    <option value="ar" style="font-weight: bold" {{ app()->getLocale() == 'ar' ? 'selected' : '' }}>العربية</option>
                                 </select>
                             </div>
                             <!-- End Hamberger -->

@@ -83,7 +83,7 @@ class StatisticService extends BaseService
                 'title_en' => $request['input']['lang'][1]['title'] ?? '',
                 'title_ar' => $request['input']['lang'][2]['title'] ?? '',
                 'number' => $request->number ?? '',
-                'sort' => $request->order ?? '',
+                'order' => $request->order ?? '',
                 'status' => $request->status,
             ];
 
@@ -123,7 +123,7 @@ class StatisticService extends BaseService
                 'title_en' => $request['input']['lang'][1]['title'] ?? '',
                 'title_ar' => $request['input']['lang'][2]['title'] ?? '',
                 'number' => $request->number ?? '',
-                'sort' => $request->order ?? '',
+                'order' => $request->order ?? '',
                 'status' => $request->status,
             ];
 

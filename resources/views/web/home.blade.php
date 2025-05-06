@@ -152,12 +152,12 @@
             padding: 30px;
             border: 2px solid rgba(252, 183, 43, 0.3); /* Transparent border */
             border-radius: 15px;
-            max-width: 600px;
+            /* max-width: 600px; */
             text-align: left;
         }
 
         .product-details h2 {
-            font-size: 42px;
+            font-size: 30px;
             color: #fff;
             margin-bottom: 10px;
             position: relative;
@@ -224,6 +224,22 @@
             border-color: #000;
             transform: translateY(-5px);
         }
+
+        .counter-item:hover h2{
+          color: #fff !important;
+        }
+
+        .icon-box.no-border .inner{
+          padding: 20px !important;
+          border-radius: 10px !important
+        }
+
+        .portfolio.with-caption:hover {
+          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15), 
+          0 6px 6px rgba(0, 0, 0, 0.1) !important;
+        }
+
+       
     </style>
 {{--    product--}}
     <style>
@@ -386,7 +402,7 @@
                             <p>{{ lang() == 'ar' ? $slider->sub_title_ar : $slider->sub_title_en }}</p>
                             <a href="#">{{ lang() == 'ar' ? $slider->button_ar : $slider->button_en }}</a>
                         </div>
-                        <div class="product-image">
+                        <div class="product-image d-none d-lg-block">
                             <img src="{{ asset($slider->thumbnail) }}" alt="Product">
                         </div>
                     </div>
@@ -503,7 +519,7 @@
 
 
 
-    <div class="bk-portfolio-with-caption-area pb--150 pb-md--80 pb-sm--80 bg_color--5 poss_relative">
+    <div class="bk-portfolio-with-caption-area ptb--150 ptb-md--80 ptb-sm--80 bg_color--5 poss_relative">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -530,11 +546,11 @@
             <div class="row portfolio-grid-metro6">
                 @foreach($products as $product)
                     <div class="col-lg-4 col-md-6 col-sm-6 col-12 portfolio-33-33 cat--{{$product->category_id}}">
-                        <div class="portfolio with-caption" style="overflow: hidden; height: 100%;">
+                        <div class="portfolio with-caption" style="overflow: hidden; height: 100%; border-radius: 15px">
                             <div class="thumb video-with-thumb">
                                 <a href="{{url('product/' . $product->slug)}}">
                                     <img src="{{asset($product->image)}}"
-                                         style="width: 100%; height: 250px;" alt="product images">
+                                         style="width: 100%; height: 250px; object-fit: contain;padding: 10px" alt="product images">
                                 </a>
                             </div>
                             <div class="caption-bottom text-start">
@@ -560,15 +576,16 @@
                 <div class="col-12">
                     <div class="row bg_color--1 pt--100 space_dec--110 poss_relative basic-thick-line-theme-4">
                         <!-- Start Single Icon Boxes -->
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-12 wow move-up">
+                        <div class="col-lg-4 col-md-6 col-sm-6 col-12 wow move-up">
                             <div class="icon-box text-center no-border">
                                 <div class="inner">
                                     <div class="icon">
-                                        <i class="ion-ios-cart-outline"></i>
+                                        <i class="ion-ios-eye-outline"></i>
                                     </div>
                                     <div class="content">
-                                        <h5 class="heading heading-h5">{{__('Sale and rent')}}</h5>
-                                        <p class="bk_pra">{{__('We offer a variety of the latest GPS, Total Station, Levels, and Laser Scanners.')}}</p>
+                                        <h5 class="heading heading-h5">Modern design</h5>
+                                        <p class="bk_pra">Brook embraces a modern look with various enhanced
+                                            pre-defined page elements.</p>
                                     </div>
                                 </div>
                             </div>
@@ -576,15 +593,16 @@
                         <!-- End Single Icon Boxes -->
 
                         <!-- Start Single Icon Boxes -->
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt_mobile--70 wow moTechnical training and qualificationve-up">
+                        <div class="col-lg-4 col-md-6 col-sm-6 col-12 mt_mobile--70 wow move-up">
                             <div class="icon-box text-center no-border">
                                 <div class="inner">
                                     <div class="icon">
-                                        <i class="ion-ios-cog-outline"></i>
+                                        <i class="ion-ios-bookmarks-outline"></i>
                                     </div>
                                     <div class="content">
-                                        <h5 class="heading heading-h5">{{__('Maintenance and technical support')}}</h5>
-                                        <p class="bk_pra">{{__('A specialized team to maintain the equipment and ensure its readiness at work sites, while providing original spare parts.')}}</p>
+                                        <h5 class="heading heading-h5">UI/UX designs</h5>
+                                        <p class="bk_pra">We successfully implemented numerous UI/UX projects
+                                            for both global & local clients.</p>
                                     </div>
                                 </div>
                             </div>
@@ -592,34 +610,21 @@
                         <!-- End Single Icon Boxes -->
 
                         <!-- Start Single Icon Boxes -->
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt_md--70 mt_sm--70 wow move-up">
+                        <div class="col-lg-4 col-md-6 col-sm-6 col-12 mt_md--70 mt_sm--70 wow move-up">
                             <div class="icon-box text-center no-border">
                                 <div class="inner">
                                     <div class="icon">
                                         <i class="ion-ios-browsers-outline"></i>
                                     </div>
                                     <div class="content">
-                                        <h5 class="heading heading-h5">{{__('Technical training and qualification')}}</h5>
-                                        <p class="bk_pra">{{__('Practical training courses on the use of surveying equipment and software, with certificates of attendance.')}}</p>
+                                        <h5 class="heading heading-h5">SEO marketing</h5>
+                                        <p class="bk_pra">Brook is highly responsive thanks to built-in
+                                            WP Bakery Page Builder & Slider Revolution.</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt_md--70 mt_sm--70 wow move-up">
-                            <div class="icon-box text-center no-border">
-                                <div class="inner">
-                                    <div class="icon">
-                                        <i class="ion-ios-filing-outline"></i>
-                                    </div>
-                                    <div class="content">
-                                        <h5 class="heading heading-h5">{{__('Calibration and inspection of devices')}}</h5>
-                                        <p class="bk_pra">{{__('Periodic calibration with certified certificates to ensure accuracy of work in surveying projects.')}}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <!-- End Single Icon Boxes -->
 
                     </div>
                 </div>
@@ -660,7 +665,7 @@
                         <!-- Start Single Testimonial -->
                         @foreach($testimonials as $testimonial)
 
-                            <div class="testimonial testimonial_style--1">
+                            <div class="testimonial testimonial_style--1 rounded" >
                                 <div class="content">
                                     <p class="bk_pra">{{lang() == 'ar' ? $testimonial->text_ar : $testimonial->text_en}}</p>
                                     <div class="testimonial-info">
@@ -681,6 +686,9 @@
         </div>
     </div>
     <!-- End Testimonial Area -->
+
+
+    @include('web.call')
 
     <!-- Start Contact Area -->
     <div class="bk-contact-area section-pb-xl bg_color--1 mt-5">
@@ -736,39 +744,39 @@
                         @endif
                         <form name="contact-form" action="{{route('sendmail')}}" method="POST">
                             @csrf
-                            <div class="row">
+                            <div class="row gy-3">
 
                                 <div class="col-lg-6">
                                     <div class="input-box">
                                         <span class="form-icon far fa-user"></span>
-                                        <input type="text" name="name" placeholder="{{__('Name *')}}">
+                                        <input type="text" name="name" class="rounded" placeholder="{{__('Name *')}}">
                                     </div>
                                 </div>
 
                                 <div class="col-lg-6">
                                     <div class="input-box">
                                         <span class="form-icon far fa-envelope"></span>
-                                        <input type="email" name="email" placeholder="{{__('Email *')}}">
+                                        <input type="email" name="email" class="rounded" placeholder="{{__('Email *')}}">
                                     </div>
                                 </div>
 
                                 <div class="col-lg-12">
                                     <div class="input-box">
                                         <span class="form-icon fas fa-mobile-alt"></span>
-                                        <input type="text" name="telephone" placeholder="{{__('Phone number')}}">
+                                        <input type="text" name="telephone" class="rounded" placeholder="{{__('Phone number')}}">
                                     </div>
                                 </div>
 
                                 <div class="col-lg-12">
                                     <div class="input-box">
                                         <span class="form-icon fas fa-mobile-alt"></span>
-                                        <input type="text" name="whatsapp_number" placeholder="{{__('whats\'app number')}}">
+                                        <input type="text" name="whatsapp_number" class="rounded" placeholder="{{__('whats\'app number')}}">
                                     </div>
                                 </div>
 
                                 <div class="col-lg-12">
                                     <div class="input-box">
-                                        <textarea placeholder="{{__('Your message')}}" name="message"></textarea>
+                                        <textarea placeholder="{{__('Your message')}}" name="message" class="rounded" ></textarea>
                                     </div>
                                 </div>
 
@@ -789,8 +797,6 @@
         </div>
     </div>
     <!-- End Contact Area -->
-
-    @include('web.call')
 
 @endsection
 

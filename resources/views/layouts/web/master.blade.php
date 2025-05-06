@@ -11,6 +11,9 @@
         }
 
         /* Ahmed Edits */
+        header{
+          background: white !important; 
+        }
 
         .header-default .header__wrapper .header-left .logo a img{
           padding: 0 !important
@@ -19,23 +22,17 @@
         /* Make header relative (not absolute) by default */
         .br_header {
           position: relative;
-          background: white; 
+          background: white !important; 
           transition: all 0.3s ease; 
           width: 100%;
           z-index: 999; 
           box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
-        },
+        }
 
-        .mainmenu-wrapper .page_nav ul.mainmenu li.lavel-1>a ,.mainmenu-wrapper .page_nav ul.mainmenu li.lavel-1>a span{
-          color: #f1ac5b !important
+        .mainmenu-wrapper .page_nav ul.mainmenu li.lavel-1>a {
+          color: #000 !important
         }
-  
-        .headroom--pinned .mainmenu .lavel-1 a ,.headroom--pinned .mainmenu .lavel-1 a span{
-          color: #f1ac5b !important
-        }
-        .headroom--unpinned .mainmenu .lavel-1 a ,.headroom--unpinned .mainmenu .lavel-1 a span{
-          color: #f1ac5b !important
-        }
+
 
         .facebook-icon{
           color: #3b5998 !important
@@ -46,19 +43,52 @@
         .youtube-icon{
           color: #ff0000 !important
         }
-    
 
-
-  
-
-  
+      #languageSwitcher {
+        /* Base Styles */
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        padding: 8px 32px 8px 12px;
+        border: 1px solid #e2e8f0;
+        border-radius: 6px;
+        background-color: white;
+        color: #334155;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
         
+        /* Dropdown Arrow */
+        background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+        background-repeat: no-repeat;
+        background-position: right 10px center;
+        background-size: 16px;
+        
+        /* Focus/Hover States */
+        &:hover {
+          border-color: #94a3b8;
+          box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+        }
+        
+        &:focus {
+          outline: none;
+          border-color: #6366f1;
+          box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+        }
+        
+        /* Right-to-Left Support for Arabic */
+        option[value="ar"] {
+          direction: rtl;
+          text-align: right;
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+      }
 
-
-
-
-
-    
+      .manu-hamber.light-version{
+        color: #f1ac5b !important
+      }
 
     </style>
 </head>

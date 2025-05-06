@@ -18,7 +18,7 @@
 
 
     <base href="{{asset('')}}">
-    <link rel="shortcut icon" href="assets/web/img/icons/logo.ico"/>
+    <link rel="shortcut icon" href="/logo/logo.e75e3506-_1_-_1_.ico"/>
     <!--begin::Vendor Stylesheets(used for this page only)-->
     <link href="assets/plugins/custom/datatables/datatables.bundle{{direction()}}.css" rel="stylesheet" type="text/css"/>
     <!--end::Vendor Stylesheets-->

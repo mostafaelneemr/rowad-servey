@@ -33,7 +33,7 @@
 <meta property="og:url" content="{{ route('home') }}" />
 <meta property="og:image" content="{{ setting('site_logo') }}" />
 <!-- Favicon -->
-<link rel="shortcut icon" href="{{asset('logourl.jpg')}}" type="image/x-icon">
+<link rel="shortcut icon" href="{{asset('/logo/logo.e75e3506-_1_-_1_.ico')}}" type="image/x-icon">
 <link rel="apple-touch-icon" href="{{asset('logourl.jpg')}}">
 
 

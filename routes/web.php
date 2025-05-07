@@ -58,6 +58,9 @@ Route::get('/sitemap.xml', function () {
 Route::controller(WebController::class)->group(function () {
     Route::get('/', 'index')->name('home');
     Route::get('/about', 'about')->name('about');
+    Route::get('/about2', function () {
+        return view('web.about2');
+    })->name('about2');
     Route::get('/service', 'service')->name('service');
     Route::get('/portfolio', 'service')->name('portfolio');
 

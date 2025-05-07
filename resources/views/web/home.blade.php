@@ -282,115 +282,6 @@
 
 @endsection
 
-{{--@section('slider')--}}
-
-{{--    <div class="slider-revoluation">--}}
-{{--        <div id="rev_slider_5_1_wrapper" class="rev_slider_wrapper fullwidthbanner-container"--}}
-{{--             data-alias="home-architecture"--}}
-{{--             data-source="gallery"--}}
-{{--             style="margin:0px auto;background:transparent;padding:0px;margin-top:0px;margin-bottom:0px;">--}}
-{{--            <!-- START REVOLUTION SLIDER 5.4.7 fullwidth mode -->--}}
-{{--            <div id="rev_slider_5_1" class="rev_slider fullwidthabanner" style="display:block;" data-version="5.4.7">--}}
-{{--                <ul>--}}
-{{--                    @foreach($sliders as $index => $slider)--}}
-
-{{--                        <li data-index="rs-{{$index}}"--}}
-{{--                            data-transition="incube,incube-horizontal,turnoff,turnoff-vertical,papercut"--}}
-{{--                            data-slotamount="default,default,default,default,default" data-hideafterloop="0"--}}
-{{--                            data-hideslideonmobile="off" data-easein="default,default,default,default,default"--}}
-{{--                            data-easeout="default,default,default,default,default"--}}
-{{--                            data-masterspeed="default,default,default,default,default"--}}
-{{--                            data-thumb="img/revoulation/100x50_slider-home-architecture-slide-bg.jpg"--}}
-{{--                            data-rotate="0,0,0,0,0"--}}
-{{--                            data-saveperformance="off" data-title="Slide" data-param1="" data-param2="" data-param3=""--}}
-{{--                            data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9=""--}}
-{{--                            data-param10="" data-description="">--}}
-{{--                            <!-- MAIN IMAGE -->--}}
-{{--                            <img src="{{asset($slider->image)}}" alt="" data-bgposition="right bottom"--}}
-{{--                                 data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" style="filter: blur(5px) !important;" data-no-retina>--}}
-{{--                            <!-- LAYERS -->--}}
-
-{{--                            <!-- LAYER NR. 2 -->--}}
-{{--                            <div class="tp-caption tp-resizeme" id="slide-{{$index}}"--}}
-{{--                                 data-x="['left','left','left','left']"--}}
-{{--                                 data-hoffset="['0','0','0','0']" data-y="['bottom','bottom','bottom','bottom']"--}}
-{{--                                 data-voffset="['0','0','0','0']" data-width="none" data-height="none"--}}
-{{--                                 data-whitespace="nowrap"--}}
-{{--                                 data-type="image" data-basealign="slide" data-responsive_offset="on"--}}
-{{--                                 data-frames='[{"delay":400,"speed":1500,"frame":"0","from":"x:-50px;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'--}}
-{{--                                 data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]"--}}
-{{--                                 data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]"--}}
-{{--                                 data-paddingleft="[0,0,0,0]"--}}
-{{--                                 style="z-index: 6;bottom: 100px">--}}
-{{--                                <img src="{{asset('img/68060893d6bb7.png')}}"--}}
-{{--                                     alt="" data-ww="['500px','700px','600px','500px']"--}}
-{{--                                     data-hh="['500px','547px','469px','391px']"--}}
-{{--                                     data-no-retina>--}}
-{{--                            </div>--}}
-
-{{--                            <!-- LAYER NR. 3 -->--}}
-{{--                            <div class="tp-caption" id="slide-{{$index}}" data-x="['right','right','left','left']"--}}
-{{--                                 data-hoffset="['264','50','30','30']" data-y="['middle','middle','middle','middle']"--}}
-{{--                                 data-voffset="['-130','-130','-130','-140']" data-fontsize="['40','75','60','45']"--}}
-{{--                                 data-lineheight="['110','93','74','55']" data-width="['600','520','520','360']"--}}
-{{--                                 data-height="none" data-whitespace="normal" data-type="text" data-basealign="slide"--}}
-{{--                                 data-responsive_offset="on"--}}
-{{--                                 data-frames='[{"delay":500,"speed":1000,"frame":"0","from":"y:50px;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'--}}
-{{--                                 data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]"--}}
-{{--                                 data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]"--}}
-{{--                                 data-paddingleft="[0,0,0,0]"--}}
-{{--                                 style="z-index: 7; min-width: 300px; max-width: 300px; white-space: normal; font-size: 40px; line-height: 40px;--}}
-{{--                             font-weight: 500; color: #ffffff; letter-spacing: 0px;top:130px;right: 80px">--}}
-{{--                                <u>{{lang() == 'en' ?  $slider->title_en : $slider->title_ar}}</u>--}}
-{{--                            </div>--}}
-{{--                            <!-- LAYER NR. 4 -->--}}
-
-{{--                            <!-- LAYER NR. 5 -->--}}
-{{--                            <div class="tp-caption architecture-pra" id="slide-{{$index}}"--}}
-{{--                                 data-x="['right','right','left','left']"--}}
-{{--                                 data-hoffset="['266','50','30','30']" data-y="['bottom','middle','middle','middle']"--}}
-{{--                                 data-voffset="['218','150','140','140']"--}}
-{{--                                 data-color="['rgb(136,136,136)','rgb(255,255,255)','rgb(255,255,255)','rgb(255,255,255)']"--}}
-{{--                                 data-width="370" data-height="none" data-whitespace="normal" data-type="text"--}}
-{{--                                 data-basealign="slide" data-responsive_offset="on" data-responsive="off"--}}
-{{--                                 data-frames='[{"delay":700,"speed":1000,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'--}}
-{{--                                 data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]"--}}
-{{--                                 data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]"--}}
-{{--                                 data-paddingleft="[0,0,0,0]"--}}
-{{--                                 style="z-index: 9; min-width: 370px; max-width: 370px; white-space: normal; font-size: 16px; line-height: 30px;--}}
-{{--                             font-weight: 500; color: #888888; letter-spacing: 0px;bottom: 50px;right: 80px">--}}
-{{--                                {{lang() == 'en' ?  $slider->sub_title_en : $slider->sub_title_ar}}--}}
-{{--                            </div>--}}
-
-{{--                            <button class="tp-caption architecture-pra" id="slide-{{$index}}"--}}
-{{--                                 data-x="['right','right','left','left']"--}}
-{{--                                 data-hoffset="['266','50','30','30']" data-y="['bottom','middle','middle','middle']"--}}
-{{--                                 data-voffset="['218','150','140','140']"--}}
-{{--                                 data-color="['rgb(136,136,136)','rgb(255,255,255)','rgb(255,255,255)','rgb(255,255,255)']"--}}
-{{--                                 data-width="370" data-height="none" data-whitespace="normal" data-type="text"--}}
-{{--                                 data-basealign="slide" data-responsive_offset="on" data-responsive="off"--}}
-{{--                                 data-frames='[{"delay":700,"speed":1000,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'--}}
-{{--                                 data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]"--}}
-{{--                                 data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]"--}}
-{{--                                 data-paddingleft="[0,0,0,0]"--}}
-{{--                                 style="z-index: 9; min-width: 370px; max-width: 370px; white-space: normal; font-size: 16px; line-height: 30px;--}}
-{{--                             font-weight: 500; color: #888888; letter-spacing: 0px;bottom: 50px;right: 80px">--}}
-
-{{--                                <a href="{{$slider->button_url}}">{{lang() == 'en' ?  $slider->button_en : $slider->button_ar}}</a>--}}
-{{--                            </button>--}}
-{{--                        </li>--}}
-{{--                    @endforeach--}}
-
-{{--                </ul>--}}
-{{--                <div class="tp-bannertimer tp-bottom" style="visibility: hidden !important;"></div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--        <!-- END REVOLUTION SLIDER -->--}}
-{{--    </div>--}}
-
-{{--@endsection--}}
-
-
 @section('content')
     <div class="swiper custom-slider">
         <div class="swiper-wrapper">
@@ -400,7 +291,7 @@
                         <div class="product-details">
                             <h2>{{lang() == 'ar' ? $slider->title_ar : $slider->title_ar }}</h2>
                             <p>{{ lang() == 'ar' ? $slider->sub_title_ar : $slider->sub_title_en }}</p>
-                            <a href="#">{{ lang() == 'ar' ? $slider->button_ar : $slider->button_en }}</a>
+                            <a href="#" style="background-color: #06063c ">{{ lang() == 'ar' ? $slider->button_ar : $slider->button_en }}</a>
                         </div>
                         <div class="product-image d-none d-lg-block">
                             <img src="{{ asset($slider->thumbnail) }}" alt="Product">
@@ -415,61 +306,6 @@
         <div class="swiper-button-prev"></div>
     </div>
 
-    {{--    <!-- Start Counterup Area -->--}}
-    {{--    <div class="brook-counterup-area ptb--120 ptb-md--80 ptb-sm--60 bg_color--1">--}}
-    {{--        <div class="container">--}}
-
-    {{--            <div class="d-flex justify-content-center">--}}
-    {{--                <h2>Statistics Reflecting Our Excellence</h2>--}}
-    {{--            </div>--}}
-    {{--            <div class="row">--}}
-
-    {{--                <!-- Start Single Counter -->--}}
-    {{--                <div class="col-lg-4 col-md-4 col-sm-6 col-12">--}}
-    {{--                    <div class="brook-counter text-center">--}}
-    {{--                        <div class="icon">--}}
-    {{--                            <i class="ion-ios-people-outline"></i>--}}
-    {{--                        </div>--}}
-    {{--                        <div class="content">--}}
-    {{--                            <span class="count">100+</span>--}}
-    {{--                            <h6 class="heading heading-h6">{{__('Engineering Office and Company')}}</h6>--}}
-    {{--                        </div>--}}
-    {{--                    </div>--}}
-    {{--                </div>--}}
-    {{--                <!-- End Single Counter -->--}}
-
-    {{--                <!-- Start Single Counter -->--}}
-    {{--                <div class="col-lg-4 col-md-4 col-sm-6 col-12 mt_mobile--40">--}}
-    {{--                    <div class="brook-counter text-center">--}}
-    {{--                        <div class="icon">--}}
-    {{--                            <i class="ion-ios-eye-outline"></i>--}}
-    {{--                        </div>--}}
-    {{--                        <div class="content">--}}
-    {{--                            <span class="">50+</span>--}}
-    {{--                            <h6 class="heading heading-h6">{{__('Completed Projects')}}</h6>--}}
-    {{--                        </div>--}}
-    {{--                    </div>--}}
-    {{--                </div>--}}
-    {{--                <!-- End Single Counter -->--}}
-
-    {{--                <!-- Start Single Counter -->--}}
-    {{--                <div class="col-lg-4 col-md-4 col-sm-6 col-12 mt_sm--40">--}}
-    {{--                    <div class="brook-counter text-center">--}}
-    {{--                        <div class="icon">--}}
-    {{--                            <i class="ion-ios-filing-outline"></i>--}}
-    {{--                        </div>--}}
-    {{--                        <div class="content">--}}
-    {{--                            <span class="">7+</span>--}}
-    {{--                            <h6 class="heading heading-h6">{{__('Years of Experience')}}</h6>--}}
-    {{--                        </div>--}}
-    {{--                    </div>--}}
-    {{--                </div>--}}
-    {{--                <!-- End Single Counter -->--}}
-    {{--            </div>--}}
-    {{--        </div>--}}
-    {{--    </div>--}}
-    {{--    <!-- End Counterup Area -->--}}
-
     <div class="brook-video-area videobg bg_color--1 pb--30 pt--30 pb_md--80 pb_sm--60 mt-3">
         <div class="container">
             <div class="row">
@@ -481,7 +317,7 @@
                         <!-- Start Single Popup -->
                         <div class="video-btn position--center">
                             <a class="play__btn" href="{{ setting('video_link')->value ?? '' }}">
-                                <div class="video-icon second-icon post-read-more"></div>
+                                <div class="video-icon second-icon post-read-more" style="background-color: red"></div>
                             </a>
                         </div>
                         <!-- End Single Popup -->
@@ -489,7 +325,9 @@
                 </div>
                 <div class="col-lg-5 mt_sm--30 mt_md--30">
                     <div class="video-content move-up wow">
-                        <h3 class="heading heading-h3">{{ lang() == 'ar' ? (setting('title_video_ar')->value ?? '') : (setting('title_video_en')->value ?? '') }}</h3>
+                        <h3 class="heading heading-h3">{{ lang() == 'ar' ? (setting('title_video_ar')->value ?? '') : (setting('title_video_en')->value ?? '') }}
+                       <span style="color: #06063c" >STONEX</span>
+                        </h3>
                         <div class="bkseparator--25"></div>
                         <p class="bk_pra">{{ lang() == 'ar' ? (setting('desc_video_ar')->value ?? '') : (setting('desc_video_en')->value ?? '') }}</p>
                         <div class="bkseparator--40"></div>
@@ -516,7 +354,6 @@
             </div>
         </div>
     </div>
-
 
 
     <div class="bk-portfolio-with-caption-area pb--150 pb-md--80 pb-sm--80 bg_color--5 poss_relative">
@@ -570,12 +407,18 @@
     </div>
 
 
-    <div class="brook-icon-boxes-area basic-thine-line pb--200 pb_md--80 pb_sm--80">
+    <div class="brook-icon-boxes-area basic-thine-line pb--80 pb_md--80 pb_sm--80">
         <div class="container">
             <div class="row">
                 <div class="col-12">
+
                     <div class="row bg_color--1 pt--100 space_dec--110 poss_relative basic-thick-line-theme-4">
                         <!-- Start Single Icon Boxes -->
+
+                        <div class="brook-section-title text-center mb-3">
+                            <h3 class="heading heading-h6 theme-color">{{__('Our Services')}}</h3>
+                        </div>
+
                         <div class="col-lg-3 col-md-6 col-sm-6 col-12 wow move-up">
                             <div class="icon-box text-center no-border">
                                 <div class="inner">
@@ -644,7 +487,7 @@
     <!-- End Icon Boxes -->
 
     <!-- Start Testimonial Area -->
-    <div class="brook-testimonial-area ptb--150 ptb-md--80 ptb-sm--60 bg_color--6 slick-arrow-hover">
+    <div class="brook-testimonial-area ptb--80 ptb-md--80 ptb-sm--60 bg_color--6 slick-arrow-hover">
         <div class="text-center">
 
             <h5>{{__('customer reviews')}}</h5>
@@ -653,7 +496,6 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 pb--30">
-
 
                     <div class="brook-element-carousel slick-arrow-center slick-dots-bottom wow move-up"
                          data-slick-options='{
@@ -705,7 +547,7 @@
                 <div class="col-xl-3 col-lg-3 col-12">
                     <div class="address-inner">
                         <div class="address wow move-up">
-                            <h3 class="heading">{{ __('Visit our studio at') }}</h3>
+                            <h3 class="heading">{{ __('Visit our Location') }}</h3>
 
                             @for ($i = 1; $i <= 4; $i++)
                                 @php
@@ -715,7 +557,7 @@
 
                                 @if ($address || $phone)
                                     <div class="studio-entry">
-                                        <span>{{ $address }}</span> - <span>{{ $phone }}</span>
+                                        <span>{{ $address }}</span> @if($phone) - @endif <span>{{ $phone }}</span>
                                     </div>
                                 @endif
                             @endfor
@@ -726,7 +568,7 @@
                             <p><a href="mailto:{{setting('email')->value ?? '#'}}">{{setting('email')->value ?? ''}}</a></p>
                         </div>
 
-                        <ul class="social-icon icon-size-medium text-dark text-start tooltip-layout move-up wow">
+                        <ul class="social-icon icon-size-medium text-dark text-center tooltip-layout move-up wow">
                             <li class="facebook">
                                 <a href="{{setting('facebook')->value ?? ''}}" class="link hint--bounce hint--top hint--theme" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
                             </li>
@@ -791,7 +633,7 @@
                                     <div class="form-action">
 
                                         <div class="form-submit">
-                                            <input type="submit" value="{{__('Send message')}}">
+                                            <input type="submit" class="fs-5" value="{{__('Send message')}}">
                                         </div>
                                     </div>
                                 </div>

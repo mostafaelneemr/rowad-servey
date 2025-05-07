@@ -43,11 +43,11 @@ return [
     ],
 
     [
-        'name' => __('Choose Item'),
+        'name' => __('Our Service'),
         'permissions' => [
-            'view-all-items' => ['system.choose-item.index'],
-            'create-item' => ['system.choose-item.create', 'system.choose-item.store'],
-            'update-item' => ['system.choose-item.edit', 'system.choose-item.update']
+            'view-all-items' => ['system.our-service.index'],
+            'create-item' => ['system.our-service.create', 'system.our-service.store'],
+            'update-item' => ['system.our-service.edit', 'system.our-service.update']
         ]
     ],
 

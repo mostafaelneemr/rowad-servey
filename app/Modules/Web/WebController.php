@@ -36,6 +36,16 @@ class WebController extends Controller{
     }
 
 
+    public function about2()
+    {
+//        $this->viewData['sliders'] = Slider::where('slider_type', 'home')->get();
+
+        $this->viewData['statistics'] = Statistic::orderBy('order')->get();
+        $this->viewData['testimonials'] = Testimonial::get();
+
+        return view('web.about');
+    }
+
 
     public function blogs()
     {

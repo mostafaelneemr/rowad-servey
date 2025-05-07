@@ -61,7 +61,7 @@ $fontList: $font-1, $font-2, $font-3, $font-4, $font-5, $font-6, $font-7, $font-
 
 
 
-/*================================================ 
+/*================================================
  font-family: 'Poppins', sans-serif;
  font-family: 'Permanent Marker', cursive;
  font-family: 'Playfair Display', serif;
@@ -203,7 +203,7 @@ $small-mobile: 'only screen and (max-width: 479px)';
         max-width: 450px;
     }
 }
- 
+
 @media #{$small-mobile} {
     .container {
         max-width: 320px;

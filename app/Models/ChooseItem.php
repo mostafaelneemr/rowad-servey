@@ -5,10 +5,10 @@ namespace App\Models;
 
 class ChooseItem extends GlobalModel
 {
-    public $table = 'choose_item';
+    public $table = 'our_service';
     public $timestamps = false;
     public $primaryKey = 'id';
 
-    public $fillable = ['id','image','title_en','title_ar', 'text_en','text_ar','status'];
+    public $fillable = ['id','icon','order','title_en','title_ar', 'text_en','text_ar','status'];
 
 }

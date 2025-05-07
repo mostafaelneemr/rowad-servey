@@ -153,7 +153,8 @@
                             </nav>
                         </div>
 
-                        <div class="social-share d-none d-lg-block  social--transparent text-white">
+                        <div class="social-share d-none d-lg-block  social--transparent ">
+                            <a  class="whatsapp-icon" href="{{setting('whatsapp_number')->value ?? ''}}"><i class="fab fa-whatsapp" style="font-size: xx-large"></i></a>
                             <a  class="facebook-icon" href="{{setting('facebook')->value ?? ''}}"><i class="fab fa-facebook" style="font-size: xx-large"></i></a>
                             <a class="linked-icon" href="{{setting('linkedin')->value ?? ''}}"><i class="fab fa-linkedin" style="font-size: xx-large"></i></a>
                             <a class="youtube-icon" href="{{setting('youtube')->value ?? ''}}"><i class="fab fa-youtube" style="font-size: xx-large"></i></a>
@@ -162,7 +163,8 @@
                         <div class="header-right">
                             <!-- Start Popup Search Wrap -->
                             <a href="{{ setting('file_pdf') && setting('file_pdf')->value ? asset('storage/' . setting('file_pdf')->value) : '#' }}"
-                              target="_blank" class="show-catalog btn btn-md btn-secondary d-none d-lg-block" style="color: #0a0a0a;font-weight: 500">
+                              target="_blank" class="show-catalog btn btn-md d-none d-lg-block text-white"
+                               style="background-color:#06063c ;color: #0a0a0a;font-weight: 500">
                                 {{ __('Show Catalog') }}
                             </a>
 

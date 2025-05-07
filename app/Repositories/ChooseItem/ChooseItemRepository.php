@@ -11,6 +11,6 @@ class ChooseItemRepository extends BaseRepository
 
     public function getDataTableQuery()
     {
-        return $this->modeler->select(['id','image','title_en','title_ar','text_en','text_ar','status']);
+        return $this->modeler->select(['id','icon','title_en','title_ar','text_en','text_ar','status','order']);
     }
 }

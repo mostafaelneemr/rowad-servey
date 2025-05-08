@@ -49,7 +49,7 @@
                                 <div class="address wow move-up">
                                     <h3 class="heading">{{ __('Visit our Location') }}</h3>
 
-                                    @for ($i = 1; $i <= 4; $i++)
+                                    @for ($i = 1; $i <= 5; $i++)
                                         @php
                                             $address = setting('address_' . $i)->value ?? null;
                                             $phone = setting('phone_' . $i)->value ?? null;

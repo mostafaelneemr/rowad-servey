@@ -6,7 +6,6 @@
     "license": "MIT",
     "require": {
         "php": "^8.1",
-        "aws/aws-sdk-php": "^3.100",
         "bugsnag/bugsnag-laravel": "^2.0",
         "czproject/git-php": "^4.2",
         "giggsey/libphonenumber-for-php": "^8.12",
@@ -23,7 +22,8 @@
         "opcodesio/log-viewer": "^2.4",
         "predis/predis": "^2.2",
         "spatie/laravel-activitylog": "^4.7",
-        "yajra/laravel-datatables": "9.0"
+        "yajra/laravel-datatables": "9.0",
+        "spatie/laravel-sitemap": "^6.2"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

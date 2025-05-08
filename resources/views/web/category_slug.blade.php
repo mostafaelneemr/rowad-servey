@@ -62,8 +62,9 @@
                             <div class="caption-bottom text-start">
                                 <div class="info">
                                     <h5 class="heading heading-h5"><a
-                                            href="{{route('product.slug' , $product->slug)}}">{{$product->title_en}}</a></h5>
-                                    <p class="bk_pra">{{ $product->image_desc_en }}</p>
+                                            href="{{route('product.slug' , $product->slug)}}">{{lang() == 'ar' ? $product->title_ar : $product->title_en}}</a>
+                                    </h5>
+                                    <p class="bk_pra">{{ lang() == 'ar' ? \Illuminate\Support\Str::limit($product->image_desc_ar, 80) : \Illuminate\Support\Str::limit($product->image_desc_en, 80) }}</p>
                                 </div>
                             </div>
                         </div>

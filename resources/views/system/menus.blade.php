@@ -31,7 +31,7 @@
 
     $menu['Home'] = [
         'permission' => ['system.slider.index','system.slider.create','system.slider.edit',
-                        'system.choose-item.index','system.choose-item.create','system.choose-item.edit',
+                        'system.our-service.index','system.our-service.create','system.our-service.edit',
                         'system.testimonial.index','system.testimonial.create','system.testimonial.edit',
                         'system.statistic.index','system.statistic.create','system.statistic.edit'],
         'icon' => '<i class="fa-solid fa-house"></i>',
@@ -52,9 +52,9 @@
             ],
 
             [
-                'permission' => ['system.choose-item.index','system.choose-item.create','system.choose-item.edit'],
-                'url' => route('system.choose-item.index'),
-                'text' => __('Items'),
+                'permission' => ['system.our-service.index','system.our-service.create','system.our-service.edit'],
+                'url' => route('system.our-service.index'),
+                'text' => __('Service'),
                 'icon' => '<i class="fa-solid fa-sitemap"></i>',
             ],
 

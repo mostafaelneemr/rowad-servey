@@ -3,15 +3,15 @@
 namespace App\Modules\System;
 
 use App\Http\Requests\ItemFormRequest;
-use App\Services\ChooseItemService;
+use App\Services\OurServiceService;
 use Illuminate\Http\Request;
 
-class ChooseItemController extends SystemController
+class OurServiceController extends SystemController
 {
 
     protected $itemService;
 
-    public function __construct(ChooseItemService $itemService)
+    public function __construct(OurServiceService $itemService)
     {
         parent::__construct();
         $this->itemService = $itemService;
@@ -31,7 +31,7 @@ class ChooseItemController extends SystemController
     }
 
 
-    public function store(ItemFormRequest $request)
+    public function store(Request $request)
     {
         $store = $this->itemService->store($request);
         if ($store) {

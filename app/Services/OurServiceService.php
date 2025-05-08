@@ -4,17 +4,17 @@ namespace App\Services;
 
 
 use App\Enums\StatusEnum;
-use App\Repositories\ChooseItem\ChooseItemRepository;
+use App\Repositories\ChooseItem\OurServiceRepository;
 use App\Repositories\Language\LanguageRepository;
 use Illuminate\Support\Facades\DB;
 use Datatables;
 
 
-class ChooseItemService extends BaseService
+class OurServiceService extends BaseService
 {
     protected $chooseItemRepository,$languageRepository;
 
-    public function __construct(ChooseItemRepository $chooseItemRepository,LanguageRepository $languageRepository)
+    public function __construct(OurServiceRepository $chooseItemRepository, LanguageRepository $languageRepository)
     {
         parent::__construct();
         $this->chooseItemRepository = $chooseItemRepository;
@@ -23,7 +23,7 @@ class ChooseItemService extends BaseService
 
     public function loadViewData(): array
     {
-        $this->pageTitle(__('Items'));
+        $this->pageTitle(__('Our Services'));
         $this->tableColumns([
             __('ID'),
             __('Title'),
@@ -33,15 +33,15 @@ class ChooseItemService extends BaseService
         ]);
 
         $this->jsColumns([
-            'id' => 'choose_item.id',
-            'title' => 'choose_item.title_'.lang(),
-            'text' => 'choose_item.text_'.lang(),
-            'status' => 'choose_item.status',
+            'id' => 'our_service.id',
+            'title' => 'our_service.title_'.lang(),
+            'text' => 'our_service.text_'.lang(),
+            'status' => 'our_service.status',
             'action' => '',
         ]);
 
         $this->filterIgnoreColumns(['action']);
-        $this->addButton('system.choose-item.create','Add Item');
+        $this->addButton('system.our-service.create','Add Service');
         return $this->retunData;
     }
 
@@ -59,7 +59,7 @@ class ChooseItemService extends BaseService
                 return status_icon($data->status);
             })
             ->addColumn('action', function($data) {
-                $this->actionButtons(datatable_menu_edit(route('system.choose-item.edit', $data->id), 'system.choose-item.edit'));
+                $this->actionButtons(datatable_menu_edit(route('system.our-service.edit', $data->id), 'system.our-service.edit'));
                 return $this->actionButtonsRender($this->chooseItemRepository->modelPath(), $data->id);
             })
             ->escapeColumns([])
@@ -68,7 +68,7 @@ class ChooseItemService extends BaseService
 
     public function create(): array
     {
-        $this->pageTitle('Create Item');
+        $this->pageTitle('Create Service');
         $this->breadcrumb('Home');
         $this->breadcrumb('Service', 'system.our-service.index');
         $this->otherData([
@@ -103,32 +103,37 @@ class ChooseItemService extends BaseService
 
     public function edit($id): array
     {
-        $this->pageTitle('Update Item');
+        $this->pageTitle('Update Service');
         $this->breadcrumb('Services', 'system.our-service.index');
 
         $this->otherData([
-                'item' => $this->chooseItemRepository->find($id),
+                'result' => $this->chooseItemRepository->find($id),
                 'languages' => $this->languageRepository->getWhere(['status' => StatusEnum::Enable->value])
             ]);
         return $this->retunData;
     }
 
-    public function update($id,$request)
+    public function update($request,$id)
     {
         try {
             DB::beginTransaction();
+            $update = $this->chooseItemRepository->find($id);
+
+            if (!$update) {
+                throw new \Exception("No statistic found for ID: " . $id);
+            }
 
             $data = [
                 'title_ar' => $request['input']['lang'][2]['title'] ?? '',
                 'title_en' => $request['input']['lang'][1]['title'] ?? '',
-                'text_ar' => $request['input']['lang'][2]['sub_title'] ?? '',
-                'text_en' => $request['input']['lang'][1]['sub_title'] ?? '',
+                'text_ar' => $request['input']['lang'][2]['text'] ?? '',
+                'text_en' => $request['input']['lang'][1]['text'] ?? '',
                 'status' => $request->status,
                 'order' => $request->order,
                 'icon' => $request->icon,
             ];
 
-            $update = $this->chooseItemRepository->update($id,$data);
+            $update = $this->chooseItemRepository->update($data,$id);
             DB::commit();
             return $update;
         } catch (\Exception $e) {

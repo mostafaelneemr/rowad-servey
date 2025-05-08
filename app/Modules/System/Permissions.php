@@ -45,9 +45,9 @@ return [
     [
         'name' => __('Our Service'),
         'permissions' => [
-            'view-all-items' => ['system.our-service.index'],
-            'create-item' => ['system.our-service.create', 'system.our-service.store'],
-            'update-item' => ['system.our-service.edit', 'system.our-service.update']
+            'view-all-services' => ['system.our-service.index'],
+            'create-service' => ['system.our-service.create', 'system.our-service.store'],
+            'update-service' => ['system.our-service.edit', 'system.our-service.update']
         ]
     ],
 

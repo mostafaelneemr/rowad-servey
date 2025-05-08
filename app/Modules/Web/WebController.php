@@ -6,15 +6,16 @@ use App\Enums\DefaultStatus;
 use App\Http\Controllers\Controller;
 use App\Models\admin\{Active_section, Slider, Testimonial, Blog, Project};
 
-use App\Models\{Category, Product, Statistic};
+use App\Models\{Category, OurService, Product, Statistic};
 
 class WebController extends Controller{
 
     public function index()
     {
-        $this->viewData['sliders'] = Slider::get();
-        $this->viewData['testimonials'] = Testimonial::orderBy('id', 'DESC')->paginate('3');
-        $this->viewData['statistics'] = Statistic::orderBy('order')->get();
+        $this->viewData['sliders'] = Slider::where('status',DefaultStatus::Active->value)->get();
+        $this->viewData['testimonials'] = Testimonial::where('status',DefaultStatus::Active->value)->orderBy('id', 'DESC')->limit('3')->get();
+        $this->viewData['statistics'] = Statistic::where('status',DefaultStatus::Active->value)->orderBy('order')->limit('3')->get();
+        $this->viewData['services'] = OurService::where('status',DefaultStatus::Active->value)->orderBy('order')->limit('4')->get();
 
         $this->viewData['categories'] = Category::where('status',DefaultStatus::Active->value)->paginate('3');
         $this->viewData['products'] = Product::where('status',DefaultStatus::Active->value)->paginate('6');
@@ -40,10 +41,10 @@ class WebController extends Controller{
     {
 //        $this->viewData['sliders'] = Slider::where('slider_type', 'home')->get();
 
-        $this->viewData['statistics'] = Statistic::orderBy('order')->get();
-        $this->viewData['testimonials'] = Testimonial::get();
+        $this->viewData['statistics'] = Statistic::where('status',DefaultStatus::Active->value)->orderBy('order')->get();
+        $this->viewData['testimonials'] = Testimonial::where('status',DefaultStatus::Active->value)->get();
 
-        return view('web.about');
+        return view('web.about2', $this->viewData);
     }
 
 
@@ -60,20 +61,8 @@ class WebController extends Controller{
 
     public function productSlug($slug)
     {
-        $this->viewData['product'] = Product::where('slug', $slug)->first();
-        // return $this->viewData['blogs'];
+        $this->viewData['product'] = Product::where('status',DefaultStatus::Active->value)->where('slug', $slug)->first();
         return view('web.product_slug', $this->viewData);
-    }
-
-    public function project()
-    {
-        if (Active_section::where('name' , 'project_page')->first()->value == 0 ) {
-            abort(404);
-        }
-        $this->viewData['categories'] = Project::distinct('category')->pluck('category');
-        $this->viewData['items'] = Project::all();
-
-        return $this->view('projects', $this->viewData);
     }
 
     public function categorySlug($slug)

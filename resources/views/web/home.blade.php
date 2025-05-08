@@ -419,66 +419,24 @@
                             <h3 class="heading heading-h6 theme-color">{{__('Our Services')}}</h3>
                         </div>
 
+                        @foreach($services as $service)
+
                         <div class="col-lg-3 col-md-6 col-sm-6 col-12 wow move-up">
                             <div class="icon-box text-center no-border">
                                 <div class="inner">
                                     <div class="icon">
-                                        <i class="ion-ios-cart-outline"></i>
+                                        <i class="{{$service->icon}}"></i>
                                     </div>
                                     <div class="content">
-                                        <h5 class="heading heading-h5">{{__('Sale and rent')}}</h5>
-                                        <p class="bk_pra">{{__('We offer a variety of the latest GPS, Total Station, Levels, and Laser Scanners.')}}</p>
+                                        <h5 class="heading heading-h5">{{lang() == 'ar' ? $service->title_ar : $service->title_en}}</h5>
+                                        <p class="bk_pra">{{lang() == 'ar' ? $service->text_ar : $service->text_en}}</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        @endforeach
                         <!-- End Single Icon Boxes -->
 
-                        <!-- Start Single Icon Boxes -->
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt_mobile--70 wow move-up">
-                            <div class="icon-box text-center no-border">
-                                <div class="inner">
-                                    <div class="icon">
-                                        <i class="ion-ios-cog-outline"></i>
-                                    </div>
-                                    <div class="content">
-                                        <h5 class="heading heading-h5">{{__('Maintenance and technical support')}}</h5>
-                                        <p class="bk_pra">{{__('A specialized team to maintain the equipment and ensure its readiness at work sites, while providing original spare parts.')}}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Single Icon Boxes -->
-
-                        <!-- Start Single Icon Boxes -->
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt_md--70 mt_sm--70 wow move-up">
-                            <div class="icon-box text-center no-border">
-                                <div class="inner">
-                                    <div class="icon">
-                                        <i class="ion-ios-browsers-outline"></i>
-                                    </div>
-                                    <div class="content">
-                                        <h5 class="heading heading-h5">{{__('Technical training and qualification')}}</h5>
-                                        <p class="bk_pra">{{__('Practical training courses on the use of surveying equipment and software, with certificates of attendance.')}}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Single Icon Boxes -->
-
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt_md--70 mt_sm--70 wow move-up">
-                            <div class="icon-box text-center no-border">
-                                <div class="inner">
-                                    <div class="icon">
-                                        <i class="ion-ios-filing-outline"></i>
-                                    </div>
-                                    <div class="content">
-                                        <h5 class="heading heading-h5">{{__('Calibration and inspection of devices')}}</h5>
-                                        <p class="bk_pra">{{__('Periodic calibration with certified certificates to ensure accuracy of work in surveying projects.')}}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

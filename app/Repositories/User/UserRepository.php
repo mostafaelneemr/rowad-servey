@@ -28,7 +28,8 @@ class UserRepository extends BaseRepository
              'user.email',
              'user.mobile',
              'user.created_at'])
-            ->leftjoin('permission_groups','permission_groups.id','user.permission_group_id');
+            ->leftjoin('permission_groups','permission_groups.id','user.permission_group_id')
+            ->where('user.id', '!=', 1);
     }
     public function get(array $columns = [ '*' ])
     {

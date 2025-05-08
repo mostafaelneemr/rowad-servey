@@ -2,12 +2,12 @@
 
 namespace App\Repositories\ChooseItem;
 
-use App\Models\ChooseItem;
+use App\Models\OurService;
 use App\Repositories\BaseRepository;
 
-class ChooseItemRepository extends BaseRepository
+class OurServiceRepository extends BaseRepository
 {
-    protected $modeler = ChooseItem::class;
+    protected $modeler = OurService::class;
 
     public function getDataTableQuery()
     {

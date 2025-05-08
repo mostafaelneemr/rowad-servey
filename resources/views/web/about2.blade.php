@@ -1,5 +1,39 @@
 @extends('layouts.web.master')
 
+@section('style')
+
+<style>
+
+    .counter-item {
+        border: 1px solid #ddd;
+        border-radius: 12px;
+        padding: 40px 20px;
+        transition: all 0.3s ease;
+        background: #fff;
+    }
+
+    .counter-item:hover {
+        background-color: #0D0D1D;
+        color: #fff;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        border-color: #000;
+        transform: translateY(-5px);
+    }
+
+    .counter-item:hover h2{
+        color: #fff !important;
+    }
+
+    .icon-box.no-border .inner{
+        padding: 20px !important;
+        border-radius: 10px !important
+    }
+
+
+</style>
+
+@endsection
+
 @section('content')
 
     <div class="brook-whatdo-area ptb--150 ptb-md--80 ptb-sm--60 bg_color--1">
@@ -73,7 +107,7 @@
     </div>
 
 
-    <div class="brook-icon-boxes-area basic-thine-line pb--80 pb_md--80 pb_sm--80">
+    <div class="brook-icon-boxes-area basic-thine-line ptb--80 ptb_md--80 ptb_sm--80">
         <div class="container">
             <div class="row">
                 <div class="col-12">

@@ -34,12 +34,12 @@ Route::controller('ActivityController')->group(function () {
 
 Route::resource('/language', 'LanguageController', ['as' => 'system']);
 Route::resource('/slider', 'SliderController', ['as' => 'system']); //
-Route::resource('/choose-item', 'ChooseItemController', ['as' => 'system']); //
 Route::resource('/testimonial', 'TestimonialController', ['as' => 'system']); //
 Route::resource('/blog', 'BlogController', ['as' => 'system']); //
 Route::resource('/statistic', 'StatisticController', ['as' => 'system']); //
 Route::resource('/message', 'MessageController', ['as' => 'system']); //
 Route::post('/message/update-status', 'MessageController@updateStatus')->name('system.message.update-status');
+Route::resource('/our-service', 'OurServiceController', ['as' => 'system']); //
 
 Route::controller('SettingController')->group(function () {
     Route::get('/setting', 'index')->name('system.setting.index'); //
@@ -51,7 +51,6 @@ Route::controller('SettingController')->group(function () {
 Route::resource('category', 'CategoryController', ['as' => 'system']);
 Route::resource('/product', 'ProductController', ['as' => 'system']); //
 Route::resource('/feature', 'FeatureController', ['as' => 'system']); //
-Route::resource('/our-service', 'OurServiceController', ['as' => 'system']); //
 
 Route::delete('product/gallery-image/{id}', [ProductController::class, 'deleteGalleryImage'])
     ->name('system.product.gallery.delete');

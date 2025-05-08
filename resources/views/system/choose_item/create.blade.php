@@ -3,7 +3,7 @@
 @section('content')
 
     <!--begin::Form-->
-    {!! Form::open(['id'=>'main-form','onsubmit' =>  isset($item) ? 'FormSubmit("'.route('system.choose-item.update',$item->id).'");return false;':'FormSubmit("'.route('system.choose-item.store') .'");return false;','method' => isset($item) ?  'PATCH' : 'POST']) !!}
+    {!! Form::open(['id'=>'main-form','onsubmit' =>  isset($result) ? 'FormSubmit("'.route('system.our-service.update',$result->id).'");return false;':'FormSubmit("'.route('system.our-service.store') .'");return false;','method' => isset($result) ?  'PATCH' : 'POST']) !!}
 
     <div id="form-alert-message"></div>
 
@@ -48,7 +48,7 @@
                                             {{ Form::input(
                                                 'text',
                                                 'input[lang]['.$language['id'].'][title]',
-                                                isset($item) ? $item->{$language['id'] == 2 ? 'title_ar' : 'title_en'} : '',                                                [
+                                                isset($result) ? $result->{$language['id'] == 2 ? 'title_ar' : 'title_en'} : '',                                                [
                                                     'id' => 'input[lang]['.$language['id'].'][name]',
                                                     'class' => 'form-control form-control-solid',
                                                 ]
@@ -64,7 +64,7 @@
                                             {{ Form::input(
                                                 'text',
                                                 'input[lang]['.$language['id'].'][text]',
-                                                isset($item) ? $item->{$language['id'] == 2 ? 'text_ar' : 'text_en'} : '',
+                                                isset($result) ? $result->{$language['id'] == 2 ? 'text_ar' : 'text_en'} : '',
                                                 [
                                                     'id' => 'input[lang]['.$language['id'].'][text]',
                                                     'class' => 'form-control form-control-solid',
@@ -82,36 +82,36 @@
                 </div>
 
                 <div class="tab-pane fade" id="topic_data" role="tabpanel">
-                    @isset($item->id)
-                        <input type="hidden" value="{{$item->image}}" name="old_image">
-
-                        <div class="form-group">
-                            <div class="text-center">
-                                <img src="{{asset($item->image)}}"
-                                class="rounded-circle h-25 w-25" alt="image slider">
-                            </div>
-                        </div>
-                    @endisset
 
 
                     <div class="row gx-10 mt-5">
+
+
                         <div class="col-lg-6">
-                            <div>
-                                {{ label( __('Image'), isset($item->id) ? '' : 'required') }}
-                                <div class="mb-5">
-                                    {!! Form::file('image', ['id' => 'file']) !!}
-                                    <div class="invalid-feedback" id="input[image]-form-error"></div>
-                                </div>
+                            {{ label( __('Icon'),'required') }}
+                            <div class="mb-5">
+                                {{ Form::text('icon',isset($result) ? $result->icon : '',
+                                    ['id' => 'icon',   'class' => 'form-control form-control-solid'  ]
+                                ) }}
+                                <div class="invalid-feedback" id="icon-form-error"></div>
                             </div>
-                            <span>{{__('Image dimensions :')}} 70 × 67</span>
                         </div>
 
+                        <div class="col-lg-6">
+                            {{ label( __('sort'),'required') }}
+                            <div class="mb-5">
+                                {{ Form::text('order',isset($result) ? $result->order : '',
+                                    ['id' => 'order',   'class' => 'form-control form-control-solid'  ]
+                                ) }}
+                                <div class="invalid-feedback" id="order-form-error"></div>
+                            </div>
+                        </div>
 
                         <div class="col-lg-6">
                             {{ label(__('Status')) }}
                             <!--begin::Input group-->
                             <div class="mb-5">
-                                {!! Form::select('status',[''=>'']+default_status(false,true),isset($item->status) ? $item->status:old('input[status]'),
+                                {!! Form::select('status',[''=>'']+default_status(false,true),isset($result->status) ? $result->status:old('input[status]'),
                                     ['class'=>'form-select form-select-solid ','id'=>'status',' data-placeholder'=>__('Select an Status')]) !!}
                                 <div class="invalid-feedback" id="status-form-error"></div>
                             </div>
@@ -128,7 +128,7 @@
     <div class="separator separator-dashed mb-8"></div>
 
     <button type="submit" class="btn btn-primary submit">
-        <span class="indicator-label">{{ isset($item)? __('Update') :  __('Create')}}</span>
+        <span class="indicator-label">{{ isset($result)? __('Update') :  __('Create')}}</span>
         <span class="indicator-progress">{{__('Please wait')}}...
 			<span class="spinner-border spinner-border-sm align-middle ms-2"></span>
         </span>

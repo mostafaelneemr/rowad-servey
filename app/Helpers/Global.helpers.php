@@ -139,6 +139,7 @@ function ignoredRoutes()
         'system.user.show-profile',
         'system.user.update-profile',
         'system.reset-password',
+        'check-upload-limit'
     ];
 }
 

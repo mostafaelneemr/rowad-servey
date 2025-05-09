@@ -110,6 +110,11 @@
                                                 {!! Form::file($sValue->name, ['class' => 'form-control','accept' => 'application/pdf']) !!}
                                             </div>
                                         </div>
+                                        @if($sValue->value)
+                                            <div class="col-2">
+                                                <a target="_blank" href="{{ asset($sValue->value) }}">{{ __('View') }}</a>
+                                            </div>
+                                        @endif
                                     @endif
                                 @endforeach
                             </div>

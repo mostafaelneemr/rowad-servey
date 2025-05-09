@@ -92,14 +92,19 @@ class SettingService extends BaseService
 
                     case 'file':
                         $validator = \Validator::make($request->all(), [
-                            $value->name => 'nullable|mimes:pdf|max:5120', // Max 5MB
+                            $value->name => 'nullable|mimes:pdf|max:51200', // Max 5MB
                         ]);
 
                         if (!$validator->fails()) {
-                            if ($request->hasFile('file_pdf')) {
-                                $file = $request->file('file_pdf');
+                            if ($request->hasFile($value->name)) {
+                                $file = $request->file($value->name);
                                 $filename = time() . '_' . $file->getClientOriginalName();
-                                $path = $file->storeAs('uploads/pdfs', $filename, 'public'); // store in storage/app/public/uploads/pdfs
+                                $path = $file->storeAs('uploads/pdfs', $filename, 'public');
+
+                                $oldPath = Setting::where('name', $value->name)->value('value');
+                                if ($oldPath && \Storage::disk('public')->exists($oldPath)) {
+                                    \Storage::disk('public')->delete($oldPath);
+                                }
 
                                 Setting::where(['name' => $value->name])
                                     ->where('is_visible', 'yes')

@@ -4,8 +4,10 @@ namespace App\Services;
 
 
 use App\Enums\StatusEnum;
+use App\Models\Product;
 use App\Repositories\Category\CategoryRepository;
 use App\Repositories\Language\LanguageRepository;
+use App\Repositories\Product\GalleryRepository;
 use App\Repositories\Product\ProductRepository;
 use Illuminate\Support\Facades\DB;
 use Intervention\Image\Facades\Image;
@@ -15,14 +17,16 @@ use Illuminate\Support\Str;
 
 class ProductService extends BaseService
 {
-    protected $productRepository,$languageRepository,$categoryRepository;
+    protected $productRepository,$languageRepository,$categoryRepository,$galleryRepository;
 
-    public function __construct(ProductRepository $productRepository, LanguageRepository $languageRepository,CategoryRepository $categoryRepository)
+    public function __construct(ProductRepository $productRepository, LanguageRepository $languageRepository,CategoryRepository $categoryRepository,
+                                GalleryRepository $galleryRepository)
     {
         parent::__construct();
         $this->productRepository = $productRepository;
         $this->languageRepository = $languageRepository;
         $this->categoryRepository = $categoryRepository;
+        $this->galleryRepository = $galleryRepository;
     }
 
     public function loadViewData(): array
@@ -99,26 +103,16 @@ class ProductService extends BaseService
             $file = null;
 
             if ($request->has('image')) {
-                $image = $request->file('image');
-                $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
-                $image->move(public_path('upload/home/'), $name_gen);  // حفظ الصورة في المسار المناسب
-                $save_image = 'upload/home/' . $name_gen;
+                $save_image = $this->uploadedImage($request->file('image'), 'product');
             }
 
             if ($request->has('slider_image')) {
-                $slider_image = $this->uploadedImage($request->file('slider_image'), 'slider_image');
+                $slider_image = $this->uploadedImage($request->file('slider_image'), 'product');
             }
 
             if ($request->hasFile('pdf_file')) {
-                $file = $this->uploadFile($request->file('pdf_file'), 'files');
-            }
-
-            if ($request->hasFile('gallery_images')) {
-                foreach ($request->file('gallery_images') as $galleryImage) {
-                    $gallery_name_gen = hexdec(uniqid()) . '.' . $galleryImage->getClientOriginalExtension();
-                    $galleryImage->move(public_path('upload/home/gallery/'), $gallery_name_gen);
-                    $gallery_images[] = 'upload/home/gallery/' . $gallery_name_gen;
-                }
+                $filename = time() . '_' . $file->getClientOriginalName();
+                $pdf_file = $file->storeAs('uploads/pdfs',$filename, 'public');
             }
 
             $data = [
@@ -134,10 +128,17 @@ class ProductService extends BaseService
                 'image' => $save_image,
                 'slider_image' => $slider_image,
                 'slug' => str::slug($request->input('input.lang.1.title', '')),
-                'pdf_file' => $file
+                'pdf_file' => $pdf_file
             ];
             $store = $this->productRepository->store($data);
 
+            if ($request->hasFile('gallery_images')) {
+                foreach ($request->file('gallery_images') as $galleryImage) {
+                    $gallery_name_gen = hexdec(uniqid()) . '.' . $galleryImage->getClientOriginalExtension();
+                    $galleryImage->move(public_path('upload/home/gallery/'), $gallery_name_gen);
+                    $gallery_images[] = 'upload/home/gallery/' . $gallery_name_gen;
+                }
+            }
             foreach ($gallery_images as $gallery_image) {
                 DB::table('product_images')->insert([
                     'product_id' => $store->id,
@@ -160,17 +161,10 @@ class ProductService extends BaseService
     private function uploadedImage($image, $folder)
     {
         $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
-        $image->move(public_path("upload/home/{$folder}/"), $name_gen);
-        return 'upload/home/' . $folder . '/' . $name_gen;
+        Image::make($image)->save("upload/home/{$folder}/" . $name_gen);
+        $filePath = "upload/home/{$folder}/" . $name_gen;
+        return $filePath;
     }
-
-    private function uploadFile($file, $folder)
-    {
-        $file_name_gen = hexdec(uniqid()) . '.' . $file->getClientOriginalExtension();
-        $file->move(public_path("upload/home/{$folder}/"), $file_name_gen);
-        return 'upload/home/' . $folder . '/' . $file_name_gen;
-    }
-
 
     public function edit($id): array
     {
@@ -186,7 +180,7 @@ class ProductService extends BaseService
         return $this->retunData;
     }
 
-    public function update($id,$request)
+    public function update($request,$id)
     {
         try {
 
@@ -196,6 +190,10 @@ class ProductService extends BaseService
             if (!$product) {
                 throw new \Exception("No testimonial found for ID: " . $id);
             }
+            $save_image = $product->image;
+            $slider_image = $product->slider_image;
+            $pdf_file = $product->pdf_file;
+            $gallery_images = [];
 
             if ($request->file('image')) {
                 if (file_exists($product->image)) {
@@ -203,19 +201,75 @@ class ProductService extends BaseService
                 }
                 $image = $request->file('image');
                 $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
-                Image::make($image)->save('upload/home/' . $name_gen);
-                $filePath = 'upload/home/' . $name_gen;
-                $product->image = $filePath;
+                Image::make($image)->save('upload/home/product' . $name_gen);
+                $save_image = 'upload/home/product' . $name_gen;
+            }
+            if ($request->file('slider_image')) {
+                if (file_exists($product->slider_image)) {
+                    @unlink($product->slider_image);
+                }
+                $image = $request->file('slider_image');
+                $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+                Image::make($image)->save('upload/home/product' . $name_gen);
+                $slider_image = 'upload/home/product' . $name_gen;
             }
 
-            $product->title_ar = $request['input']['lang'][2]['title'] ?? '';
-            $product->title_en = $request['input']['lang'][1]['title'] ?? '';
-            $product->name_ar = $request['input']['lang'][2]['name'] ?? '';
-            $product->name_en = $request['input']['lang'][1]['name'] ?? '';
-            $product->text_ar = $request['input']['lang'][2]['text'] ?? '';
-            $product->text_en = $request['input']['lang'][1]['text'] ?? '';
-            $product->status = $request['input']['status'];
-            $product->save();
+            if ($request->hasFile('pdf_file')) {
+                if ($product->pdf_file && \Storage::disk('public')->exists($product->pdf_file)) {
+                    \Storage::disk('public')->delete($product->pdf_file);
+                }
+
+                $file = $request->file('pdf_file');
+                $filename = time() . '_' . $file->getClientOriginalName();
+                $pdf_file = $file->storeAs('uploads/pdfs', $filename, 'public');
+            }
+
+
+            $data = [
+                'title_ar' => $request->input('input.lang.2.title', ''),
+                'title_en' => $request->input('input.lang.1.title', ''),
+                'image_desc_ar' => $request->input('input.lang.2.image_desc', ''),
+                'image_desc_en' => $request->input('input.lang.1.image_desc', ''),
+                'desc_ar' => $request->input('input.lang.2.desc', ''),
+                'desc_en' => $request->input('input.lang.1.desc', ''),
+                'status' => $request->input('status'),
+                'sort' => $request->input('sort'),
+                'category_id' => $request->input('category_id'),
+                'image' => $save_image,
+                'slider_image' => $slider_image,
+                'slug' => str::slug($request->input('input.lang.1.title', '')),
+                'pdf_file' => $pdf_file
+            ];
+
+            $product = $this->productRepository->update($data, $id);
+
+            if ($request->has('deleted_gallery_images')) {
+                foreach ($request->input('deleted_gallery_images') as $imageId) {
+                    $galleryImage = $this->galleryRepository->find($imageId);
+                    if ($galleryImage) {
+                        if (file_exists(public_path($galleryImage->image))) {
+                            @unlink(public_path($galleryImage->image));
+                        }
+                        $this->galleryRepository->delete($imageId);
+                    }
+                }
+            }
+
+            // إضافة الصور الجديدة (لو فيه)
+            if ($request->hasFile('gallery_images')) {
+                foreach ($request->file('gallery_images') as $galleryImage) {
+                    $gallery_name_gen = hexdec(uniqid()) . '.' . $galleryImage->getClientOriginalExtension();
+                    Image::make($galleryImage)->save(public_path('upload/home/product/' . $gallery_name_gen));
+                    $path = 'upload/home/product/' . $gallery_name_gen;
+
+                    $this->galleryRepository->store([
+                        'product_id' => $id,
+                        'image' => $path,
+                        'created_at' => now(),
+                        'updated_at' => now(),
+                    ]);
+                }
+            }
             DB::commit();
             return $product;
         } catch (\Exception $e) {
@@ -224,5 +278,6 @@ class ProductService extends BaseService
             return false;
         }
     }
+
 
 }

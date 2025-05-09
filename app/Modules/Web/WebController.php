@@ -23,26 +23,27 @@ class WebController extends Controller{
         return view('web.home', $this->viewData);
     }
 
+//    public function about()
+//    {
+////        if (Active_section::where('name' , 'about_page')->first()->value == 0 ) {
+////            abort(404);
+////        }
+////        $this->viewData['sliders'] = Slider::where('slider_type', 'home')->get();
+////        $this->viewData['testimonials'] = Testimonial::get();
+////        $this->viewData['teams'] = Team::get();
+////        $this->viewData['clients'] = Client::get();
+//
+//        return view('web.about');
+//    }
+
+
     public function about()
-    {
-//        if (Active_section::where('name' , 'about_page')->first()->value == 0 ) {
-//            abort(404);
-//        }
-//        $this->viewData['sliders'] = Slider::where('slider_type', 'home')->get();
-//        $this->viewData['testimonials'] = Testimonial::get();
-//        $this->viewData['teams'] = Team::get();
-//        $this->viewData['clients'] = Client::get();
-
-        return view('web.about');
-    }
-
-
-    public function about2()
     {
 //        $this->viewData['sliders'] = Slider::where('slider_type', 'home')->get();
 
         $this->viewData['statistics'] = Statistic::where('status',DefaultStatus::Active->value)->orderBy('order')->get();
         $this->viewData['testimonials'] = Testimonial::where('status',DefaultStatus::Active->value)->get();
+        $this->viewData['services'] = OurService::where('status',DefaultStatus::Active->value)->orderBy('order')->get();
 
         return view('web.about2', $this->viewData);
     }

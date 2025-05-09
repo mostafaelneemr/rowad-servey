@@ -50,20 +50,6 @@
                 'text' => __('Statistics'),
                 'icon' => ' <i class="fa-solid fa-sliders"></i>',
             ],
-
-            [
-                'permission' => ['system.our-service.index','system.our-service.create','system.our-service.edit'],
-                'url' => route('system.our-service.index'),
-                'text' => __('Service'),
-                'icon' => '<i class="fa-solid fa-sitemap"></i>',
-            ],
-
-            [
-                'permission' => ['system.testimonial.index','system.testimonial.create','system.testimonial.edit'],
-                'url' => route('system.testimonial.index'),
-                'text' => __('Testimonials'),
-                'icon' => '<i class="fa-solid fa-comment"></i>',
-            ],
         ],
     ];
 
@@ -99,15 +85,29 @@
     ];
 
     $menu['About Us'] = [
-        'permission' => ['system.blog.index','system.blog.create','system.blog.edit'],
+        'permission' => ['system.about.index','system.about.create','system.about.edit',
+                        'system.our-service.index','system.our-service.create','system.our-service.edit',
+                         'system.testimonial.index','system.testimonial.create','system.testimonial.edit'],
         'icon' => '<i class="fa-brands fa-blogger-b"></i>',
         'text' => __('About Us'),
         'sub' => [
             [
-                'permission' => ['system.blog.index','system.blog.create','system.blog.edit'],
-                'url' => route('system.blog.index'),
-                'text' => __('Blogs'),
+                'permission' => ['system.about.index','system.about.create','system.about.edit'],
+                'url' => route('system.about.index'),
+                'text' => __('About Section'),
                 'icon' => '<i class="fa-brands fa-blogger-b"></i>',
+            ],
+            [
+                'permission' => ['system.our-service.index','system.our-service.create','system.our-service.edit'],
+                'url' => route('system.our-service.index'),
+                'text' => __('Service'),
+                'icon' => '<i class="fa-solid fa-sitemap"></i>',
+            ],
+            [
+                'permission' => ['system.testimonial.index','system.testimonial.create','system.testimonial.edit'],
+                'url' => route('system.testimonial.index'),
+                'text' => __('Testimonials'),
+                'icon' => '<i class="fa-solid fa-comment"></i>',
             ],
         ],
     ];

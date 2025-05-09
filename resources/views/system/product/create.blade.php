@@ -97,6 +97,13 @@
                                 <div class="invalid-feedback" id="main_image-form-error"></div>
                             </div>
                         </div>
+                        @if(isset($result) && $result->image)
+                            <div class="mb-3">
+                                <a href="{{ asset($result->image) }}" target="_blank" class="btn btn-sm btn-light-primary">
+                                    {{ __('View Current Image') }}
+                                </a>
+                            </div>
+                        @endif
 
                         <div class="col-lg-6">
                             {{ label(__('Gallery Images')) }}
@@ -112,11 +119,11 @@
                         </div>
                         @if(isset($result))
                             <div class="row mb-5" id="existing-gallery">
-                                @foreach(DB::table('product_images')->where('product_id', $result->id)->get() as $img)
+                                @foreach($result->galleries as $img)
                                     <div class="col-md-3 mb-3 position-relative" id="gallery-img-{{ $img->id }}">
                                         <img src="{{ asset($img->image) }}" class="img-thumbnail" style="height: 150px; object-fit: cover;">
-                                        <button type="button" class="btn btn-sm btn-danger position-absolute top-0 end-0 m-1 delete-gallery-image"
-                                                data-id="{{ $img->id }}" data-url="{{ route('system.product.gallery.delete', $img->id) }}">
+                                        <button type="button" class="btn btn-sm btn-danger position-absolute top-0 m-1 delete-gallery-image"
+                                                data-id="{{ $img->id }}" >
                                             &times;
                                         </button>
                                     </div>
@@ -158,6 +165,14 @@
                                 <div class="invalid-feedback" id="slider_image-form-error"></div>
                             </div>
                         </div>
+
+                        @if(isset($result) && $result->slider_image)
+                            <div class="mb-3">
+                                <a href="{{ asset($result->slider_image) }}" target="_blank" class="btn btn-sm btn-light-primary">
+                                    {{ __('View Slider Image') }}
+                                </a>
+                            </div>
+                        @endif
                         <div class="col-lg-6">
                             {{ label(__('Sort Order')) }}
                             <div class="mb-5">
@@ -206,25 +221,16 @@
 
             let btn = $(this);
             let id = btn.data('id');
-            let url = btn.data('url');
 
-            $.ajax({
-                url: url,
-                type: 'DELETE',
-                data: {
-                    _token: '{{ csrf_token() }}'
-                },
-                success: function (res) {
-                    if (res.status) {
-                        $('#gallery-img-' + id).remove();
-                    } else {
-                        alert(res.message || 'Failed to delete image.');
-                    }
-                },
-                error: function () {
-                    alert('Error occurred while deleting.');
-                }
-            });
+            // شيل الصورة من الواجهة
+            $('#gallery-img-' + id).remove();
+
+            // ضيف input hidden في الفورم
+            $('<input>').attr({
+                type: 'hidden',
+                name: 'deleted_gallery_images[]',
+                value: id
+            }).appendTo('#main-form');
         });
     </script>
 @endsection

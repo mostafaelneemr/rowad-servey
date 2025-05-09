@@ -1,5 +1,5 @@
 /* ===========================
-    Color Two Variation 
+    Color Two Variation
 =============================*/
 
 
@@ -13,14 +13,14 @@
                 .post-inner{
                     h5{
                         &.heading{
-        
+
                             a {
                                 &:hover{
                                     color: nth($colorList, $i);
                                 }
                             }
-                            
-        
+
+
                         }
                     }
                     h4{
@@ -34,7 +34,7 @@
                     }
                     h3{
                         &.heading{
-        
+
                             a {
                                 &:hover{
                                     color: nth($colorList, $i);
@@ -64,7 +64,7 @@
                     color: nth($colorList, $i);
                 }
             }
-          
+
           }
 
           .single-sympotom{
@@ -73,7 +73,7 @@
                     color: nth($colorList, $i);
                 }
             }
-          
+
           }
 
           .single-prevination{
@@ -104,7 +104,7 @@
                                     color: nth($colorList, $i);
                                 }
                             }
-                        }  
+                        }
                     }
                 }
                 &:hover{
@@ -115,7 +115,7 @@
 
 
         .single-svg-icon-box{
-           
+
             &.business-icon-box{
                 &:hover{
                     background: nth($colorList, $i);
@@ -185,22 +185,22 @@
             .section-title h3 {
               color: nth($colorList, $i);
             }
-          
+
             .service {
               &.service--1 {
                 &:hover::before {
                   border-color: nth($colorList, $i);
                 }
-          
+
                 .icons {
                   margin-bottom: 22px;
-          
+
                   i {
                     color: nth($colorList, $i);
                     font-size: 80px;
                   }
                 }
-          
+
                 .content a.service-btn {
                   i {
                     font-size: 12px;
@@ -215,50 +215,50 @@
                     -o-transition: 0.3s;
                     transition: 0.3s;
                   }
-          
+
                   &:hover {
                     color: nth($colorList, $i);
-          
+
                     i {
                       color: nth($colorList, $i);
                     }
                   }
                 }
               }
-          
+
               &.service--3 {
                 .thumb {
                   overflow: hidden;
-          
+
                   a img {
                     -webkit-transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
                     -o-transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
                     transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
                   }
                 }
-          
+
                 .content h3 a:hover {
                   color: nth($colorList, $i);
                 }
               }
             }
-          
+
             .title-separator {
               display: block;
               line-height: 0px;
-          
+
               &::after {
                 content: "";
                 display: inline-block;
                 height: 3px;
                 border-radius: 3px;
               }
-          
+
               &.color-red::after, &.color-blue::after {
                 background: nth($colorList, $i);
               }
             }
-          
+
             .bk-gradation .item-grid {
               -webkit-box-flex: 1;
               -webkit-flex-grow: 1;
@@ -266,122 +266,122 @@
               flex-grow: 1;
               position: relative;
               padding: 0 10px;
-          
+
               .dot-wrap .dot {
                 background: nth($colorList, $i);
               }
-          
+
               &.custom-color--2 .dot-wrap .dot {
                 background: nth($colorList, $i);
               }
-          
+
               &.custom-color--3 .dot-wrap .dot {
                 background: nth($colorList, $i);
               }
-          
+
               &.custom-color--4 .dot-wrap .dot {
                 background: nth($colorList, $i);
               }
             }
-          
+
             .post-nav-lisnt .nav-item a:hover {
               background: nth($colorList, $i);
             }
-          
+
             .portfolio-nav-list .portfolio-page .inner a:hover {
               color: nth($colorList, $i);
             }
-          
+
             .team {
               &.team_style--1 .image-wrap {
                 .thumb .overlay.red-color {
                   background-color: nth($colorList, $i);
                 }
-          
+
                 .social-networks .inner a {
                   &[class*=hint--]:after {
                     background-color: nth($colorList, $i);
                   }
-          
+
                   &.hint--top::before {
                     border-top-color: nth($colorList, $i);
                   }
                 }
               }
-          
+
               &.team__style--2 {
                 .thumb .overlay {
                   background-color: nth($colorList, $i);
-          
+
                   &.red-color {
                     background-color: nth($colorList, $i);
                   }
                 }
-          
+
                 &:hover .thumb {
                   border-color: rgba(0, 56, 227, 0.1);
                 }
               }
-          
+
               &.team__style--3 .thumb .overlay {
                 background-color: nth($colorList, $i);
-          
+
                 &.red-color {
                   background-color: nth($colorList, $i);
                 }
               }
             }
-          
+
             .blog-grid--modern.blog-standard {
               /* -------------------
-                                Yellow Color  
+                                Yellow Color
                                 ---------------------*/
-          
+
               .post-thumb::after {
                 background: nth($colorList, $i);
               }
-          
+
               .post-read-more {
                 background-color: nth($colorList, $i);
               }
-          
+
               &.blog-yellow-color {
                 .post-thumb::after {
                   background: nth($colorList, $i);
                 }
-          
+
                 .post-content .post-inner {
                   h5.heading a:hover, .post-meta .post-category a:hover {
                     color: nth($colorList, $i);
                   }
                 }
-          
+
                 .post-read-more {
                   background-color: nth($colorList, $i);
                   color: #fff;
                 }
               }
             }
-          
+
             [data-overlay]:before {
               background-color: nth($colorList, $i);
             }
-          
+
             .team-heading .heading-right button {
               i {
                 color: nth($colorList, $i);
               }
-          
+
               &:hover {
                 color: nth($colorList, $i) !important;
               }
             }
-          
+
             .has-center-content .has-centerinner .content {
               h1.heading::before {
                 background-color: nth($colorList, $i);
               }
-          
+
               .read-more-btn a {
                 i, &:hover {
                   color: nth($colorList, $i);
@@ -443,7 +443,7 @@
             }
         }
 
-        // Blog Grid 
+        // Blog Grid
         .blog-grid {
             .post-inner {
                 h5 {
@@ -509,7 +509,7 @@
                     }
                 }
             }
-        } 
+        }
         // Icon Color
         .single-svg-icon-box{
             .svg-icon{
@@ -526,7 +526,7 @@
                             stroke: #fff !important;
                         }
                     }
-                } 
+                }
             }
         }
 
@@ -658,7 +658,7 @@
                         color: nth($colorList, $i);
                     }
                 }
-            }  
+            }
         }
 
 
@@ -686,7 +686,7 @@
                     background-color: nth($colorList, $i);
                 }
             }
-        }  
+        }
 
         // Counter Up
         .brook-counter {
@@ -750,7 +750,7 @@
             }
         }
 
-         
+
 
         .single-motive-speach {
             .icon {
@@ -863,11 +863,11 @@
                             background: nth($colorList, $i);
                         }
                     }
-        
+
                     &.active{
                         a{
                             background: nth($colorList, $i);
-                            
+
                         }
                     }
                 }
@@ -892,7 +892,7 @@
                         a{
                             &:hover{
                                 color: nth($colorList, $i);
-                            } 
+                            }
                         }
                     }
                 }
@@ -907,7 +907,7 @@
                                 }
                             }
                         }
-                    }  
+                    }
                 }
             }
         }
@@ -935,7 +935,7 @@
 
         .basic-thick-line-theme-4{
             border-top: 4px solid nth($colorList, $i);
-        } 
+        }
 
         .procing-box{
             .header{
@@ -943,7 +943,7 @@
                     background-color: nth($colorList, $i);
                 }
             }
-        }  
+        }
 
 
         a{
@@ -955,7 +955,7 @@
                 }
             }
         }
-        
+
 
         .bk-list--2 {
             .list-header{
@@ -965,7 +965,7 @@
                             color: nth($colorList, $i);
                         }
                     }
-                    
+
                 }
             }
         }
@@ -983,7 +983,7 @@
                     }
                 }
             }
-        } 
+        }
 
         .testimonial-color-variation{
             .slick-center {
@@ -994,13 +994,13 @@
                 }
             }
         }
-        
-        
+
+
         .basic-modern-dots{
             .dot{
                 background-color: nth($colorList, $i);
             }
-        } 
+        }
 
         .bk-accordion{
             .card-header{
@@ -1052,7 +1052,7 @@
                     }
                 }
             }
-        }  
+        }
 
         .view-more-btn{
             a{
@@ -1063,7 +1063,7 @@
                 }
             }
         }
-        
+
         #fp-nav{
             ul{
                 li{
@@ -1074,7 +1074,7 @@
                     }
                 }
             }
-        } 
+        }
 
     }
 }

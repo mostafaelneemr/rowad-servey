@@ -34,6 +34,7 @@ Route::controller('ActivityController')->group(function () {
 
 Route::resource('/language', 'LanguageController', ['as' => 'system']);
 Route::resource('/slider', 'SliderController', ['as' => 'system']); //
+Route::resource('/about', 'AboutController', ['as' => 'system']); //
 Route::resource('/testimonial', 'TestimonialController', ['as' => 'system']); //
 Route::resource('/blog', 'BlogController', ['as' => 'system']); //
 Route::resource('/statistic', 'StatisticController', ['as' => 'system']); //
@@ -52,8 +53,7 @@ Route::resource('category', 'CategoryController', ['as' => 'system']);
 Route::resource('/product', 'ProductController', ['as' => 'system']); //
 Route::resource('/feature', 'FeatureController', ['as' => 'system']); //
 
-Route::delete('product/gallery-image/{id}', [ProductController::class, 'deleteGalleryImage'])
-    ->name('system.product.gallery.delete');
+
 
 
 

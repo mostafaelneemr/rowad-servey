@@ -412,11 +412,11 @@
             <div class="row">
                 <div class="col-12">
 
-                    <div class="row bg_color--1 pt--100 space_dec--110 poss_relative basic-thick-line-theme-4">
+                    <div class="row bg_color--1 pt--100 space_dec--110 poss_relative" style="border-top: 4px solid #06063c;">
                         <!-- Start Single Icon Boxes -->
 
                         <div class="brook-section-title text-center mb-3">
-                            <h3 class="heading heading-h6 theme-color">{{__('Our Services')}}</h3>
+                            <h3 class="heading heading-h6" style="color: #06063c">{{__('Our Services')}}</h3>
                         </div>
 
                         @foreach($services as $service)
@@ -425,7 +425,7 @@
                             <div class="icon-box text-center no-border">
                                 <div class="inner">
                                     <div class="icon">
-                                        <i class="{{$service->icon}}"></i>
+                                        <i class="{{$service->icon}}" style="color: #06063c"></i>
                                     </div>
                                     <div class="content">
                                         <h5 class="heading heading-h5">{{lang() == 'ar' ? $service->title_ar : $service->title_en}}</h5>
@@ -484,7 +484,7 @@
                                         </div>
                                     </div>
                                     <div class="testimonial-quote">
-                                        <span class="fa fa-quote-right"></span>
+                                        <span class="fa fa-quote-right"  style="color: #06063c"></span>
                                     </div>
                                 </div>
                             </div>
@@ -591,7 +591,7 @@
                                     <div class="form-action">
 
                                         <div class="form-submit">
-                                            <input type="submit" class="fs-5" value="{{__('Send message')}}">
+                                            <input type="submit" class="fs-5" style="background-color: #06063c;border: 1px solid #06063c;" value="{{__('Send message')}}">
                                         </div>
                                     </div>
                                 </div>

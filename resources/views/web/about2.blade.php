@@ -2,35 +2,230 @@
 
 @section('style')
 
-<style>
+    <style>
+        .icon-box .inner:hover {
+            background-color: #222933;
+            color: #fff
+        }
+    </style>
 
-    .counter-item {
-        border: 1px solid #ddd;
-        border-radius: 12px;
-        padding: 40px 20px;
-        transition: all 0.3s ease;
-        background: #fff;
-    }
+    <style>
+        .icon-box .inner:hover .content h5.heading {
+            color: #fff
+        }
+    </style>
 
-    .counter-item:hover {
-        background-color: #0D0D1D;
-        color: #fff;
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-        border-color: #000;
-        transform: translateY(-5px);
-    }
+    <style>
+        .icon-box .inner:hover .services-icon i {
+            color: #fff
+        }
+    </style>
 
-    .counter-item:hover h2{
-        color: #fff !important;
-    }
+    <style>
+        .testimonial_style--1:hover {
+            background-color: #222933 !important
+        }
 
-    .icon-box.no-border .inner{
-        padding: 20px !important;
-        border-radius: 10px !important
-    }
+        #quote {
+            color: #222933;
+        }
+
+        body.template-color-26 .slick-dots-bottom .slick-dots li.slick-active button {
+            background-color: #222933 !important
+        }
+    </style>
+
+    <style>
+        .custom-slider {
+            width: 100%;
+            height: 100vh;
+            position: relative;
+        }
+
+        .swiper-slide {
+            position: relative;
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Blur effect for the background image */
+        .swiper-slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: inherit;
+            background-size: cover;
+            filter: blur(8px);
+            z-index: 1;
+        }
+
+        .slide-content {
+            position: absolute;
+            top: 50%;
+            left: 5%;
+            right: 5%;
+            transform: translateY(-50%);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+            z-index: 2; /* Ensure content is above the blurred background */
+        }
+
+        .product-image {
+            background: none !important; /* إزالة أي خلفية */
+        }
+
+        .product-image img {
+            width: 400px;
+            height: 300px;
+            border-radius: 0; /* إزالة الزوايا المستديرة إذا كنت تريدها */
+            box-shadow: none; /* إزالة الظل */
+            border: none; /* إزالة الحدود */
+            background: transparent !important; /* تأكيد عدم وجود خلفية */
+            display: block; /* للتأكد من عدم وجود مسافات إضافية */
+        }
+
+        /* إذا كنت تريد تأثيرات خاصة عند التحويم */
+        .product-image img:hover {
+            transform: scale(1.05); /* تكبير بسيط عند التحويم */
+            transition: transform 0.3s ease;
+        }
+
+        .product-details {
+            background: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
+            backdrop-filter: blur(10px); /* Blur effect for the content */
+            padding: 30px;
+            border: 2px solid rgba(252, 183, 43, 0.3); /* Transparent border */
+            border-radius: 15px;
+            /* max-width: 600px; */
+            text-align: left;
+        }
+
+        .product-details h2 {
+            font-size: 30px;
+            color: #fff;
+            margin-bottom: 10px;
+            position: relative;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            border-bottom: 2px solid rgba(255, 255, 255, 0.3); /* Transparent border */
+            padding-bottom: 10px;
+        }
+
+        .product-details p {
+            font-size: 18px;
+            color: #fff;
+            margin: 20px 0;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2); /* Transparent border */
+            padding-bottom: 15px;
+        }
+
+        .product-details a {
+            display: inline-block;
+            background: rgba(252, 183, 43, 0.8); /* Semi-transparent button */
+            color: #fff;
+            padding: 12px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.3); /* Transparent border */
+        }
+
+        .product-details a:hover {
+            background: rgba(224, 166, 43, 0.9);
+        }
+
+        .swiper-button-next,
+        .swiper-button-prev {
+            color: #fff;
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 0, 0, 0.3); /* Semi-transparent background */
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255, 255, 255, 0.3); /* Transparent border */
+        }
+
+        .swiper-button-next::after,
+        .swiper-button-prev::after {
+            font-size: 20px;
+        }
+
+        .counter-item {
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            padding: 40px 20px;
+            transition: all 0.3s ease;
+            background: #fff;
+        }
+
+        .counter-item:hover {
+            background-color: #0D0D1D;
+            color: #fff;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            border-color: #000;
+            transform: translateY(-5px);
+        }
+
+        .counter-item:hover h2{
+            color: #fff !important;
+        }
+
+        .icon-box.no-border .inner{
+            padding: 20px !important;
+            border-radius: 10px !important
+        }
+
+        .portfolio.with-caption:hover {
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15),
+            0 6px 6px rgba(0, 0, 0, 0.1) !important;
+        }
 
 
-</style>
+    </style>
+    {{--    product--}}
+    <style>
+        /* Remove default button styling */
+        .messonry-button button {
+            border: none;
+            background: none;
+            padding: 10px 20px;
+            margin: 0 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        /* Active button styling */
+        .messonry-button button.is-checked {
+            font-weight: bold;
+            color: #007bff; /* Active color */
+        }
+
+        /* Hover effect */
+        .messonry-button button:hover {
+            color: #0056b3;
+        }
+
+        .portfolio.with-caption {
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+        }
+
+        .address .studio-entry {
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+    </style>
 
 @endsection
 
@@ -112,79 +307,36 @@
             <div class="row">
                 <div class="col-12">
 
-                    <div class="row bg_color--1 pt--100 space_dec--110 poss_relative basic-thick-line-theme-4">
+                    <div class="row bg_color--1 pt--100 space_dec--110 poss_relative" style="border-top: 4px solid #06063c;">
                         <!-- Start Single Icon Boxes -->
 
                         <div class="brook-section-title text-center mb-3">
-                            <h3 class="heading heading-h6 theme-color">{{__('Our Services')}}</h3>
+                            <h3 class="heading heading-h6" style="color: #06063c">{{__('Our Services')}}</h3>
                         </div>
 
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-12 wow move-up">
-                            <div class="icon-box text-center no-border">
-                                <div class="inner">
-                                    <div class="icon">
-                                        <i class="ion-ios-cart-outline"></i>
-                                    </div>
-                                    <div class="content">
-                                        <h5 class="heading heading-h5">{{__('Sale and rent')}}</h5>
-                                        <p class="bk_pra">{{__('We offer a variety of the latest GPS, Total Station, Levels, and Laser Scanners.')}}</p>
+                        @foreach($services as $service)
+
+                            <div class="col-lg-3 col-md-6 col-sm-6 col-12 wow move-up">
+                                <div class="icon-box text-center no-border">
+                                    <div class="inner">
+                                        <div class="icon">
+                                            <i class="{{$service->icon}}" style="color: #06063c"></i>
+                                        </div>
+                                        <div class="content">
+                                            <h5 class="heading heading-h5">{{lang() == 'ar' ? $service->title_ar : $service->title_en}}</h5>
+                                            <p class="bk_pra">{{lang() == 'ar' ? $service->text_ar : $service->text_en}}</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        @endforeach
                         <!-- End Single Icon Boxes -->
 
-                        <!-- Start Single Icon Boxes -->
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt_mobile--70 wow move-up">
-                            <div class="icon-box text-center no-border">
-                                <div class="inner">
-                                    <div class="icon">
-                                        <i class="ion-ios-cog-outline"></i>
-                                    </div>
-                                    <div class="content">
-                                        <h5 class="heading heading-h5">{{__('Maintenance and technical support')}}</h5>
-                                        <p class="bk_pra">{{__('A specialized team to maintain the equipment and ensure its readiness at work sites, while providing original spare parts.')}}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Single Icon Boxes -->
-
-                        <!-- Start Single Icon Boxes -->
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt_md--70 mt_sm--70 wow move-up">
-                            <div class="icon-box text-center no-border">
-                                <div class="inner">
-                                    <div class="icon">
-                                        <i class="ion-ios-browsers-outline"></i>
-                                    </div>
-                                    <div class="content">
-                                        <h5 class="heading heading-h5">{{__('Technical training and qualification')}}</h5>
-                                        <p class="bk_pra">{{__('Practical training courses on the use of surveying equipment and software, with certificates of attendance.')}}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Single Icon Boxes -->
-
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt_md--70 mt_sm--70 wow move-up">
-                            <div class="icon-box text-center no-border">
-                                <div class="inner">
-                                    <div class="icon">
-                                        <i class="ion-ios-filing-outline"></i>
-                                    </div>
-                                    <div class="content">
-                                        <h5 class="heading heading-h5">{{__('Calibration and inspection of devices')}}</h5>
-                                        <p class="bk_pra">{{__('Periodic calibration with certified certificates to ensure accuracy of work in surveying projects.')}}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
     <!-- Start Testimonial Area -->
     <div class="brook-testimonial-area ptb--80 ptb-md--80 ptb-sm--60 bg_color--6 slick-arrow-hover">
         <div class="text-center">
@@ -225,7 +377,7 @@
                                         </div>
                                     </div>
                                     <div class="testimonial-quote">
-                                        <span class="fa fa-quote-right"></span>
+                                        <span class="fa fa-quote-right" style="color: #06063c"></span>
                                     </div>
                                 </div>
                             </div>

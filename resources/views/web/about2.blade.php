@@ -307,11 +307,11 @@
             <div class="row">
                 <div class="col-12">
 
-                    <div class="row bg_color--1 pt--100 space_dec--110 poss_relative" style="border-top: 4px solid #06063c;">
+                    <div class="row bg_color--1 pt--100 space_dec--110 poss_relative" style="border-top: 4px solid #ED942A;">
                         <!-- Start Single Icon Boxes -->
 
                         <div class="brook-section-title text-center mb-3">
-                            <h3 class="heading heading-h6" style="color: #06063c">{{__('Our Services')}}</h3>
+                            <h3 class="heading heading-h6">{{__('Our Services')}}</h3>
                         </div>
 
                         @foreach($services as $service)
@@ -320,7 +320,7 @@
                                 <div class="icon-box text-center no-border">
                                     <div class="inner">
                                         <div class="icon">
-                                            <i class="{{$service->icon}}" style="color: #06063c"></i>
+                                            <i class="{{$service->icon}}" style="color: #ED942A"></i>
                                         </div>
                                         <div class="content">
                                             <h5 class="heading heading-h5">{{lang() == 'ar' ? $service->title_ar : $service->title_en}}</h5>
@@ -377,7 +377,7 @@
                                         </div>
                                     </div>
                                     <div class="testimonial-quote">
-                                        <span class="fa fa-quote-right" style="color: #06063c"></span>
+                                        <span class="fa fa-quote-right" style="color: #ED942A"></span>
                                     </div>
                                 </div>
                             </div>

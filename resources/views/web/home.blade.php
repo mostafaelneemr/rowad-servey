@@ -291,7 +291,7 @@
                         <div class="product-details">
                             <h2>{{lang() == 'ar' ? $slider->title_ar : $slider->title_ar }}</h2>
                             <p>{{ lang() == 'ar' ? $slider->sub_title_ar : $slider->sub_title_en }}</p>
-                            <a href="#" style="background-color: #06063c ">{{ lang() == 'ar' ? $slider->button_ar : $slider->button_en }}</a>
+                            <a href="{{$slider->button_url ?? '#'}}" style="background-color: #0D3B4E ">{{ lang() == 'ar' ? $slider->button_ar : $slider->button_en }}</a>
                         </div>
                         <div class="product-image d-none d-lg-block">
                             <img src="{{ asset($slider->thumbnail) }}" alt="Product">
@@ -412,7 +412,7 @@
             <div class="row">
                 <div class="col-12">
 
-                    <div class="row bg_color--1 pt--100 space_dec--110 poss_relative" style="border-top: 4px solid #06063c;">
+                    <div class="row bg_color--1 pt--100 space_dec--110 poss_relative" style="border-top: 4px solid #ED942A;">
                         <!-- Start Single Icon Boxes -->
 
                         <div class="brook-section-title text-center mb-3">
@@ -425,7 +425,7 @@
                             <div class="icon-box text-center no-border">
                                 <div class="inner">
                                     <div class="icon">
-                                        <i class="{{$service->icon}}" style="color: #06063c"></i>
+                                        <i class="{{$service->icon}}" style="color: #ED942A"></i>
                                     </div>
                                     <div class="content">
                                         <h5 class="heading heading-h5">{{lang() == 'ar' ? $service->title_ar : $service->title_en}}</h5>
@@ -484,7 +484,7 @@
                                         </div>
                                     </div>
                                     <div class="testimonial-quote">
-                                        <span class="fa fa-quote-right"  style="color: #06063c"></span>
+                                        <span class="fa fa-quote-right"  style="color: #ED942A"></span>
                                     </div>
                                 </div>
                             </div>
@@ -591,7 +591,7 @@
                                     <div class="form-action">
 
                                         <div class="form-submit">
-                                            <input type="submit" class="fs-5" style="background-color: #06063c;border: 1px solid #06063c;" value="{{__('Send message')}}">
+                                            <input type="submit" class="fs-5" style="background-color: #ED942A;border: 1px solid #ED942A;" value="{{__('Send message')}}">
                                         </div>
                                     </div>
                                 </div>

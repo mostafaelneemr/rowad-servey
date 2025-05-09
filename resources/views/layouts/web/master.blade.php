@@ -135,9 +135,10 @@
                                             href="{{ route('about') }}"><span>{{__('About Us')}}</span></a></li>
                                     @php
                                         $categories = \App\Models\Category::where('status',DefaultStatus::Active->value)->get();
+                                        $product_laser = \App\Models\Product::where('id',2)->first();
+                                        $product_control = \App\Models\Product::where('id',7)->first();
                                     @endphp
-                                    <li class="lavel-1 with--drop slide-dropdown"><a
-                                            href="#"><span>{{__('Our Products')}}</span></a>
+                                    <li class="lavel-1 with--drop slide-dropdown"><a href="#"><span>{{__('Our Products')}}</span></a>
                                         <ul class="dropdown__menu">
                                             @foreach($categories as $category)
                                                 <li>
@@ -146,6 +147,16 @@
                                                     </a>
                                                 </li>
                                             @endforeach
+                                                <li>
+                                                    <a href="{{ route('product.slug', $product_control->slug) }}">
+                                                        <span>{{ lang() == 'ar' ? $product_control->title_ar : $product_control->title_en }}</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('product.slug', $product_laser->slug) }}">
+                                                        <span>{{ lang() == 'ar' ? $product_laser->title_ar : $product_laser->title_en }}</span>
+                                                    </a>
+                                                </li>
                                         </ul>
                                     </li>
                                     <li class="lavel-1"><a href="{{ route('contact') }}"><span>{{__('Contact Us')}}</span></a></li>
@@ -164,7 +175,7 @@
                             <!-- Start Popup Search Wrap -->
                             <a href="{{ setting('file_pdf') && setting('file_pdf')->value ? asset('storage/' . setting('file_pdf')->value) : '#' }}"
                               target="_blank" class="show-catalog btn btn-md d-none d-lg-block text-white"
-                               style="background-color:#06063c ;color: #0a0a0a;font-weight: 500">
+                               style="background-color:#0D3B4E ;color: #0a0a0a;font-weight: 500">
                                 {{ __('Show Catalog') }}
                             </a>
 

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Product_Features extends Model
+class Product_Features extends GlobalModel
 {
     use HasFactory;
     public $table = 'product_features';

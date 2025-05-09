@@ -1,8 +1,8 @@
 @extends('layouts.web.master')
 
 @php
-    $meta_title = App\Models\admin\SeoSetting::find(1)->project_meta_title;
-    $meta_description = App\Models\admin\SeoSetting::find(1)->project_meta_description;
+    $meta_title = App\Models\SeoSetting::find(1)->project_meta_title;
+    $meta_description = App\Models\SeoSetting::find(1)->project_meta_description;
 @endphp
 
 @section('title') Projects - Atech @endsection
@@ -46,11 +46,11 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="portfolio-grid-metro6 mesonry-list">
-    
+
                         <div class="resizer"></div>
-                        
+
                         <!-- Start Single Portfolio -->
-                        
+
                         @foreach($items as $item)
                         <div class="portfolio-33-33 cat--{{$item->category}}">
                             <div class="portfolio with-caption">
@@ -58,7 +58,7 @@
                                     <a href="{{url('project/' . $item->slug)}}">
                                         <img src="{{asset($item->image)}}" alt="portfolio images">
                                     </a>
-    
+
                                 </div>
                                 <div class="caption-bottom text-center">
                                     <div class="info">
@@ -70,7 +70,7 @@
                         </div>
                         @endforeach
                         <!-- End Single Portfolio -->
-    
+
                     </div>
                 </div>
             </div>

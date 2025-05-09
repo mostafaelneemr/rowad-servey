@@ -5,17 +5,17 @@
 @endsection
 
 @php
-    $title = App\Models\admin\SeoSetting::find(1)->title;
-    $description = App\Models\admin\SeoSetting::find(1)->description;
+    $title = App\Models\SeoSetting::find(1)->title;
+    $description = App\Models\SeoSetting::find(1)->description;
 
-    $meta_title_proj = App\Models\admin\SeoSetting::find(1)->project_meta_title;
-    $meta_description_proj = App\Models\admin\SeoSetting::find(1)->project_meta_description;
+    $meta_title_proj = App\Models\SeoSetting::find(1)->project_meta_title;
+    $meta_description_proj = App\Models\SeoSetting::find(1)->project_meta_description;
 
-    $meta_title_brand = App\Models\admin\SeoSetting::find(1)->brands_meta_title;
-    $meta_description_brand = App\Models\admin\SeoSetting::find(1)->brands_meta_description;
+    $meta_title_brand = App\Models\SeoSetting::find(1)->brands_meta_title;
+    $meta_description_brand = App\Models\SeoSetting::find(1)->brands_meta_description;
 
-    $meta_title_blog = App\Models\admin\SeoSetting::find(1)->blog_meta_title;
-    $meta_description_blog = App\Models\admin\SeoSetting::find(1)->blog_meta_description;
+    $meta_title_blog = App\Models\SeoSetting::find(1)->blog_meta_title;
+    $meta_description_blog = App\Models\SeoSetting::find(1)->blog_meta_description;
 @endphp
 
 @section('meta_title')

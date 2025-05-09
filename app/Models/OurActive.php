@@ -6,7 +6,7 @@ use App\Models\admin\Fontawsome;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class OurActive extends Model
+class OurActive extends GlobalModel
 {
     use HasFactory;
 

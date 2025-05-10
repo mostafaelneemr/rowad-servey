@@ -146,12 +146,142 @@
             justify-content: center;
             border: 1px solid rgba(255, 255, 255, 0.3); /* Transparent border */
         }
+
+        /* Ahmed Edits */
+        /* Hero section */
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://peaks-of-commercial-space-f.vercel.app/hero_bg-3.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .product-title {
+            color: white;
+            font-size: 3.5rem;
+            font-weight: 700;
+            text-align: end;
+        }
+        .product-subtitle {
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            font-weight: 300;
+            text-align: end;
+        }
+        .product-image {
+            max-width: 100%;
+            height: 350px;
+            filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.2));
+        }
+        .download-btn {
+            background-color: #005073;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        .download-btn:hover {
+            background-color: #003a54;
+            transform: translateY(-2px);
+        }
+
+        .blur-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+        }
+
+        /* Product Details section */
+        /* Container */
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem 1rem;
+      }
+
+      /* Product Grid */
+      .product-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        align-items: center;
+      }
+
+      @media (min-width: 768px) {
+        .product-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+    /* Second section*/   
+    .slider-container{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }   
+
+    .product-info{
+      font-weight: 500;
+      line-height: 28px;
+      font-size: 18px;
+    }
+
+    .mySlides {
+      display:none;
+      width: 300px;
+      height: 300px;
+      object-fit: contain;
+    }
+
+    .circle-button {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: #ffffff;
+        color: black;
+        border: 1px solid #ccc;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        font-size: 1.2em;
+        outline: none; 
+    }
+
+    .circle-button:hover {
+       background-color: #eee;
+    }
+
+
+     
+
+     
     </style>
 @endsection
 @section('content')
 
 
-    <div class="swiper custom-slider">
+    <!-- <div class="swiper custom-slider">
         <div class="swiper-wrapper">
 
                 <div class="swiper-slide" style="background-image: url('{{ asset($product->slider_image) }}');">
@@ -167,16 +297,64 @@
                     </div>
                 </div>
         </div>
-    </div>
+    </div> -->
 
-    <div class="container">
+        <!-- Hero Section -->
+      <section class="hero-section">
+          <!-- Blur Overlay -->
+        <div class="blur-overlay"></div>
 
+          <!-- Hero Content -->
+        <div class="hero-content">
+          <div class="container">
+              <div class="row align-items-center">
+                  <div class="col-md-2">
+                    <button class="download-btn">
+                        <a href="{{asset('storage/'.$product->pdf_file)}}">{{ __('data sheet') }}</a>
+                    </button>
+                  </div>
+
+                  <!-- Product Information -->
+                  <div class="col-md-6">
+                      <h1 class="product-title">{{lang() == 'ar' ? $product->title_ar : $product->title_ar }}</h1>
+                      <p class="product-subtitle">{{ lang() == 'ar' ? $product->image_desc_ar : $product->image_desc_en }}</p>
+                  </div>
+
+                  <!-- Product Image -->
+                  <div class="col-md-4 text-center mb-4 mb-md-0">
+                  <img src="{{ asset($product->image) }}" alt="S900+ GNSS Receiver" class="product-image">
+                  </div>
+              </div>
+          </div>
+        </div>
+      </section>
+
+        <!-- Second section -->
+            <div class="container">
+              <div class="row align-items-center">
+                <div class="col-md-7">
+                  <p class="product-info">
+                    {{lang() == 'ar' ?  $product->desc_ar : $product->desc_en }}
+                  </p>
+                </div>
+
+                <div class="col-md-5">
+                  <div class="slider-container">
+                    <button class="circle-button" onclick="plusDivs(-1)">&#10094;</button>
+                     @foreach($product->galleries as $image)
+                      <img class="mySlides" src="{{asset($image->image)}}" alt="product" >                                                            @endforeach
+                    <button class="circle-button" onclick="plusDivs(1)">&#10095;</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+      </div>
+
+    <!-- <div class="container">
     <p>
         {{lang() == 'ar' ?  $product->desc_ar : $product->desc_en }}
     </p>
-    </div>
-
-
+    </div> -->
 
     <div class="bk-portfolio-area creative-portfolio section-pb-100">
         <div class="container">
@@ -228,6 +406,30 @@
             </div>
         </div>
     </div>
+
+    @push('js')
+    <script>
+      var slideIndex = 1;
+        showDivs(slideIndex);
+
+        function plusDivs(n) {
+          showDivs(slideIndex += n);
+        }
+
+        function showDivs(n) {
+          var i;
+          var x = document.getElementsByClassName("mySlides");
+          if (n > x.length) {slideIndex = 1}
+          if (n < 1) {slideIndex = x.length}
+          for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";  
+          }
+          x[slideIndex-1].style.display = "block";  
+        }
+    </script>
+  
+@endpush
+    
 
 
 @endsection

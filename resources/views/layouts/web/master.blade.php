@@ -169,7 +169,12 @@
                             <a  class="facebook-icon" href="{{setting('facebook')->value ?? ''}}"><i class="fab fa-facebook" style="font-size: xx-large"></i></a>
                             <a class="linked-icon" href="{{setting('linkedin')->value ?? ''}}"><i class="fab fa-linkedin" style="font-size: xx-large"></i></a>
                             <a class="youtube-icon" href="{{setting('youtube')->value ?? ''}}"><i class="fab fa-youtube" style="font-size: xx-large"></i></a>
+
+{{--                            <div class="mt-2" style="font-weight: bold; color: #000;">--}}
+{{--                                {{ setting('whatsapp_phone')->value ?? '+20 100 000 0000' }}--}}
+{{--                            </div>--}}
                         </div>
+
                         <!-- Header Right -->
                         <div class="header-right">
                             <!-- Start Popup Search Wrap -->

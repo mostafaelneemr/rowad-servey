@@ -23,7 +23,7 @@
     <!-- Open Graph data -->
     <meta property="og:title" content="{{ $product->title }}" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="{{ url('product', $product->slug) }}" />
+    <meta property="og:url" content="{{ route('product.slug', $product->slug) }}" />
     <meta property="og:description" content="{{ $product->description }}" />
     <meta property="og:site_name" content="{{ env('APP_NAME') }}" />
 @endsection
@@ -162,7 +162,7 @@
                             <a href="{{asset('storage/'.$product->pdf_file)}}">{{ __('data sheet') }}</a>
                         </div>
                         <div class="product-image">
-                            <img src="{{ asset($product->image) }}" alt="Product">
+                            <img src="{{ asset($product->image) }}" alt="Product Image">
                         </div>
                     </div>
                 </div>

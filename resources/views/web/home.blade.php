@@ -382,19 +382,21 @@
             </div>
             <div class="row portfolio-grid-metro6">
                 @foreach($products as $product)
-                    <div class="col-lg-4 col-md-6 col-sm-6 col-12 portfolio-33-33 cat--{{$product->category_id}}">
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-12 portfolio-33-33 cat--{{$product->category_id}}" style="position:absolute;left: 760px;top: 355px">
                         <div class="portfolio with-caption" style="overflow: hidden; height: 100%; border-radius: 15px">
                             <div class="thumb video-with-thumb">
-                                <a href="{{url('product/' . $product->slug)}}">
+                                <a href="{{route('product.slug' , $product->slug)}}">
                                     <img src="{{asset($product->image)}}"
                                          style="width: 100%; height: 250px; object-fit: contain;padding: 10px" alt="product images">
                                 </a>
                             </div>
-                            <div class="caption-bottom text-start">
+                            <div class="caption-bottom text-start" style="padding: 5px 15px 30px">
                                 <div class="info">
-                                    <h5 class="heading heading-h5"><a
-                                            href="{{route('product.slug' , $product->slug)}}">{{lang() == 'ar' ? $product->title_ar : $product->title_en}}</a>
-                                    <p class="bk_pra">{{ lang() == 'ar' ? \Illuminate\Support\Str::limit($product->image_desc_ar, 40) : \Illuminate\Support\Str::limit($product->image_desc_en, 80) }}</p>
+                                    <h5 class="heading heading-h5">
+                                        <a href="{{route('product.slug' , $product->slug)}}">{{lang() == 'ar' ? $product->title_ar : $product->title_en}}</a></h5>
+                                    <p class="bk_pra">
+                                      {{  lang() == 'ar' ? \Illuminate\Support\Str::limit($product->image_desc_ar, 40) : \Illuminate\Support\Str::limit($product->image_desc_en, 80) }}
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -523,7 +525,11 @@
 
                         <div class="address mt--60 mb--60 wow move-up">
                             <h3 class="heading">{{__('Message us')}}</h3>
-                            <p><a href="mailto:{{setting('email')->value ?? '#'}}">{{setting('email')->value ?? ''}}</a></p>
+                            <p>
+                                <a href="https://mail.google.com/mail/?view=cm&fs=1&to={{setting('email')->value}}" target="_blank">
+                                    {{ setting('email')->value }}
+                                </a>
+                            </p>
                         </div>
 
                         <ul class="social-icon icon-size-medium text-dark text-center tooltip-layout move-up wow">

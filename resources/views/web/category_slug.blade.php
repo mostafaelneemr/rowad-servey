@@ -43,7 +43,7 @@
     <!-- End Breadcaump Area -->
 
     <!-- Page Conttent -->
-    <div class="bk-portfolio-with-caption-area ptb--200 ptb-md--150 ptb-sm--150 bg_color--5 poss_relative">
+    <div class="bk-portfolio-with-caption-area pt--50 pb--100 pb-md--150 pt-md--50 pb-sm--150 bg_color--5 poss_relative">
         <div class="container">
 
             <div class="row portfolio-grid-metro6">

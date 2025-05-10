@@ -111,7 +111,7 @@
 <div id="wrapper" class="wrapper">
 
     <!-- Header -->
-    <header class="new-header br_header header-default position-from--top header-transparent  haeder-fixed-width headroom--sticky header-mega-menu clearfix"
+    <header class="new-header br_header header-default position-from--top  haeder-fixed-width headroom--sticky header-mega-menu clearfix"
         style="padding-top: 0">
         <div class="container-fluid">
             <div class="row">

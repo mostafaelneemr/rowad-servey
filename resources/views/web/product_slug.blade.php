@@ -231,13 +231,13 @@
         }
       }
 
-    /* Second section*/   
+    /* Second section*/
     .slider-container{
       display: flex;
       justify-content: center;
       align-items: center;
       gap: 10px;
-    }   
+    }
 
     .product-info{
       font-weight: 500;
@@ -265,7 +265,7 @@
         cursor: pointer;
         transition: background-color 0.3s ease;
         font-size: 1.2em;
-        outline: none; 
+        outline: none;
     }
 
     .circle-button:hover {
@@ -273,31 +273,12 @@
     }
 
 
-     
 
-     
+
+
     </style>
 @endsection
 @section('content')
-
-
-    <!-- <div class="swiper custom-slider">
-        <div class="swiper-wrapper">
-
-                <div class="swiper-slide" style="background-image: url('{{ asset($product->slider_image) }}');">
-                    <div class="slide-content">
-                        <div class="product-details">
-                            <h2>{{lang() == 'ar' ? $product->title_ar : $product->title_ar }}</h2>
-                            <p>{{ lang() == 'ar' ? $product->image_desc_ar : $product->image_desc_en }}</p>
-                            <a href="{{asset('storage/'.$product->pdf_file)}}">{{ __('data sheet') }}</a>
-                        </div>
-                        <div class="product-image">
-                            <img src="{{ asset($product->image) }}" alt="Product Image">
-                        </div>
-                    </div>
-                </div>
-        </div>
-    </div> -->
 
         <!-- Hero Section -->
       <section class="hero-section">
@@ -330,83 +311,26 @@
       </section>
 
         <!-- Second section -->
-            <div class="container">
-              <div class="row align-items-center">
+        <div class="container">
+            <div class="row align-items-center">
                 <div class="col-md-7">
-                  <p class="product-info">
-                    {{lang() == 'ar' ?  $product->desc_ar : $product->desc_en }}
-                  </p>
+                    <p class="product-info">
+                        {{lang() == 'ar' ?  $product->desc_ar : $product->desc_en }}
+                    </p>
                 </div>
 
                 <div class="col-md-5">
-                  <div class="slider-container">
-                    <button class="circle-button" onclick="plusDivs(-1)">&#10094;</button>
-                     @foreach($product->galleries as $image)
-                      <img class="mySlides" src="{{asset($image->image)}}" alt="product" >                                                            @endforeach
-                    <button class="circle-button" onclick="plusDivs(1)">&#10095;</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-      </div>
-
-    <!-- <div class="container">
-    <p>
-        {{lang() == 'ar' ?  $product->desc_ar : $product->desc_en }}
-    </p>
-    </div> -->
-
-    <div class="bk-portfolio-area creative-portfolio section-pb-100">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title--between wow move-up">
-                        <div class="title">
-                            <h3> {{__('Gallery')}}</h3>
-                        </div>
+                    <div class="slider-container">
+                        <button class="circle-button" onclick="plusDivs(-1)">&#10094;</button>
+                        @foreach($product->galleries as $image)
+                            <img class="mySlides" src="{{asset($image->image)}}" alt="product">
+                        @endforeach
+                        <button class="circle-button" onclick="plusDivs(1)">&#10095;</button>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="portfolio-wrapper mt--40 wow move-up">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="porfolio-swip-horizontal" style="overflow: hidden;">
-                            <div class="swiper-wrapper">
-
-
-                                <!-- End Single Portfolio -->
-
-                                <!-- Start Single Portfolio -->
-                                @foreach($product->galleries as $image)
-
-                                <div class="portfolio portfolio_style--2 mt--30 swiper-slide">
-                                    <div class="thumb">
-                                        <img src="{{asset($image->image)}}" alt="Portfolio Images">
-                                    </div>
-                                    <div class="portfolio-overlay"></div>
-                                    <div class="port-overlay-info">
-{{--                                        <div class="content">--}}
-{{--                                            <h3 class="port-title">Digital Marketing Basics</h3>--}}
-{{--                                            <div class="category">Digital</div>--}}
-{{--                                        </div>--}}
-                                    </div>
-                                </div>
-                                @endforeach
-                                <!-- End Single Portfolio -->
-
-                            </div>
-                            <!-- Add Pagination -->
-                            <div class="swiper-pagination"></div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-
+         
     @push('js')
     <script>
       var slideIndex = 1;
@@ -422,14 +346,14 @@
           if (n > x.length) {slideIndex = 1}
           if (n < 1) {slideIndex = x.length}
           for (i = 0; i < x.length; i++) {
-            x[i].style.display = "none";  
+            x[i].style.display = "none";
           }
-          x[slideIndex-1].style.display = "block";  
+          x[slideIndex-1].style.display = "block";
         }
     </script>
-  
+
 @endpush
-    
+
 
 
 @endsection

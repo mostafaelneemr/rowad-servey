@@ -231,7 +231,7 @@
 
 @section('content')
 
-    <div class="brook-whatdo-area pt--150 pb--50 pt-md--80 pb-md--40 ptb-sm--60 bg_color--1">
+    <div class="brook-whatdo-area  pb--50  pb-md--40 ptb-sm--60 bg_color--1">
         <div class="container">
             <div class="row ">
                 <div class="col-lg-6">

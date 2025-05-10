@@ -21,8 +21,8 @@
 
 @endphp
 
-@section('meta_title', $title)@endsection
-@section('meta_description', $description)@endsection
+@section('meta_title', $title)
+@section('meta_description', $description)
 
 @section('meta')
     <!-- Schema.org markup -->

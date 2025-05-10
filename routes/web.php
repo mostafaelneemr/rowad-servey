@@ -2,6 +2,8 @@
 
 use App\Models\admin\Blog;
 use App\Models\admin\Project;
+use App\Models\Category;
+use App\Models\Product;
 use App\Modules\Web\SendEmailController;
 use App\Modules\Web\WebController;
 use Spatie\Sitemap\Sitemap;
@@ -24,20 +26,21 @@ use Spatie\Sitemap\Tags\url;
 
 Route::get('/sitemap', function () {
     $sitemap = Sitemap::create()
-        ->add(url::create('/'))
-        ->add(url::create('/about'))
-        ->add(url::create('/service'))
-        ->add(url::create('/portfolio'))
-        ->add(url::create('/contact'));
-    Blog::all()->each(function (Blog $blog) use ($sitemap) {
-        $sitemap->add(url::create("/blog/{$blog->slug}"));
+        ->add(Url::create('/'))
+        ->add(Url::create('/about'))
+        ->add(Url::create('/contact'));
+
+    Product::all()->each(function ($product) use ($sitemap) {
+        $sitemap->add(Url::create("/product/{$product->slug}"));
     });
 
-    Project::all()->each(function (Project $project) use ($sitemap) {
-        $sitemap->add(url::create("/project/{$project->slug}"));
+    Category::all()->each(function ($cat) use ($sitemap) {
+        $sitemap->add(Url::create("/category/{$cat->slug}"));
     });
 
     $sitemap->writeToFile(public_path('sitemap.xml'));
+
+    return 'Sitemap generated successfully!';
 });
 
 Route::get('/sitemap/{xml_site_map_file}', function ($xml_site_map_file) {
@@ -59,14 +62,9 @@ Route::controller(WebController::class)->group(function () {
     Route::get('/', 'index')->name('home');
 //    Route::get('/about', 'about')->name('about');
     Route::get('/about', 'about')->name('about');
-    Route::get('/service', 'service')->name('service');
 
-    Route::get('/blogs', 'blogs')->name('blogs');
-    Route::get('/blog/{slug}', 'blogSlug')->name('blog.slug');
-
-    Route::get('/projects', 'project')->name('projects');
-
-    Route::get('/careers', 'career')->name('career');
+//    Route::get('/blogs', 'blogs')->name('blogs');
+//    Route::get('/blog/{slug}', 'blogSlug')->name('blog.slug');
 
     Route::get('/contact', 'contact')->name('contact');
 

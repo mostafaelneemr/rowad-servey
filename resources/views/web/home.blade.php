@@ -5,54 +5,42 @@
 @endsection
 
 @php
-    $title = App\Models\SeoSetting::find(1)->title;
-    $description = App\Models\SeoSetting::find(1)->description;
+    $seo = App\Models\SeoSetting::find(1);
+     $title = $seo?->title ?? 'Rowad Survey';
+     $description = $seo?->description ?? '';
+     $meta_title_proj = $seo?->project_meta_title ?? '';
+     $meta_description_proj = $seo?->project_meta_description ?? '';
+     $meta_title_brand = $seo?->brands_meta_title ?? '';
+     $meta_description_brand = $seo?->brands_meta_description ?? '';
+     $meta_title_blog = $seo?->blog_meta_title ?? '';
+     $meta_description_blog = $seo?->blog_meta_description ?? '';
 
-    $meta_title_proj = App\Models\SeoSetting::find(1)->project_meta_title;
-    $meta_description_proj = App\Models\SeoSetting::find(1)->project_meta_description;
-
-    $meta_title_brand = App\Models\SeoSetting::find(1)->brands_meta_title;
-    $meta_description_brand = App\Models\SeoSetting::find(1)->brands_meta_description;
-
-    $meta_title_blog = App\Models\SeoSetting::find(1)->blog_meta_title;
-    $meta_description_blog = App\Models\SeoSetting::find(1)->blog_meta_description;
-
-    $to = setting('email')->value;
-    $subject = urlencode('Contact Form Submission');
-    $body = urlencode("Dear Qimam Al-Masaha Commercial,\n\nI am a customer interested in contacting your company.\n\n Name:\n Phone:\n Email:\n Company:\n Message:\n\nThank you for your attention, and I look forward to your response.\n\nBest regards,");
+     $to = setting('email')->value;
+     $subject = urlencode('Contact Form Submission');
+     $body = urlencode("Dear Qimam Al-Masaha Commercial,\n\nI am a customer interested in contacting your company.\n\n Name:\n Phone:\n Email:\n Company:\n Message:\n\nThank you for your attention, and I look forward to your response.\n\nBest regards,");
 
 @endphp
 
-@section('meta_title')
-    {{ $title }}
-@stop
-@section('meta_description')
-    {{ $description }}
-@stop
+@section('meta_title', $title)@endsection
+@section('meta_description', $description)@endsection
+
 @section('meta')
-    <!-- Schema.org markup for Google+ -->
-    <meta itemprop="name" content="{{ $meta_title_proj }}">
-    <meta itemprop="name" content="{{ $meta_title_blog }}">
-    <meta itemprop="name" content="{{ $meta_title_brand }}">
-    <meta itemprop="description" content="{{ $meta_description_proj }}">
-    <meta itemprop="description" content="{{ $meta_description_blog }}">
-    <meta itemprop="description" content="{{ $meta_description_brand }}">
+    <!-- Schema.org markup -->
+    <meta itemprop="name" content="{{ $title }}">
+    <meta itemprop="description" content="{{ $description }}">
 
     <!-- Twitter Card data -->
-    <meta name="twitter:title" content="{{ $meta_title_proj }}">
-    <meta name="twitter:title" content="{{ $meta_title_blog }}">
-    <meta name="twitter:title" content="{{ $meta_title_brand }}">
-    <meta name="twitter:description" content="{{ $meta_description_proj }}">
-    <meta name="twitter:description" content="{{ $meta_description_blog }}">
-    <meta name="twitter:description" content="{{ $meta_description_brand }}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ $title }}">
+    <meta name="twitter:description" content="{{ $description }}">
+    <meta name="twitter:image" content="{{ asset(setting('site_logo')) }}">
 
     <!-- Open Graph data -->
-    <meta property="og:title" content="{{ $meta_title_proj }}"/>
-    <meta property="og:title" content="{{ $meta_title_blog }}"/>
-    <meta property="og:title" content="{{ $meta_title_brand }}"/>
-    <meta property="og:description" content="{{ $meta_description_proj }}"/>
-    <meta property="og:description" content="{{ $meta_description_blog }}"/>
-    <meta property="og:description" content="{{ $meta_description_brand }}"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="{{ url()->current() }}"/>
+    <meta property="og:title" content="{{ $title }}"/>
+    <meta property="og:description" content="{{ $description }}"/>
+    <meta property="og:image" content="{{ asset(setting('site_logo')) }}"/>
 @endsection
 
 @section('style')

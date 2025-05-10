@@ -130,7 +130,7 @@ class ProductService extends BaseService
                 'slug' => str::slug($request->input('input.lang.1.title', '')),
                 'pdf_file' => $pdf_file
             ];
-//            dd($request, $data);
+
             $store = $this->productRepository->store($data);
 
             if ($request->hasFile('gallery_images')) {

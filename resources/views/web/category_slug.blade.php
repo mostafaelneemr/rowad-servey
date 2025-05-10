@@ -13,7 +13,7 @@
 @stop
 
 @section('meta_keywords')
-    {{ $category->slug }}
+    {{ implode(',', explode('-', $category->slug)) }}
 @stop
 
 @section('meta')
@@ -27,7 +27,8 @@
     <meta name="twitter:title" content="{{ $category->title }}">
     <meta name="twitter:description" content="{{ $category->description }}">
     <meta name="twitter:creator" content="@author_handle">
-
+    <meta property="og:image" content="{{ asset($category->image ?? 'default.jpg') }}">
+    <meta name="twitter:image" content="{{ asset($category->image ?? 'default.jpg') }}">
     <!-- Open Graph data -->
     <meta property="og:title" content="{{ $category->title }}"/>
     <meta property="og:type" content="website"/>

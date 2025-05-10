@@ -1,11 +1,13 @@
 @php
     $seosetting = App\Models\SeoSetting::first();
-    $keyword = $seosetting->keyword;
-    $title = $seosetting->title;
+    $keyword = $seosetting?->keyword ?? '';
+    $title = $seosetting?->title ?? config('app.name');
+    $description = $seosetting?->description ?? '';
+    $author = $seosetting?->author ?? '';
+    $sitemap = $seosetting?->sitemap_link ?? '';
 @endphp
 
 <meta charset="utf-8">
-
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
@@ -18,8 +20,8 @@
 
 <meta name="keywords" content="@yield('meta_keywords', $keyword)">
 
-<meta name="author" content="{{ $seosetting->author }}">
-<meta name="sitemap_link" content="{{ $seosetting->sitemap_link }}">
+<meta name="author" content="{{ $author }}">
+<meta name="sitemap_link" content="{{ $sitemap }}">
 
 @yield('meta')
 {{-- <meta itemprop="image" content="{{ static_asset(\App\GeneralSetting::first()->$logo) }}"> --}}

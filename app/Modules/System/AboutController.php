@@ -20,12 +20,12 @@ class AboutController extends SystemController
         if ($request->isDataTable) {
             return $this->aboutService->loadDataTableData();
         }
-        return $this->view('product.index', $this->aboutService->loadViewData());
+        return $this->view('about.index', $this->aboutService->loadViewData());
     }
 
     public function create()
     {
-        return $this->view('product.create', $this->aboutService->create());
+        return $this->view('about.create', $this->aboutService->create());
     }
 
 
@@ -35,7 +35,7 @@ class AboutController extends SystemController
         if ($user) {
             flash_msg('success',__('Data Added successfully'));
             return $this->success( __( 'Data added successfully' ),
-                [ 'url' => route( 'system.product.index' )] );
+                [ 'url' => route( 'system.about.index' )] );
         } else {
             return $this->fail(__( 'Sorry, we could not add the data' ) );
         }
@@ -43,7 +43,7 @@ class AboutController extends SystemController
 
     public function edit($id)
     {
-        return $this->view('product.create', $this->aboutService->edit($id));
+        return $this->view('about.create', $this->aboutService->edit($id));
     }
 
     public function update(Request $request, $id)
@@ -52,7 +52,7 @@ class AboutController extends SystemController
         if ($update) {
             flash_msg('success',__( 'Data Updated successfully' ));
             return $this->success( __( 'Data Updated successfully' ),
-                ['url'=> route('system.product.index') ]);
+                ['url'=> route('system.about.index') ]);
         } else {
             return $this->fail(__( 'Sorry, we could not Update the data' ) );
         }

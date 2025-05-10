@@ -33,7 +33,6 @@ return [
     ],
 
     [
-        'group_title' => __('Home'),
         'name' => __('Statistic'),
         'permissions' => [
             'view-statistic' => ['system.statistic.index'],
@@ -79,13 +78,22 @@ return [
     ],
 
     [
-        'name' => __('Blogs'),
+        'name' => __('About'),
         'permissions' => [
-            'view-all-blogs' => ['system.blog.index'],
-            'create-blogs' => ['system.blog.create', 'system.blog.store'],
-            'update-blogs' => ['system.blog.edit', 'system.blog.update']
+            'view-all-about' => ['system.about.index'],
+            'create-about' => ['system.about.create', 'system.about.store'],
+            'update-about' => ['system.about.edit', 'system.about.update']
         ]
     ],
+
+//    [
+//        'name' => __('Blogs'),
+//        'permissions' => [
+//            'view-all-blogs' => ['system.blog.index'],
+//            'create-blogs' => ['system.blog.create', 'system.blog.store'],
+//            'update-blogs' => ['system.blog.edit', 'system.blog.update']
+//        ]
+//    ],
 
     [
         'group_title' => __('Setting'),

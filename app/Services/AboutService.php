@@ -29,46 +29,38 @@ class AboutService extends BaseService
         $this->pageTitle(__('About Section'));
         $this->tableColumns([
             __('ID'),
-            __('Image'),
             __('Title'),
-            __('Sub Title'),
-            __('Button Text'),
+            __('Text'),
             __('Status'),
             __('Action'),
         ]);
 
         $this->jsColumns([
-            'id' => 'slider.id',
-            'image' => 'slider.image',
-            'title' => 'slider.title_'.lang(),
-            'sub_title' => 'slider.sub_title_'.lang(),
-            'button' => 'slider.button_'.lang(),
+            'id' => 'about.id',
+            'title' => 'about.title_'.lang(),
+            'text' => 'about.text_'.lang(),
             'status' => 'slider.status',
             'action' => '',
         ]);
 
         // $this->breadcrumb('');
         $this->filterIgnoreColumns(['action']);
-        $this->addButton('system.slider.create','Add Slider');
+        $this->addButton('system.about.create','Add About');
         return $this->retunData;
     }
 
     public function loadDataTableData()
     {
-        return Datatables::eloquent($this->sliderRepository->getDataTableQuery())
+        return Datatables::eloquent($this->aboutRepository->getDataTableQuery())
             ->addColumn('id', '{{$id}}')
-            ->addColumn('image', function ($data) {
-                return datatableImage($data->image);
-            })
+
             ->addColumn('title', function ($data) {
                 return $data->{ 'title_'.lang() };
             })
-            ->addColumn('sub_title', function ($data) {
-                return $data->{ 'sub_title_'.lang() };
+            ->addColumn('text', function ($data) {
+                return $data->{ 'text_'.lang() };
             })
-            ->addColumn('button', function ($data) {
-                return $data->{'button_'.lang()} ?? '';
-            })
+
             ->addColumn('status', function($data) {
                 return status_icon($data->status);
             })
@@ -82,9 +74,9 @@ class AboutService extends BaseService
 
     public function create(): array
     {
-        $this->pageTitle('Create Slider');
+        $this->pageTitle('Create About');
         $this->breadcrumb('Home');
-        $this->breadcrumb('Sliders', 'system.slider.index');
+        $this->breadcrumb('Abouts', 'system.about.index');
         $this->otherData([
             'languages' => $this->languageRepository->getWhere(['status' => StatusEnum::Enable->value]),
         ]);
@@ -96,38 +88,17 @@ class AboutService extends BaseService
         try {
             DB::beginTransaction();
 
-            $save_image = null;
-            $save_thumbnail = null;
-
-            if ($request->hasFile('image')) {
-                $image = $request->file('image');
-                $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
-                Image::make($image)->save('upload/home/' . $name_gen);
-                $save_image = 'upload/home/' . $name_gen;
-            }
-
-            if ($request->hasFile('thumbnail')) {
-                $thumbnail = $request->file('thumbnail');
-                $thumb_name_gen = hexdec(uniqid()) . '.' . $thumbnail->getClientOriginalExtension();
-                Image::make($thumbnail)->save('upload/home/thumbnails/' . $thumb_name_gen);
-                $save_thumbnail = 'upload/home/thumbnails/' . $thumb_name_gen;
-            }
-
             $data = [
-                'title_ar'      => $request['input']['lang'][2]['title'] ?? '',
-                'title_en'      => $request['input']['lang'][1]['title'] ?? '',
-                'sub_title_ar'  => $request['input']['lang'][2]['sub_title'] ?? '',
-                'sub_title_en'  => $request['input']['lang'][1]['sub_title'] ?? '',
-                'button_ar'     => $request['input']['lang'][2]['button'] ?? '',
-                'button_en'     => $request['input']['lang'][1]['button'] ?? '',
-                'type'          => SliderTypeEnum::Home,
-                'status'        => $request['status'] ?? 'active',
-                'button_url'    => $request['button_url'] ?? '',
-                'image'         => $save_image,
-                'thumbnail'     => $save_thumbnail,
+                'title_ar' => $request['input']['lang'][2]['title'] ?? '',
+                'title_en' => $request['input']['lang'][1]['title'] ?? '',
+                'text_ar' => $request['input']['lang'][2]['text'] ?? '',
+                'text_en' => $request['input']['lang'][1]['text'] ?? '',
+                'status' => $request->status,
+                'order' => $request->order,
             ];
 
             $store = $this->aboutRepository->store($data);
+
             DB::commit();
             return $store;
         } catch (\Exception $e) {
@@ -152,7 +123,7 @@ class AboutService extends BaseService
         return $this->retunData;
     }
 
-    public function update($id, $request)
+    public function update($request,$id)
     {
         try {
             DB::beginTransaction();
@@ -163,41 +134,16 @@ class AboutService extends BaseService
             }
 
             // Handle main image upload
-            if ($request->file('image')) {
-                if (file_exists($about->image)) {
-                    @unlink($about->image);
-                }
-                $image = $request->file('image');
-                $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
-                Image::make($image)->save('upload/home/' . $name_gen);
-                $filePath = 'upload/home/' . $name_gen;
-                $about->image = $filePath;
-            }
+            $data = [
+                'title_ar' => $request['input']['lang'][2]['title'] ?? '',
+                'title_en' => $request['input']['lang'][1]['title'] ?? '',
+                'text_ar' => $request['input']['lang'][2]['text'] ?? '',
+                'text_en' => $request['input']['lang'][1]['text'] ?? '',
+                'status' => $request->status,
+                'order' => $request->order,
+            ];
 
-            // Handle thumbnail upload
-            if ($request->file('thumbnail')) {
-                if (file_exists($about->thumbnail)) {
-                    @unlink($about->thumbnail);
-                }
-                $thumbnail = $request->file('thumbnail');
-                $thumb_name_gen = hexdec(uniqid()) . '.' . $thumbnail->getClientOriginalExtension();
-                Image::make($thumbnail)->save('upload/home/thumbnails/' . $thumb_name_gen);
-                $thumbFilePath = 'upload/home/thumbnails/' . $thumb_name_gen;
-                $about->thumbnail = $thumbFilePath;
-            }
-
-            // Update other fields
-            $about->title_ar = $request['input']['lang'][2]['title'] ?? '';
-            $about->title_en = $request['input']['lang'][1]['title'] ?? '';
-            $about->sub_title_ar = $request['input']['lang'][2]['sub_title'] ?? '';
-            $about->sub_title_en = $request['input']['lang'][1]['sub_title'] ?? '';
-            $about->button_ar = $request['input']['lang'][2]['button'] ?? '';
-            $about->button_en = $request['input']['lang'][1]['button'] ?? '';
-            $about->button_url = $request['button_url'] ?? ''; // <-- زرار الرابط
-            $about->status = $request['status'];
-
-            $about->save();
-
+            $about = $this->aboutRepository->update($data, $id);
             DB::commit();
             return $about;
         } catch (\Exception $e) {

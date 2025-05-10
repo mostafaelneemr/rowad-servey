@@ -12,6 +12,6 @@ class AboutRepository extends BaseRepository
 
     public function getDataTableQuery()
     {
-        return $this->modeler->select(['id','image','title_en','title_ar','status','category_id']);
+        return $this->modeler->select(['id','title_en','title_ar','text_ar','text_en','status']);
     }
 }

@@ -61,10 +61,10 @@ class SettingService extends BaseService
                                 if ($path) {
                                     Setting::where(['name' => $value->name])->where('is_visible', 'yes')->update(['value' => $save_url]);
                                 }
-                            } elseif ($request->file('testimonial_image')) {
-                                $path = $request->file('testimonial_image');
+                            } elseif ($request->file('image_about')) {
+                                $path = $request->file('image_about');
                                 $name_gen = hexdec(uniqid()) . '.' . $path->getClientOriginalExtension();
-                                Image::make($path)->save('upload/setting/' . $name_gen);
+                                Image::make($path)->resize(470, 470)->save('upload/setting/' . $name_gen);
                                 $save_url = 'upload/setting/' . $name_gen;
                                 if ($path) {
                                     Setting::where(['name' => $value->name])->where('is_visible', 'yes')->update(['value' => $save_url]);

@@ -6,7 +6,7 @@ use App\Enums\DefaultStatus;
 use App\Http\Controllers\Controller;
 use App\Models\admin\{Active_section, Slider, Testimonial, Blog, Project};
 
-use App\Models\{Category, OurService, Product, Statistic};
+use App\Models\{About, Category, OurService, Product, Statistic};
 
 class WebController extends Controller{
 
@@ -41,6 +41,7 @@ class WebController extends Controller{
     {
 //        $this->viewData['sliders'] = Slider::where('slider_type', 'home')->get();
 
+        $this->viewData['abouts'] = About::where('status',DefaultStatus::Active->value)->orderBy('order')->get();
         $this->viewData['statistics'] = Statistic::where('status',DefaultStatus::Active->value)->orderBy('order')->get();
         $this->viewData['testimonials'] = Testimonial::where('status',DefaultStatus::Active->value)->get();
         $this->viewData['services'] = OurService::where('status',DefaultStatus::Active->value)->orderBy('order')->get();

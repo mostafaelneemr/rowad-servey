@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 
 class About extends GlobalModel
 {
@@ -11,7 +10,7 @@ class About extends GlobalModel
     public $table = 'about';
     public $primaryKey = 'id';
 
-    public $fillable = ['product_id','icon','title_en','title_ar','feature_en','feature_ar','sort'];
+    public $fillable = ['title_en','title_ar','text_en','text_ar','sort','status'];
 
 
 }

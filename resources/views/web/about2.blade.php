@@ -236,43 +236,31 @@
             <div class="row align-items-center">
                 <div class="col-lg-6">
                     <div class="thumb">
-                        <img class="w-100" src="../../img/Construction/about-1.jpg" alt="about images">
+                        <img class="w-100" src="{{asset(setting('image_about')->value ?? '')}}" width="100%"
+                             height="100%" alt="about images">
                     </div>
                 </div>
                 <div class="col-lg-6 mt_sm--40 mt_md--40">
                     <div class="bk-title--default text-start">
-                        <h5 class="heading heading-h5 theme-color wow move-up">What we do</h5>
+                        {{--                        <h5 class="heading heading-h5 theme-color wow move-up">What we do</h5>--}}
                         <div class="bkseparator--30"></div>
-                        <h3 class="heading heading-h3 wow move-up">Fresh ideas & unique designs</h3>
+                        <h3 class="heading heading-h3 wow move-up">{{setting('title_about')->value ?? ''}}</h3>
                     </div>
                     <div class="row">
 
                         <!-- Start Single -->
-                        <div class="col-lg-6 col-md-6 col-12">
-                            <div class="what-do mt--30">
-                                <div class="content">
-                                    <h5 class="heading heading-h5 wow move-up">Original ideas</h5>
-                                    <div class="bkseparator--20"></div>
-                                    <p class="bk_pra wow move-up">We work with clients from all over the world.
-                                        We had worked with and serving over 2000 customers and 1000 global
-                                        companies across 13 countries in the world.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Single -->
+                        @foreach($abouts as $about)
 
-                        <!-- Start Single -->
-                        <div class="col-lg-6 col-md-6 col-12">
+                        <div class="col-lg-12 col-md-12 col-12">
                             <div class="what-do mt--30">
                                 <div class="content">
-                                    <h5 class="heading heading-h5 wow move-up">Graphic designs</h5>
+                                    <h5 class="heading heading-h5 wow move-up">{{lang() == 'ar' ? $about->title_ar : $about->title_en}}</h5>
                                     <div class="bkseparator--20"></div>
-                                    <p class="bk_pra wow move-up">Our quality of service assessment involves
-                                        controlling and managing resources by setting priorities for specific
-                                        types of clients and projects on the system.</p>
+                                    <p class="bk_pra wow move-up">{{lang() == 'ar' ? $about->text_ar : $about->text_en}}</p>
                                 </div>
                             </div>
                         </div>
+                        @endforeach
                         <!-- End Single -->
 
                     </div>

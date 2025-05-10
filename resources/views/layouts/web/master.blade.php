@@ -29,10 +29,17 @@
           box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
+        .mainmenu-wrapper .page_nav ul.mainmenu {
+          justify-content: flex-start
+        }
+
         .mainmenu-wrapper .page_nav ul.mainmenu li.lavel-1>a {
           color: #000 !important
         }
 
+        .social-share a{
+          padding: 0 5px !important;
+        }
 
         .facebook-icon{
           color: #3b5998 !important
@@ -42,6 +49,10 @@
         }
         .youtube-icon{
           color: #ff0000 !important
+        }
+
+        .show-catalog{
+          width: -webkit-fill-available;
         }
 
       #languageSwitcher {
@@ -57,6 +68,7 @@
         font-size: 14px;
         font-weight: 500;
         cursor: pointer;
+        width: -webkit-fill-available;
         transition: all 0.2s ease;
         box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 
@@ -170,6 +182,11 @@
                             <a class="linked-icon" href="{{setting('linkedin')->value ?? ''}}"><i class="fab fa-linkedin" style="font-size: xx-large"></i></a>
                             <a class="youtube-icon" href="{{setting('youtube')->value ?? ''}}"><i class="fab fa-youtube" style="font-size: xx-large"></i></a>
 
+                                <div class="phone-number" dir="ltr" style="font-weight: bold; color: #000;">
+                                   +20 100 000 0000 
+                                   <i class="fas fa-phone"></i>
+                                </div>
+
 {{--                            <div class="mt-2" style="font-weight: bold; color: #000;">--}}
 {{--                                {{ setting('whatsapp_phone')->value ?? '+20 100 000 0000' }}--}}
 {{--                            </div>--}}
@@ -203,7 +220,7 @@
             </div>
         </div>
     </header>
-    <!--// Header -->
+    <!-- Header -->
 
     <!-- Start Popup Menu -->
     <div class="popup-mobile-manu popup-mobile-visiable">

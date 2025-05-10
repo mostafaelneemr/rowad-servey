@@ -23044,8 +23044,7 @@ header.br_header.header-default.vertical-slide-portfolio {
       flex-shrink: 0;
       -webkit-flex-basis: 20%;
       -ms-flex-preferred-size: 20%;
-      flex-basis: 20%;
-      display: -webkit-box;
+        display: -webkit-box;
       display: -webkit-flex;
       display: -ms-flexbox;
       display: flex;

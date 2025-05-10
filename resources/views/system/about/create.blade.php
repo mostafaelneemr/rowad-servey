@@ -29,9 +29,7 @@
                             <li class="nav-item">
                                 <a class="nav-link text-active-primary py-5 mb-5 me-6 @if($language['id'] == 1) active @endif "
                                    data-bs-toggle="tab" href="#language{{$language['id']}}">
-                                    @if(!empty($language['name']))
-                                        <img src="{{$language['image']}}" height="20px" width="20px" class="me-2">
-                                    @endif
+
                                     {{$language['name']}}</a>
                             </li>
                         @endforeach
@@ -61,13 +59,13 @@
                                     <div class="col-lg-8">
                                         {{ label( __('Text')) }}
                                         <div class="mb-5">
-                                            {{ Form::input(
-                                                'text',
+                                            {{ Form::textarea(
                                                 'input[lang]['.$language['id'].'][text]',
                                                 isset($result) ? $result->{$language['id'] == 2 ? 'text_ar' : 'text_en'} : '',
                                                 [
                                                     'id' => 'input[lang]['.$language['id'].'][text]',
                                                     'class' => 'form-control form-control-solid',
+                                                     'rows'=>3
                                                 ]
                                             ) }}
                                             <div class="invalid-feedback"

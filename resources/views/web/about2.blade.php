@@ -231,7 +231,7 @@
 
 @section('content')
 
-    <div class="brook-whatdo-area ptb--150 ptb-md--80 ptb-sm--60 bg_color--1">
+    <div class="brook-whatdo-area pt--150 pb--50 pt-md--80 pb-md--40 ptb-sm--60 bg_color--1">
         <div class="container">
             <div class="row ">
                 <div class="col-lg-6">
@@ -249,13 +249,12 @@
 
                         <!-- Start Single -->
                         @foreach($abouts as $about)
-
                         <div class="col-lg-12 col-md-12 col-12">
                             <div class="what-do mt--30">
                                 <div class="content">
                                     <h5 class="heading heading-h5 wow move-up">{{lang() == 'ar' ? $about->title_ar : $about->title_en}}</h5>
                                     <div class="bkseparator--20"></div>
-                                    <p class="bk_pra wow move-up">{{lang() == 'ar' ? $about->text_ar : $about->text_en}}</p>
+                                    <div class="" style="white-space: pre-line;">{!! lang() == 'ar' ? $about->text_ar : $about->text_en !!}</div>
                                 </div>
                             </div>
                         </div>

@@ -233,18 +233,17 @@
 
     <div class="brook-whatdo-area ptb--150 ptb-md--80 ptb-sm--60 bg_color--1">
         <div class="container">
-            <div class="row align-items-center">
+            <div class="row ">
                 <div class="col-lg-6">
                     <div class="thumb">
-                        <img class="w-100" src="{{asset(setting('image_about')->value ?? '')}}" width="100%"
-                             height="100%" alt="about images">
+                        <img class="w-100" src="{{asset(setting('image_about')->value ?? '')}}" width="470px"
+                             height="470px" alt="about images">
                     </div>
                 </div>
-                <div class="col-lg-6 mt_sm--40 mt_md--40">
-                    <div class="bk-title--default text-start">
+                <div class="col-lg-6 mt-5 mt_sm--40 mt_md--40">
+                    <div class="bk-title--default">
                         {{--                        <h5 class="heading heading-h5 theme-color wow move-up">What we do</h5>--}}
-                        <div class="bkseparator--30"></div>
-                        <h3 class="heading heading-h3 wow move-up">{{setting('title_about')->value ?? ''}}</h3>
+                         <h3 class="heading heading-h3 wow move-up">{{setting('title_about')->value ?? ''}}</h3>
                     </div>
                     <div class="row">
 

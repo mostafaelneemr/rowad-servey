@@ -48,12 +48,12 @@
             <div class="row portfolio-grid-metro6">
 
                 <!-- Start Single Product -->
-                @forelse($category->products as $product)
+                @forelse($category->products_active as $product)
 
                     <div class="col-lg-4 col-md-6 col-sm-6 col-12 portfolio-33-33 cat--{{$product->category_id}}">
                         <div class="portfolio with-caption" style="overflow: hidden; height: 100%; border-radius: 15px">
                             <div class="thumb video-with-thumb">
-                                <a href="{{url('product/' . $product->slug)}}">
+                                <a href="{{route('product.slug' , $product->slug)}}">
                                     <img src="{{asset($product->image)}}"
                                          style="width: 100%; height: 250px; object-fit: contain;padding: 10px"
                                          alt="product images">

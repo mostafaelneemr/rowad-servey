@@ -1,5 +1,5 @@
 @php
-    $seosetting = App\Models\admin\SeoSetting::first();
+    $seosetting = App\Models\SeoSetting::first();
     $keyword = $seosetting->keyword;
     $title = $seosetting->title;
 @endphp

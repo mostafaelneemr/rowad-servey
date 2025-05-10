@@ -337,6 +337,8 @@
             </div>
         </div>
     </div>
+
+
     <!-- Start Testimonial Area -->
     <div class="brook-testimonial-area ptb--80 ptb-md--80 ptb-sm--60 bg_color--6 slick-arrow-hover">
         <div class="text-center">
@@ -348,7 +350,7 @@
             <div class="row">
                 <div class="col-lg-12 pb--30">
 
-                    <div class="brook-element-carousel slick-arrow-center slick-dots-bottom wow move-up"
+                    <div class="brook-element-carousel slick-arrow-center slick-dots-bottom"
                          data-slick-options='{
                                     "spaceBetween": 15,
                                     "slidesToShow": 3,
@@ -368,7 +370,7 @@
                         <!-- Start Single Testimonial -->
                         @foreach($testimonials as $testimonial)
 
-                            <div class="testimonial testimonial_style--1 rounded" >
+                            <div class="testimonial testimonial_style--1" >
                                 <div class="content">
                                     <p class="bk_pra">{{lang() == 'ar' ? $testimonial->text_ar : $testimonial->text_en}}</p>
                                     <div class="testimonial-info">

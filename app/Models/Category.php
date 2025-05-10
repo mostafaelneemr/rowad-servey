@@ -3,6 +3,8 @@
 namespace App\Models;
 
 
+use App\Enums\DefaultStatus;
+
 class Category extends GlobalModel
 {
     public $table = 'categories';
@@ -13,5 +15,10 @@ class Category extends GlobalModel
     public function products()
     {
         return $this->hasMany(Product::class, 'category_id', 'id');
+    }
+
+    public function products_active()
+    {
+        return $this->hasMany(Product::class, 'category_id', 'id')->where('status', DefaultStatus::Active->value);
     }
 }

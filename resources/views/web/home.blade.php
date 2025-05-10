@@ -16,6 +16,11 @@
 
     $meta_title_blog = App\Models\SeoSetting::find(1)->blog_meta_title;
     $meta_description_blog = App\Models\SeoSetting::find(1)->blog_meta_description;
+
+    $to = setting('email')->value;
+    $subject = urlencode('Contact Form Submission');
+    $body = urlencode("Dear Qimam Al-Masaha Commercial,\n\nI am a customer interested in contacting your company.\n\n Name:\n Phone:\n Email:\n Company:\n Message:\n\nThank you for your attention, and I look forward to your response.\n\nBest regards,");
+
 @endphp
 
 @section('meta_title')
@@ -523,11 +528,15 @@
                             @endfor
                         </div>
 
+
+
+
+
                         <div class="address mt--60 mb--60 wow move-up">
                             <h3 class="heading">{{__('Message us')}}</h3>
                             <p>
-                                <a href="https://mail.google.com/mail/?view=cm&fs=1&to={{setting('email')->value}}" target="_blank">
-                                    {{ setting('email')->value }}
+                                <a href="https://mail.google.com/mail/?view=cm&fs=1&to={{ $to }}&su={{ $subject }}&body={{ $body }}" target="_blank">
+                                    {{ $to }}
                                 </a>
                             </p>
                         </div>

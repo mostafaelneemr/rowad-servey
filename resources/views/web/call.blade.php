@@ -6,7 +6,7 @@
                 <div class="d-inline-flex gap-4 flex-wrap justify-content-center">
                     <a class="brook-btn bk-btn-white text-theme btn-sd-size btn-rounded"
                        style="background-color: rgba(255,171,0,1); color: whitesmoke"
-                       href="mailto:{{ setting('email')->value }}" target="_blank">
+                       href="https://mail.google.com/mail/?view=cm&fs=1&to={{ $to }}&su={{ $subject }}&body={{ $body }}" target="_blank">
                         {{ __('Email') }}
                         <i class="fa fa-envelope" style="padding-left: 5px;"></i>
                     </a>

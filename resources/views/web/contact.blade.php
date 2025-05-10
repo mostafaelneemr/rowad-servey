@@ -142,7 +142,7 @@
                                         <div class="col-lg-12">
                                             <div class="form-action">
                                                 <div class="form-submit">
-                                                    <input type="submit" class="fs-5" style="background-color: #06063c;border: 1px solid #06063c;" value="{{__('Send message')}}">
+                                                    <input type="submit" class="fs-5" style="background-color: #ED942A;border: 1px solid #ED942A;" value="{{__('Send message')}}">
                                                 </div>
                                             </div>
                                         </div>
